@@ -1,4 +1,4 @@
-package br.com.framework.imlementacao.crud;
+package br.com.framework.implementacao.crud;
 
 import java.io.Serializable;
 
