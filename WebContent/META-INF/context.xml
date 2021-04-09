@@ -27,7 +27,8 @@ antiJARLocking="false"
 antiResourceLocking="false"
 />
 
-<!-- Classe do tomcat que está lendo esse arquivo é o org.apache.tomcat.dbcp.dbcp.PoolingDataSource -->
+<!-- Classe do tomcat que está lendo esse arquivo context.xml -> é o org.apache.tomcat.dbcp.dbcp.PoolingDataSource
+que já estar dentro do tomcat -->
 <!-- POOL de conexões -->
 <!-- https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html -->
 
