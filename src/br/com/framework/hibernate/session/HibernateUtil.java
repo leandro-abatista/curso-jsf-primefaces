@@ -26,7 +26,7 @@ public class HibernateUtil implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	public static String JAVA_COMP_ENV_JDBC_DATA_SOURCE = "java:/comp/env/jdbc/postgres";
+	public static String JAVA_COMP_ENV_JDBC_DATA_SOURCE = "java:/comp/env/jdbc/datasource";
 	
 	private static SessionFactory sessionFactory = buildSessionFactory();
 	
@@ -90,7 +90,7 @@ public class HibernateUtil implements Serializable {
 	}
 	
 	/**
-	 * Retorna a conexão no InitialContext: java:/comp/env/jdbc/postgres
+	 * Retorna a conexão no InitialContext: java:/comp/env/jdbc/datasource
 	 * @return Connection
 	 * @throws NamingException
 	 * @throws Exception
