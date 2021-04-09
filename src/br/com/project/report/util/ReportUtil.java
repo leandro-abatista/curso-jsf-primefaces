@@ -129,7 +129,7 @@ public class ReportUtil implements Serializable {
 		/* caminho do Relatório exportado */
 		caminhoArquivoRelatorio = caminhoRelatorio + SEPARATOR + nomeRelatorioSaida + PONTO + extensaoArquivoExportado;
 
-		/* Cria novo file esportado */
+		/* Cria novo file exportado */
 		arquivoGerado = new File(caminhoArquivoRelatorio);
 
 		/* Preparar a impressão */
@@ -138,7 +138,7 @@ public class ReportUtil implements Serializable {
 		/* Nome do arquivo a ser exportado/impresso */
 		tipoArquivoExportado.setParameter(JRExporterParameter.OUTPUT_FILE, arquivoGerado);
 
-		/* executa a exportação */
+		/* Executa a exportação */
 		tipoArquivoExportado.exportReport();
 
 		/* Remove o arquivo do servidor após o download, para não consumir recursos */
