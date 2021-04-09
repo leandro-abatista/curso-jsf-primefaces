@@ -45,6 +45,7 @@
 		<property name="c3po.idle_test_period">3000</property>
     	
     	<!-- Classes Mapeadas -->
+    	<mapping class="br.com.project.model.classes.Entidade"/>
     	
     	<!-- Objeto -->
     	<listener class="org.hibernate.envers.event.AuditEventListener" type="post-insert"/><!-- registro de log de insert -->
