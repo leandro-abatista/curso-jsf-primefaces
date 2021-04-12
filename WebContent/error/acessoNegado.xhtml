@@ -12,7 +12,17 @@
 </h:head> 
 
 <!-- corpo da página -->
-<body> 
-	Página de login
-</body> 
+<h:form>
+	<h:body> 
+	
+		<p:panel id="painelNotAcess" header="Aviso">
+			
+			<h:graphicImage library="images" name="acessoNegado.jpg"/>
+			<br />	
+			<h:outputLabel value="O Acesso a essa página do sistema, não está autorizada para seu usuário!" />
+			
+		</p:panel>
+	
+	</h:body> 
+</h:form>
 </html>
