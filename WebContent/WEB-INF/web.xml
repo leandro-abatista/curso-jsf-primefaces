@@ -15,19 +15,19 @@
   </welcome-file-list>
   
   	<session-config>
-		<session-timeout>15</session-timeout> <!-- Invalida a sessao em 15 minutos -->
-		<tracking-mode>COOKIE</tracking-mode><!-- modo de rastreamento -->
+		<!-- Em 15 minutos invalida a sessão e pede para realizar o login novamente -->
+		<session-timeout>15</session-timeout>
+		<tracking-mode>COOKIE</tracking-mode>
 	</session-config>
-	
-	<!-- páginas de erro -->
+
 	<error-page>
 		<exception-type>org.springframework.security.access.AccessDeniedException</exception-type>
-		<location>/error/acessoNegado.jsf</location><!-- Página de erro, de acesso negado -->
+		<location>/error/acessoNegado.jsf</location>
 	</error-page>
-	
+
 	<error-page>
 		<exception-type>com.sun.faces.context.FacesFileNotFoundException</exception-type>
-		<location>/error/paginaNaoEncontrada.jsf</location><!-- Erro de página não encontrada -->
+		<location>/error/paginaNaoEncontrada.jsf</location>
 	</error-page>
 	
 	<error-page>
@@ -41,18 +41,11 @@
 	</error-page>
 	
 	<error-page>
-		<error-code>500</error-code>
+		<error-code>500</error-code><!-- Erro 500, é um erro interno do servidor -->
 		<location>/error/error.jsf</location>
 	</error-page>
 	
-	<jsp-config>
-		<jsp-property-group>
-			<url-pattern>/**</url-pattern>
-			<el-ignored>false</el-ignored>
-		</jsp-property-group>
-	</jsp-config>
-	
-	<context-param>
+	<context-param><!-- pode escrever comentários no meio da página -->
 		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
 		<param-value>true</param-value>
 	</context-param>
@@ -68,97 +61,30 @@
 	</context-param>
 	
 	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-				/WEB-INF/applicationContext.xml 
-				/WEB-INF/spring-servlet-servlet.xml
-				/WEB-INF/applicationContext-security.xml
-  		</param-value>
-	</context-param>
-	
-	<context-param>
 		<param-name>javax.faces.FACELETS_REFRESH_PERIOD</param-name>
-		<param-value>2</param-value>
+		<param-value>0</param-value><!-- tempo de atualização do cache da página em segundos-->
 	</context-param>
 	
 	<context-param>
 		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
-		<param-value>.xhtml .html .jsp</param-value>
+		<param-value>.xhtml .html .jsp</param-value><!-- extensões de páginas que serão trabalhadas no sistema -->
 	</context-param>
 	
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
-		<param-value>Production</param-value>
+		<param-value>Production</param-value><!-- estado de desenvolvimento do sistema -> produção -->
 	</context-param>
 	
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
-		<param-value>afterdark</param-value>
+		<param-value>home</param-value><!-- thema do primefaces -->
 	</context-param>
-	
-	<filter>
-		<filter-name>conexaoFilter</filter-name>
-		<filter-class>br.com.project.filter.FilterOpenSessionInView</filter-class>
-	</filter>
-	
-	<filter>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	</filter>
-	
-	<filter>
-		<filter-name>encoding-filter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>ISO-8859-1</param-value>
-		</init-param>
-	</filter>
-	
-	<filter>
-		<filter-name>PrimeFaces FileUpload Filter</filter-name>
-		<filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
-	</filter>
-	
-	<filter-mapping>
-		<filter-name>encoding-filter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	
-	<filter-mapping>
-		<filter-name>conexaoFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	
-	<filter-mapping>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
 	
 	<filter-mapping>
 		<filter-name>PrimeFaces FileUpload Filter</filter-name>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.jsf</url-pattern>
 	</filter-mapping>
-
-	<!-- Comentado por não está sendo usado <listener> <listener-class>br.com.project.listener.HttpSessionListenerImpl</listener-class> 
-		</listener> -->
-
-	<listener>
-		<listener-class>br.com.project.listener.ContextLoaderListenerCaixakiUtils</listener-class>
-	</listener>
-	
-	<listener>
-		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-	</listener>
-	
-	<listener>
-		<listener-class>br.com.project.listener.CustomListener</listener-class>
-	</listener>
-	
-	<listener>
-		<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
-	</listener>
 	
 	<resource-ref>
 		<description>DataSource datasource</description>
@@ -168,18 +94,7 @@
 	</resource-ref>
 	
 	<servlet>
-		<servlet-name>spring-servlet</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>spring-servlet</servlet-name>
-		<url-pattern>/</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-name>Faces Servlet</servlet-name><!-- servlet do jsf e processa todo o ciclo de vida do jsf e autogerencia para montar a pagina no navegador -->
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
