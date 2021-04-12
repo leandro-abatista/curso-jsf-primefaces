@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<!-- Após o sistema iniciar, ele vai ler a página index e depois redirecionar para -> login.jsf -->
-	<meta http-equiv="Refresh" content="0;URL=publico/login.jsf">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<!-- Redireciona para a página de login -->
+	<meta http-equiv="Refresh" content="0;URL=publico/login.jsf"/>
 	<title>Index</title>
 </head>
 
 <body>
-
+	
 </body>
 
 </html>
