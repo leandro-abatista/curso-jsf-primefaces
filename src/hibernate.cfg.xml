@@ -31,18 +31,19 @@
     	<property name="hibernate.connection.autocommit">false</property>
     	<property name="hibernate.connection.pool_size">50</property>
     	
-    	<!--Configurações de C3PO -->
+    	<!--Configurações de C3PO 
     	
-    	<!-- Define o número mínimo de conexões que são mantidas sempre preparadas pelo C3PO; -->
+    	 Define o número mínimo de conexões que são mantidas sempre preparadas pelo C3PO; 
     	<property name="c3po.min_size">5</property>
-    	<!-- Número máximo de conexões no pool; -->
+    	 Número máximo de conexões no pool; 
 		<property name="c3po.max_size">20</property>
-		<!-- Tempo limite para remoção de conexões inativas no pool; -->
+		Tempo limite para remoção de conexões inativas no pool; 
 		<property name="c3po.timeout">300</property>
-		<!-- Máximo de declarações que irão para cache; -->
+		 Máximo de declarações que irão para cache; 
 		<property name="c3po.max_statements">50</property>
-		<!-- Tempo de inatividade de uma conexão antes de ser validada. -->
+		 Tempo de inatividade de uma conexão antes de ser validada.
 		<property name="c3po.idle_test_period">3000</property>
+    	-->
     	
     	<!-- Classes Mapeadas -->
     	<mapping class="br.com.project.model.classes.Entidade"/>
