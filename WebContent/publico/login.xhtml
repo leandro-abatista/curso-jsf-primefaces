@@ -9,10 +9,47 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title><ui:insert name="titulo">Sistema</ui:insert></title>
+	
+	<!-- scripts de css e javascript -->
+	<h:outputScript name="jquery.js" library="primefaces/jquery" />
+	<h:outputStylesheet name="estilo.css" library="css" />
+	<h:outputScript name="scripty.js" library="javascript" />
 </h:head> 
 
 <!-- corpo da página -->
 <body> 
-	<h1>Tela de Login</h1>
+	
+	<div id="imagemlogin">
+		<h:graphicImage library="images" name="loginCaixaki.png" styleClass="bordaImagem" />
+	</div>
+	
+	<div id="keyslogin">
+		<h:graphicImage library="images" name="keys.png" styleClass="bordaImagem" />
+	</div>
+	
+	<div id="formlogin">
+		
+		<br />
+		
+		<h:panelGroup rendered="#{!empty param.login_error}">
+			
+			<!-- ExpressionLinguage #{valor} -->
+			<h:outputLabel value="#{SPRING_SECURITY_LAST_EXCEPTION.message == 'Bad credentials'}">
+				<span class="estiloSpan"> Permissão Negada, login e/ou senhas incorretos! </span>
+			</h:outputLabel>
+			
+			<h:outputLabel rendered="#{SPRING_SECURITY_LAST_EXCEPTION.message == 'Maximum sessions of 1 for this principal exceeded'}">
+				<span class="estiloSpan"> Você está logado em outra sessão! </span>
+
+				<p:commandButton value="Encerrar"
+					style="height: 40px; width: 120px; border-radius: 5px; font-weight: bold; fonte-size: 15px;"
+					onclick="invalidarSession('#{request.contextPath}', '/publico/invalidateSession')" />
+			</h:outputLabel>
+		
+		</h:panelGroup>
+		
+		
+		
+	</div>
 </body> 
 </html>

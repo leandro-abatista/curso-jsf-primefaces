@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
 * {
 	margin: 0px;
 	padding: 0px;
 	font-size: 12px;
-	font-family: arial, helvetic, sans-serif;
+	/*font-family: arial, helvetic, sans-serif;*/
+	font-family: 'Poppins', sans-serif;
 }
 
 body{
@@ -53,7 +56,7 @@ a:focus {
 }
 
 .estiloSpan {
-	COLOR: red;
+	color: #D2691E;
 	font-size: 18px;
 	font-weight: bold;
 	border-left: 10px;
@@ -132,7 +135,7 @@ a:focus {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-	font-face: sans-serif;
+	font-family: sans-serif;
 	font-size: 13px;
 	font-weight: bold;
 	cursor: pointer;
@@ -160,11 +163,11 @@ a:focus {
 	padding-left: 5px;
 }
 
-
+/*div da primeira imagem*/
 #imagemlogin {
 	position: absolute;
-	top: 30px;
-	right: 60px;
+	top: 60px;
+	right: 200px;
 }
 
 #keyslogin {
@@ -177,9 +180,9 @@ a:focus {
 #formlogin {
 	position: absolute;
 	bottom: 60px;
-	right: 60px;
+	right: 120px;/*altura do painel do formlogin*/
 	left: 0px;
-	background-color: #4682B4;
+	background-color: #B22222;
 	display: block;
 	-webkit-border-top-right-radius: 8px;
 	-webkit-border-bottom-right-radius: 8px;
