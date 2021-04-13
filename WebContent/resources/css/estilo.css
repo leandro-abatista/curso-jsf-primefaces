@@ -171,17 +171,19 @@ a:focus {
 }
 
 #keyslogin {
+	margin-bottom: 100px;
 	position: absolute;
 	bottom: 35px;
-	right: 300px;
+	right: 380px;
 	z-index: 999;
 }
 
 #formlogin {
 	position: absolute;
 	bottom: 60px;
-	right: 120px;/*altura do painel do formlogin*/
+	right: 120px;
 	left: 0px;
+	height: 200px;/*altura do painel do formlogin*/
 	background-color: #B22222;
 	display: block;
 	-webkit-border-top-right-radius: 8px;

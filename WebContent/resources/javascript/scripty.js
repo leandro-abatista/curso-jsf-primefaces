@@ -110,6 +110,10 @@ function addMascaraDecimalMonetaria(id) {
 	
 }
 
+/**
+ * Não envia o formulário para o servidor enquanto o login e a senha não estiverem preenchidos
+ * Ajuda na performace a garante que os campos serão preenchidos pelo usuário
+ */
 function validarSenhaLogin() {
 	j_username = document.getElementById('j_username').value;
 	j_password = document.getElementById('j_password').value;

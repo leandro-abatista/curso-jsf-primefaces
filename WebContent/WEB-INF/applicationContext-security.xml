@@ -63,7 +63,7 @@
 												p.entidade_acesso as authority
 												from entidade u
 												join entidadeacesso p
-												on u.ent_codigo = p.ent_codigo
+												on u.ent_codigo = p.codigo_entidade
 												where u.ent_inativo = false
 												and upper(u.ent_login) = upper(?)" />
 
