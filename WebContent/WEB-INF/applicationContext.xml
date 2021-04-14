@@ -139,4 +139,5 @@
 	<bean id="repositoryLogin" class="br.com.dao.implementacao.DaoLogin" scope="singleton"/>
 	
 	<!-- Services -->
+	<bean id="serviceLogin" class="br.com.srv.implementacao.ServiceLoginImpl"/>
 </beans>
