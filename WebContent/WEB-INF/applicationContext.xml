@@ -133,6 +133,7 @@
 	<bean id="utilFramework" class="br.com.framework.util.UtilFramework" scope="session"/>
 	
 	<!-- Controllers -->
+	<bean id="sessionController" class="br.com.project.geral.controller.SessionControllerImpl" scope="singleton"/>
 	<!-- Resources/Dao's -->
 	<!-- Services -->
 </beans>

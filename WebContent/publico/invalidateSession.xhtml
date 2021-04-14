@@ -93,7 +93,7 @@
 			/* apenas um teste na tela -> alert(args.msgRetorno);*/
 
 			if(!args.loggedIn){
-				PF('dlg').jq.effect("shake"), {times:5}, 100;
+				PF('dlg').jq.effect("shake"), {times:5}, 100;/*Isso é um efeito na caixa de dialog quando não informa o login e/ou senha*/
 				$('#username').focus();
 			} else {
 				PF('dlg').hide();
