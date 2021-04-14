@@ -138,6 +138,6 @@
 	<!-- Resources/Dao's | o id -> é o nome da interface -->
 	<bean id="repositoryLogin" class="br.com.dao.implementacao.DaoLogin" scope="singleton"/>
 	
-	<!-- Services -->
+	<!-- Services | o id -> é o nome da interface -->
 	<bean id="serviceLogin" class="br.com.srv.implementacao.ServiceLoginImpl"/>
 </beans>
