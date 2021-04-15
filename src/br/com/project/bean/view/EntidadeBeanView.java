@@ -1,5 +1,7 @@
 package br.com.project.bean.view;
 
+import java.util.Date;
+
 import javax.faces.bean.ManagedBean;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,10 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 
 	public String getUsuarioLogadoSecurity() {
 		return contextBean.getAuthentication().getName();
+	}
+	
+	public Date getUltimoAcesso() throws Exception {
+		return contextBean.getEntidadeLogada().getEnt_ultimoAcesso();
 	}
 
 }
