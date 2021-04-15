@@ -13,7 +13,14 @@
 </h:head> 
 
 <!-- corpo da página -->
-<body> 
-	<h1>Tela Principal</h1>
-</body> 
+<h:form>
+  	<h:body>
+		
+		<ui:include src="/templates/barraProgresso.xhtml" /> 
+		
+		<p:commandButton value="Testar Status" ajax="true"/>
+		
+		<h1>Tela Principal</h1>
+	</h:body> 
+</h:form>
 </html>

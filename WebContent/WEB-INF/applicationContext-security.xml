@@ -30,18 +30,26 @@
 		<intercept-url pattern="/publico/**" access="permitAll" /><!-- Está permitido a todos -->
 		
 		<!-- Indicando ao spring security a página de login do sistema -->
-		<form-login login-page="/publico/login.jsf" always-use-default-target="true"
-			default-target-url="/restrito/principal.jsf" authentication-failure-url="/publico/login.jsf?login_error=1" />
+		<form-login login-page="/publico/login.jsf" 
+					always-use-default-target="true"
+					default-target-url="/restrito/principal.jsf" 
+					authentication-failure-url="/publico/login.jsf?login_error=1" />
 		
 		<!-- Indicando ao spring security a página de logout do sistema -->
-		<logout invalidate-session="true" logout-success-url="/publico/login.jsf"
-			logout-url="/j_spring_security_logout" delete-cookies="JSESSIONID" />
+		<logout invalidate-session="true" 
+				logout-success-url="/publico/login.jsf"
+				logout-url="/j_spring_security_logout" 
+				delete-cookies="JSESSIONID" />
 		
 		<remember-me token-validity-seconds="1209600" />
 		
 		<!-- permissão de sessões de usuários, onde o usuário pode ter uma ou mais sessões, neste caso foi configurado apenas 1 -->
-		<session-management invalid-session-url="/publico/login.jsf" session-fixation-protection="migrateSession">
-			<concurrency-control max-sessions="1" expired-url="/publico/login.jsf" error-if-maximum-exceeded="true" />
+		<session-management invalid-session-url="/publico/login.jsf" 
+							session-fixation-protection="migrateSession">
+							
+			<concurrency-control max-sessions="1" 
+								 expired-url="/publico/login.jsf" 
+								 error-if-maximum-exceeded="true" />
 		</session-management>		
 		
 	</http>

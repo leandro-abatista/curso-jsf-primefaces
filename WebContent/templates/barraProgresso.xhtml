@@ -9,12 +9,13 @@
 	<!-- Chamo essa página dentro de outras páginas -->
 	<ui:composition>
 	
-		<p:ajaxStatus id="ajaxStatus" onstart="dlgStatus.show();" onsuccess="dlgStatus.hide();"/>
+		<p:ajaxStatus id="ajaxStatus" onstart="PF('dlgStatus').show();" onsuccess="PF('dlgStatus').hide();"/>
 	
 		<p:dialog id="dlgAjaxStatus" header="Processando" footer="Aguarde..." modal="true" widgetVar="dlgStatus" 
-		 draggable="false" appendTo="@(body)" dynamic="false" resizable="false" closable="false" height="200px" width="200px">
+		 draggable="false" appendTo="@(body)" dynamic="false" resizable="false" closable="false" height="100px" width="400px">
 			
-			<h:graphicImage id="imagesAjaxLoad" library="images" name="preload.gif" styleClass="bordaImagem"/>
+			<h:graphicImage id="imagesAjaxLoad" library="images" name="ajax-loader.gif" 
+				styleClass="bordaImagem" height="100px" width="400px"/>
 			
 		</p:dialog>
 		
