@@ -67,13 +67,14 @@ a:focus {
 	width: 30px;
 }
 
+/*topo da página*/
 #topo {
 	position: absolute;
 	top: 0px;
 	left: 0px;
 	right: 0px;
 	height: 80px;
-	background-color: #B0E0E6;/*muda a cor do background do topo*/
+	background-color: #fff;/*muda a cor do background do topo*/
 }
 
 #iconemenu{
@@ -94,7 +95,7 @@ a:focus {
 /*menu da seta de trocar a senha*/
 #menupop {
 	position: absolute;
-	border: 2px solid #61cded;
+	border: 2px solid #FFA500;
 	top: 68px;
 	right: 45px;/*aqui muda a posiçao para a esquerda*/
 	height: 50px;
@@ -113,7 +114,7 @@ a:focus {
 
 /*muda o css dos campos do menupop*/
 #menupop a:hover {
-	background-color: #87CEFA;
+	background-color: #FFA500;
 	border-radius: 5px;
 	padding: 5px;
 }
@@ -123,23 +124,28 @@ a:focus {
 	text-align: center;
 }
 
+#nomeMenu {
+	text-align: center;
+	margin: 5px;
+	padding: 8px;
+}
+
 #iniciarmenu {
 	border: 2px solid gray;
-	background-color: #00BFFF;
+	background-color: #fff;
+	width: 100px;
+	height: 30px;
 	margin-top: 5px;
-	margin-left: 15px;
-	padding: 3px 10px 6px 20px;
-	width: 80px;
-	height: 20px;
+	margin-left: 20px;
 	display: block;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
 	border-radius: 3px;
 	font-family: sans-serif;
-	font-size: 13px;
+	font-size: 15px;
 	font-weight: bold;
 	cursor: pointer;
 	box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.20);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
 }
 
 #iniciarmenu #imageminiciarmenu {
@@ -151,9 +157,9 @@ a:focus {
 /*barra onde tem os submenu*/
 #barramenu {
 	display: block;
-	border: 2px solid rgba(112, 128, 144, .6);
-	background-color: #DCDCDC;
-	background-color: #363636;
+	border: 1px solid rgba(112, 128, 144, .6);
+	background-color: #1E90FF;
+	background: #778899;
 	position: absolute;
 	top: 125px;
 	width: 200px;
@@ -197,25 +203,16 @@ a:focus {
 	padding-bottom: 10px;
 }
 
-/*O css onde fica os dados do login*/
+/*O css da caixa de login*/
 #dadoslogin {
 	font-weight: bold;
 	background: #836FFF;
-	background-image: -moz-linear-gradient(rgba(255, 255, 255, .3),
-		rgba(255, 255, 255, 0) );
-	background-image: -webkit-linear-gradient(rgba(255, 255, 255, .3),
-		rgba(255, 255, 255, 0) );
-	background-image: -o-linear-gradient(rgba(255, 255, 255, .3),
-		rgba(255, 255, 255, 0) );
-	background-image: -ms-linear-gradient(rgba(255, 255, 255, .3),
-		rgba(255, 255, 255, 0) );
-	background-image: linear-gradient(rgba(255, 255, 255, .3),
-		rgba(255, 255, 255, 0) );
 	position: absolute;
 	right: 25px;
 	top: 8px;
+	height: 55px;
 	width: 270px;
-	padding: 8px;/*distancia o texto das bordas*/
+	padding: 6px;/*distancia o texto das bordas*/
 	background-color: #61c0e0;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px solid #836FFF;
@@ -223,6 +220,11 @@ a:focus {
 	-moz-box-shadow: 0 5px 0 rgba(0, 0, 0, .5);
 	-webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, .5);
 	box-shadow: 0 3px 0 rgba(0, 0, 0, .5);
+	background-image: -moz-linear-gradient(rgba(255, 255, 255, .3),	rgba(255, 255, 255, 0) );
+	background-image: -webkit-linear-gradient(rgba(255, 255, 255, .3), rgba(255, 255, 255, 0) );
+	background-image: -o-linear-gradient(rgba(255, 255, 255, .3), rgba(255, 255, 255, 0) );
+	background-image: -ms-linear-gradient(rgba(255, 255, 255, .3), rgba(255, 255, 255, 0) );
+	background-image: linear-gradient(rgba(255, 255, 255, .3), rgba(255, 255, 255, 0) );
 }
 
 
