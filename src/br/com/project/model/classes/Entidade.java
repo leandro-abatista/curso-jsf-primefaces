@@ -1,9 +1,12 @@
 package br.com.project.model.classes;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.envers.Audited;
 
@@ -19,6 +22,9 @@ public class Entidade implements Serializable {
 	private String ent_login = null;
 	private String ent_senha;
 	private boolean ent_inativo = false;
+	
+	@Temporal(TemporalType.TIMESTAMP)//essa anotação carrega hora e data
+	private Date ent_ultimoAcesso;
 	
 	public Long getEnt_codigo() {
 		return ent_codigo;
@@ -50,6 +56,14 @@ public class Entidade implements Serializable {
 
 	public void setEnt_inativo(boolean ent_inativo) {
 		this.ent_inativo = ent_inativo;
+	}
+
+	public Date getEnt_ultimoAcesso() {
+		return ent_ultimoAcesso;
+	}
+
+	public void setEnt_ultimoAcesso(Date ent_ultimoAcesso) {
+		this.ent_ultimoAcesso = ent_ultimoAcesso;
 	}
 	
 	

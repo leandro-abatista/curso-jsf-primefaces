@@ -5,22 +5,12 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:sec="http://www.springframework.org/security/facelets/tags"> 
+      
+<ui:composition template="/templates/templatePrincipal.xhtml">
 
-<!-- cabeçalho da página -->
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title><ui:insert name="titulo">Sistema</ui:insert></title>
-</h:head> 
 
-<!-- corpo da página -->
-<h:form>
-  	<h:body>
-		
-		<ui:include src="/templates/barraProgresso.xhtml" /> 
-		
-		<p:commandButton value="Testar Status" ajax="true"/>
-		
-		<h1>Tela Principal</h1>
-	</h:body> 
-</h:form>
+
+
+</ui:composition>
+
 </html>
