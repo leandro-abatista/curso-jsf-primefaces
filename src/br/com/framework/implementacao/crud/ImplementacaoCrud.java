@@ -309,7 +309,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		StringBuilder query = new StringBuilder();
 		query.append(" select entity from ")
 			 .append(entidade.getSimpleName())
-			 .append(" entity where entity. ")
+			 .append(" entity where entity.")
 			 .append(atributo)
 			 .append(" = '")
 			 .append(valor)

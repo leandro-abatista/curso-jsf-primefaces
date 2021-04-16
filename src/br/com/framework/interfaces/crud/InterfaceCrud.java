@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
-@Transactional
+@Transactional// Essa anotação identifica que ela realiza transação com o banco de dados
 public interface InterfaceCrud<T> extends Serializable {
 	
 	/*Por padrão, na classe de interface, os métodos são public e por isso não precisa colocar*/

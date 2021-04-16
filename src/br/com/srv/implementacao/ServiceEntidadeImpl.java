@@ -26,7 +26,7 @@ public class ServiceEntidadeImpl implements ServiceEntidade {
 
 	@Override
 	public boolean existeUsuario(String ent_login) {
-		return false;
+		return repositoryEntidade.existeUsuario(ent_login);
 	}
 
 }

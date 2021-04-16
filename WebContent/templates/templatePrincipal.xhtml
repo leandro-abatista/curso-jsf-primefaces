@@ -80,7 +80,7 @@
 						
 						<h:outputLabel id="saidaUltimoAcesso" value="#{entidadeBeanView.ultimoAcesso}">
 						
-							<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy | HH:mm:ss" dateStyle="long" timeStyle="full" timeZone="GMT-03:00"/>
+							<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy - HH:mm:ss" dateStyle="long" timeStyle="full" timeZone="GMT-03:00"/>
 							
 						</h:outputLabel>
 						
@@ -186,8 +186,7 @@
 			
 			
 			<p:dialog widgetVar="enviarMsgDialog" id="alterarMsgDialog" width="800"
-				modal="true" resizable="false" height="360"
-				header="Enviar mensagem" appendToBody="false" dynamic="true">
+				modal="true" resizable="false" height="360" header="Enviar mensagem" appendToBody="false" dynamic="true">
 				
 				
 			</p:dialog>
