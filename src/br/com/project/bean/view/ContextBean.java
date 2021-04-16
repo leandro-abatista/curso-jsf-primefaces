@@ -23,47 +23,66 @@ public class ContextBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private static final String USER_LOGADO_SESSAO = "usuarioLogadoSessao";
-	
-	@Autowired//injeção de dependência
+
+	@Autowired
 	private EntidadeController entidadeController;
 	
-	@Autowired//injeção de dependência
+	@Autowired
 	private SessionController sessionController;
-	
-	
+
 	/**
-	 * Retorna todas informações do usuário logado
 	 * 
-	 * @return Authentication
+	 * @return String Usuário logado remote user
+	 */
+	public String getUserLogado() {
+		return getExternalContext().getRemoteUser();
+	}
+
+	/**
+	 * 
+	 * @return String Usuário logado user principal
+	 */
+	public String getUserPrincipal() {
+		return getExternalContext().getUserPrincipal().getName();
+	}
+
+	/**
+	 * 
+	 * @return String Usuário logado Authentication Spring security
 	 */
 	public Authentication getAuthentication() {
 		return SecurityContextHolder.getContext().getAuthentication();
 	}
-	
+
+	/**
+	 * 
+	 * @return ExternalContext da application
+	 */
+	public ExternalContext getExternalContext() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext external = context.getExternalContext();
+		return external;
+	}
+
+	/**
+	 * @return Entidade logado na sessão atualmente
+	 */
 	public Entidade getEntidadeLogada() throws Exception {
+		
 		Entidade entidade = (Entidade) getExternalContext().getSessionMap().get(USER_LOGADO_SESSAO);
-
-		if (entidade == null || (entidade != null && !entidade.getEnt_login().equals(getUsuarioPrincipal()))) {
-
+		
+		if (entidade == null || (entidade != null && !entidade.getEnt_login().equals(getUserPrincipal()))) {
+			
 			if (getAuthentication().isAuthenticated()) {
 				
 				entidadeController.updateUltimoAcessoUser(getAuthentication().getName());
 				entidade = entidadeController.findUserLogado(getAuthentication().getName());
 				getExternalContext().getSessionMap().put(USER_LOGADO_SESSAO, entidade);
-				sessionController.addSession(entidade.getEnt_login(), (HttpSession) getExternalContext().getSession(true));
+				sessionController.addSession(entidade.getEnt_login(), (HttpSession) getExternalContext().getSession(false));
 			}
 		}
 		return entidade;
 	}
 	
-	public ExternalContext getExternalContext() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		ExternalContext externalContext = context.getExternalContext();
-		return externalContext;
-	}
-	
-	public String getUsuarioPrincipal() {
-		return getExternalContext().getUserPrincipal().getName();
-	}
 
 }

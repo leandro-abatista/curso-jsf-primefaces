@@ -3,10 +3,12 @@ package br.com.srv.implementacao;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.com.repository.interfaces.RepositoryEntidade;
 import br.com.srv.interfaces.ServiceEntidade;
 
+@Service
 public class ServiceEntidadeImpl implements ServiceEntidade {
 
 	private static final long serialVersionUID = 1L;

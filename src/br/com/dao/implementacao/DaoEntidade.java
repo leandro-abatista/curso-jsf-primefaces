@@ -18,15 +18,15 @@ public class DaoEntidade extends ImplementacaoCrud<Entidade> implements Reposito
 	public Date getUltimoAcessoEntidadeLogada(String login) {
 		
 		SqlRowSet sqlRowSet = super.getJdbcTemplate()
-				.queryForRowSet("select ent_ultimoAcesso from entidade where ent_inativo is false and ent_login = ?", new Object[] { login });
+				.queryForRowSet("select ent_ultimoacesso from entidade where ent_inativo is false and ent_login = ?", new Object[] { login });
 		// se tiver usuário, ele retorna a data e hora de ultimo acesso, se não retorna null
-		return sqlRowSet.next() ? sqlRowSet.getDate("ent_ultimoAcesso") : null;// if ternário
+		return sqlRowSet.next() ? sqlRowSet.getDate("ent_ultimoacesso") : null;// if ternário
 	}
 
 	@Override
 	public void updateUltimoAcessoUser(String login) {
 		
-		String sql = "update entidade set ent_ultimoAcesso = current_timestamp where ent_inativo is false and ent_login = ?";
+		String sql = "update entidade set ent_ultimoacesso = current_timestamp where ent_inativo is false and ent_login = ?";
 		
 		super.getSimpleJdbcTemplate().update(sql, login);
 	}
@@ -36,9 +36,9 @@ public class DaoEntidade extends ImplementacaoCrud<Entidade> implements Reposito
 		
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(" select count(1) >= 1 from entidade where ent_login = ")
-					 .append(" '")
+					 .append("'")
 					 .append(ent_login)
-					 .append("' ");
+					 .append("'");
 		
 		return super.getJdbcTemplate().queryForObject(stringBuilder.toString(), Boolean.class);//ele retorna true ou false
 	}

@@ -17,16 +17,21 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Autowired//injeção de dependência
+	@Autowired
 	private ContextBean contextBean;
 
+	/**
+	 * Retorna da classe ContextBean
+	 * 
+	 * @return contextBean
+	 */
 	public String getUsuarioLogadoSecurity() {
 		return contextBean.getAuthentication().getName();
 	}
-	
+
 	public Date getUltimoAcesso() throws Exception {
 		return contextBean.getEntidadeLogada().getEnt_ultimoAcesso();
+
 	}
 	
-
 }

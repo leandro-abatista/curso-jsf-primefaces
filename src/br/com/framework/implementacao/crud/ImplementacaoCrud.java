@@ -88,6 +88,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		executeFlushSession();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T merge(T obj) throws Exception {
 		validarSessionfactory();
@@ -96,6 +97,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		return obj;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findList(Class<T> entidade) throws Exception {
 		validarSessionfactory();
@@ -117,6 +119,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		return obj;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T findByPorId(Class<T> entidade, Long id) throws Exception {
 		validarSessionfactory();
@@ -290,6 +293,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		return lista;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public T findUniqueByQueryDinamic(String query) throws Exception {
 		validarSessionfactory();
 		
@@ -314,5 +318,23 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		T obj = (T) this.findUniqueByQueryDinamic(query.toString());
 		
 		return obj;
+	}
+	
+	public T findUninqueByProperty(Class<T> entidade, Object valor, String atributo) throws Exception {
+		validarSessionfactory();
+		StringBuilder query = new StringBuilder();
+
+		query.append("select entity from ")
+		     .append(entidade.getSimpleName())
+			 .append(" entity where entity.")
+			 .append(atributo)
+		     .append(" = '")
+		     .append(valor)
+		     .append("'");
+
+		T obj = (T) this.findUniqueByQueryDinamic(query.toString());
+
+		return obj;
+
 	}
 }

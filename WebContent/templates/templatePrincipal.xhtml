@@ -78,9 +78,9 @@
 					
 						Último Acesso:
 						
-						<h:outputLabel id="saidaUltimoAcesso" value="#{entidadeBeanView.ultimoAcesso}">
+						<h:outputLabel id="saidaUltimoAcesso"  value="#{entidadeBeanView.usuarioLogadoSecurity}">
 						
-							<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy - HH:mm:ss" dateStyle="long" timeStyle="full" timeZone="GMT-03:00"/>
+							<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy -- HH:mm:ss" dateStyle="long" timeStyle="full" timeZone="GMT-03:00"/>
 							
 						</h:outputLabel>
 						
@@ -127,7 +127,8 @@
 					<sec:ifAnyGranted roles="MENSAGENS_ENVIAR_ACESSAR, ADMIN">
 					
 						<p:commandLink actionListener="#{mensagemBeanView.novo}" value="Enviar Mensagem" immediate="true"
-							style="display: block;" id="enviarMensagem" ajax="true" process="@this" onsuccess="PF('enviarMsgDialog').show();">
+							style="display: block; font-family: 'Poppins', sans-serif;" 
+							id="enviarMensagem" ajax="true" process="@this" onsuccess="PF('enviarMsgDialog').show();">
 						
 							<p:ajax immediate="true" listener="#{mensagemBeanView.novo}"/>
 							
