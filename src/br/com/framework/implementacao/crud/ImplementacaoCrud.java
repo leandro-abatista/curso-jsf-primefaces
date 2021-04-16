@@ -25,33 +25,36 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	private static SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 	
 	@Autowired
-	private JdbcTemplateImpl jdbcTemplateImpl;
+	private JdbcTemplateImpl jdbcTemplate;
+
+	@Autowired
+	private SimpleJdbcTemplateImpl simpleJdbcTemplate;
+
+	@Autowired
+	private SimpleJdbcInsertImpl simpleJdbcInsert;
 	
 	@Autowired
-	private SimpleJdbcTemplateImpl simpleJdbcTemplateImpl;
-	
-	@Autowired
-	private SimpleJdbcInsertImpl simpleJdbcInsertImpl;
-	
-	@Autowired
-	private SimpleJdbcClassImpl simpleJdbcClassImpl;
+	protected SimpleJdbcClassImpl simpleJdbcClassImpl;
 	
 
-	public JdbcTemplateImpl getJdbcTemplateImpl() {
-		return jdbcTemplateImpl;
+	// =========================================TEMPLATES DE OPERAÇÕES DE CRUD EM JDBC SPRING==============================================================
+	public JdbcTemplateImpl getJdbcTemplate() {
+		return jdbcTemplate;
 	}
 
-	public SimpleJdbcTemplateImpl getSimpleJdbcTemplateImpl() {
-		return simpleJdbcTemplateImpl;
+	public SimpleJdbcTemplateImpl getSimpleJdbcTemplate() {
+		return simpleJdbcTemplate;
 	}
 
-	public SimpleJdbcInsertImpl getSimpleJdbcInsertImpl() {
-		return simpleJdbcInsertImpl;
+	public SimpleJdbcInsertImpl getSimpleJdbcInsert() {
+		return simpleJdbcInsert;
 	}
-
+	
 	public SimpleJdbcClassImpl getSimpleJdbcClassImpl() {
 		return simpleJdbcClassImpl;
 	}
+	
+	// =========================================TEMPLATES DE OPERAÇÕES DE CRUD EM JDBC SPRING==============================================================
 
 	@Override
 	public void save(T obj) throws Exception {
@@ -209,7 +212,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	public Long totalRegistro(String tabela) throws Exception {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" select count(1) from ").append(tabela);//retorna um long
-		return jdbcTemplateImpl.queryForLong(sql.toString());//faz a conversão para string
+		return jdbcTemplate.queryForLong(sql.toString());//faz a conversão para string
 	}
 
 	@Override
@@ -265,24 +268,6 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	 */
 	private void executeFlushSession() {
 		sessionFactory.getCurrentSession().flush();
-	}
-
-	@Override
-	public JdbcTemplate getJdbcTemplate() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public SimpleJdbcTemplate getSimpleJdbcTemplate() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public SimpleJdbcInsert getSimpleJdbcInsert() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@SuppressWarnings("unchecked")

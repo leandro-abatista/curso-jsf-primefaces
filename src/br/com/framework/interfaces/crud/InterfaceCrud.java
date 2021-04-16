@@ -73,7 +73,7 @@ public interface InterfaceCrud<T> extends Serializable {
 	List<T> findByPropertyId(Class<T> entidade, Long id, Object atributo) throws Exception;
 	
 	JdbcTemplate getJdbcTemplate();
-	
+
 	SimpleJdbcTemplate getSimpleJdbcTemplate();
 
 	SimpleJdbcInsert getSimpleJdbcInsert();
