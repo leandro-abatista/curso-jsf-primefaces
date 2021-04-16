@@ -78,7 +78,7 @@ public interface InterfaceCrud<T> extends Serializable {
 
 	SimpleJdbcInsert getSimpleJdbcInsert();
 	
-	T findUninqueByProperty(Class<T> entidade, Object valor, String atributo, String condicao) throws Exception;
+	T findUniqueByProperty(Class<T> entidade, Object valor, String atributo, String condicao) throws Exception;
 	
 	Long totalRegistro(String tabela) throws Exception;
 	

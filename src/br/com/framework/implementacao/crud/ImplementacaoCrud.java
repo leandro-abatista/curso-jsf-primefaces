@@ -203,11 +203,6 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	}
 
 	@Override
-	public T findUninqueByProperty(Class<T> entidade, Object valor, String atributo, String condicao) throws Exception {
-		return null;
-	}
-
-	@Override
 	public Long totalRegistro(String tabela) throws Exception {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" select count(1) from ").append(tabela);//retorna um long
