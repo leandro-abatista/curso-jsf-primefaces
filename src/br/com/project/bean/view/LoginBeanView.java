@@ -58,14 +58,14 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 		//System.out.println("Chamou o invalidar");
 		RequestContext requestContext = RequestContext.getCurrentInstance();
 		FacesMessage message = null;
-		boolean loggedIn = true; //se passar true aqui porque deu certo
+		boolean loggedIn = true;//por padrão é true
 		
 		if (serviceLogin.autentico(getUsername(), getPassword())) {
 			sessionController.invalidateSession(getUsername());
-			loggedIn = true;
+			loggedIn = true;//se passar true aqui porque deu certo
 		} else {
 			loggedIn = false;
-			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Acesso Negado!", "Login e/ou Senha incorretos!");
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Acesso Negado!, Login e/ou Senha incorretos!", "");
 		}
 		
 		if (message != null) {

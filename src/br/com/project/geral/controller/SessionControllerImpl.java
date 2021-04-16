@@ -2,6 +2,7 @@ package br.com.project.geral.controller;
 
 import java.util.HashMap;
 
+import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 public class SessionControllerImpl implements SessionController {

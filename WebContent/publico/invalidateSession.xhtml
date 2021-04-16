@@ -3,7 +3,8 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"> 
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"> 
 
 <!-- cabeçalho da página -->
 <h:head>
@@ -38,8 +39,8 @@
 			
 		</div>
 		
-		<p:dialog header="Encerrar Sessão" widgetVar="dlg" resizable="false" 
-			modal="true" closable="false" responsive="true">
+		<p:dialog id="dlg" header="Encerrar Sessão" widgetVar="dlg" resizable="false" 
+			modal="true" closable="false" responsive="true" draggable="true">
 		
 			<h:panelGrid columns="2" cellpadding="5">
 			
@@ -54,12 +55,10 @@
 				<br />
 				
 				<f:facet name="footer">
-					<p:commandButton value="Encerrar" 
+				
+					<p:commandButton value="Encerrar" update="formulario:msg" ajax="true" 
 					style="height: 30px; width: 150px; border: 2px solid #FFFFF; font: bold; font-size: 20px;" 
-					update="formulario:msg" ajax="true" 
-					oncomplete="handlerLoginRequest(xhr, status, args)"
-					actionListener="#{loginBeanView.invalidar}"/>
-					
+					oncomplete="handlerLoginRequest(xhr, status, args)" actionListener="#{loginBeanView.invalidar}"/>
 					
 				</f:facet>
 			
@@ -80,11 +79,12 @@
 			/* apenas um teste na tela -> alert(args.msgRetorno);*/
 
 			if(!args.loggedIn){
-				PF('dlg').jq.effect("shake"), {times:5}, 100;/*Isso é um efeito na caixa de dialog quando não informa o login e/ou senha*/
+				PF('dlg').jq.effect("shake", {times:5}, 100);/*Isso é um efeito na caixa de dialog quando não informa o login e/ou senha*/
 				$('#username').focus();
 			} else {
 				PF('dlg').hide();
-				document.location = '#{request.contextPath}' + "/j_spring_security_logout"
+				logout('#{request.contextPath}');
+				/*document.location = '#{request.contextPath}' + "/j_spring_security_logout"*/
 			}
 		}
 		
