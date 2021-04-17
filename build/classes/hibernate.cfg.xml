@@ -48,6 +48,8 @@
     	<!-- Classes Mapeadas -->
     	<mapping class="br.com.project.model.classes.Entidade"/>
     	<mapping class="br.com.project.model.classes.Pais"/>
+    	<mapping class="br.com.project.model.classes.Cidade"/>
+    	<mapping class="br.com.project.model.classes.Estado"/>
     	
     	<!-- Objeto -->
     	<listener class="org.hibernate.envers.event.AuditEventListener" type="post-insert"/><!-- registro de log de insert -->
