@@ -32,13 +32,18 @@
 						required="true" maxlength="70" requiredMessage="Informe o nome da cidade" size="50"/>
 						<p:message for="cidadeNome"/>
 						
-						<p:selectOneMenu>
+						<h:outputLabel id="labelEstado" for="estado" value="Estado * :" />
+						<p:selectOneMenu id="estado" required="true" requiredMessage="Informe o estado" style="width: 200px;" 
+							value="#{cidadeBeanView.objetoSelecionado.estado}">
+							
 							<f:selectItems value="#{estadoBeanView.estados}"/>
 						</p:selectOneMenu>
 						
 					</h:panelGrid>
 					
-					<p:commandButton value="Salvar" ajax="false" actionListener="#{cidadeBeanView.save()}"/>
+					<p:commandButton value="Salvar" ajax="false" actionListener="#{cidadeBeanView.save}"/>
+					
+					<p:commandButton value="Novo" ajax="false" actionListener="#{cidadeBeanView.novo}"/>
 				
 				</p:panel>
 			

@@ -17,6 +17,8 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 
 	private static final long serialVersionUID = 1L;
 	
+	private String url = "/cadastro/cad_cidade.jsf?faces-redirect=true";
+	
 	private Cidade objetoSelecionado = new Cidade();
 	
 	@Autowired//injeção de dependência
@@ -24,10 +26,21 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public String save() throws Exception {
-		System.out.println(objetoSelecionado.getCid_descricao());
+		//O merge faz o retorno do objeto salvo
+		objetoSelecionado = cidadeController.merge(objetoSelecionado);
+		novo();
 		return "";
 	}
-
+	
+	/**
+	 * retorna um novo objeto
+	 */
+	@Override
+	public String novo() throws Exception {
+		objetoSelecionado = new Cidade();
+		return url;
+	}
+	
 	public Cidade getObjetoSelecionado() {
 		return objetoSelecionado;
 	}
