@@ -36,8 +36,8 @@
 			<script type="text/javascript" charset="UTF-8">
 
 				$.noConflict;/*Evita conflito de bibliotecas jquery e primefaces*/
-				localeData_pt_br();/*transforma o calendar para o português*/
-				initTemplate();
+				localeData_pt_br();/*transforma o calendar do primefaces para o português*/
+				initTemplate();/*esse init tem que chamar antes do ocultarMenu*/
 				ocultarMenu();
 
 				/*Bloqueia F5 do teclado, para não atualizar e perder os dados, e isso para todas as páginas*/
