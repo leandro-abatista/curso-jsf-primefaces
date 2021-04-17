@@ -9,7 +9,7 @@ type="javax.sql.DataSource"
 defaultAutoCommit="false"
 driverClassName="org.postgresql.Driver"
 
-url="jdbc:postgresql://localhost:5432/sys-jsf-primefaces?autoReconect=true"
+url="jdbc:postgresql://localhost:5432/db_curso_jsf_primefaces?autoReconect=true"
 username="postgres" 
 password="admin" 
 

@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 import org.hibernate.envers.Audited;
 
@@ -36,6 +37,10 @@ public class Pais implements Serializable {
 
 	@Column(nullable = false, length = 5)
 	private String pais_sigla;
+	
+	@Version // verificar se o objeto utilizado na transição foi atualizado desde a ultima vez em que ele foi requisitado
+	@Column(name = "versionNumero")
+	private Integer versionNumero;
 
 	public Long getPais_codigo() {
 		return pais_codigo;
@@ -59,6 +64,14 @@ public class Pais implements Serializable {
 
 	public void setPais_sigla(String pais_sigla) {
 		this.pais_sigla = pais_sigla;
+	}
+	
+	public Integer getVersionNumero() {
+		return versionNumero;
+	}
+
+	public void setVersionNumero(Integer versionNumero) {
+		this.versionNumero = versionNumero;
 	}
 
 	@Override
