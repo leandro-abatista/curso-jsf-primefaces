@@ -30,7 +30,7 @@ public class Pais implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pais_seq")
 	private Long pais_id;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "pais_nome", principal = 1)
+	@IdentificaCampoPesquisa(descricaoCampo = "Nome", campoConsulta = "pais_nome", principal = 1)
 	@Column(nullable = false, length = 50)
 	private String pais_nome;
 
