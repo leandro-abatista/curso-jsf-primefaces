@@ -19,9 +19,9 @@ public class EntidadeController extends ImplementacaoCrud<Entidade> implements I
 	@Autowired//injeção de dependência
 	private ServiceEntidade serviceEntidade;
 	
-	@SuppressWarnings("unchecked")
 	public Entidade findUserLogado(String usuarioLogado) throws Exception {
 		
+		/*
 		List<Entidade> entidades = (List<Entidade>) 
 				super.findUniqueByProperty(Entidade.class, usuarioLogado, "ent_login", " and entity.ent_inativo is false");
 		
@@ -30,6 +30,8 @@ public class EntidadeController extends ImplementacaoCrud<Entidade> implements I
 		}
 		
 		return null;
+		*/
+		return super.findUniqueByProperty(Entidade.class, usuarioLogado, "ent_login", " and entity.ent_inativo is false");
 		
 	}
 	

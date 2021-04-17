@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:sec="http://www.springframework.org/security/facelets/tags"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:util="http://java.sun.com/jsf/composite/components"> 
+      
+
+<ui:composition template="/templates/templatePrincipal.xhtml">
+
+	<ui:define name="corpo">
+	
+		<h:form id="formCadastro" prependId="false">
+			
+			<c:set var="isCadastro" value="true" scope="view"/>
+			
+			<p:fieldset legend="Cadastro de cidade">
+			
+				<p:panel id="panelCadastro">
+				
+					<h:panelGrid id="gridCidade" columns="3">
+					
+						<h:outputLabel for="id" value="Código: " id="labelId" />
+						<p:inputText id="id" styleClass="estiloIdCadastro" disabled="true" value="#{cidadeBeanView.objetoSelecionado.cid_codigo}"/>
+						<h:outputLabel />
+						
+						<h:outputLabel for="cidadeNome" value="Nome * :" id="labelNomeConsultaCidade"/>
+						<p:inputText id="cidadeNome" styleClass="estiloInputNome" value="#{cidadeBeanView.objetoSelecionado.cid_descricao}"
+						required="true" maxlength="70" requiredMessage="Informe o nome da cidade" size="50"/>
+						<p:message for="cidadeNome"/>
+						
+					</h:panelGrid>
+					
+					<p:commandButton value="Salvar" ajax="false" actionListener="#{cidadeBeanView.save()}"/>
+				
+				</p:panel>
+			
+			</p:fieldset>
+					
+		</h:form>
+	
+	</ui:define>
+	
+</ui:composition>
+	 
+</html>

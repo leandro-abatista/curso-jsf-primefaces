@@ -25,10 +25,10 @@ public class Pais implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "pais_id")
+	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "pais_codigo")
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pais_seq")
-	private Long pais_id;
+	private Long pais_codigo;
 
 	@IdentificaCampoPesquisa(descricaoCampo = "Nome", campoConsulta = "pais_nome", principal = 1)
 	@Column(nullable = false, length = 50)
@@ -37,12 +37,12 @@ public class Pais implements Serializable {
 	@Column(nullable = false, length = 5)
 	private String pais_sigla;
 
-	public Long getPais_id() {
-		return pais_id;
+	public Long getPais_codigo() {
+		return pais_codigo;
 	}
 
-	public void setPais_id(Long pais_id) {
-		this.pais_id = pais_id;
+	public void setPais_codigo(Long pais_codigo) {
+		this.pais_codigo = pais_codigo;
 	}
 
 	public String getPais_nome() {
@@ -65,7 +65,7 @@ public class Pais implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((pais_id == null) ? 0 : pais_id.hashCode());
+		result = prime * result + ((pais_codigo == null) ? 0 : pais_codigo.hashCode());
 		return result;
 	}
 
@@ -78,10 +78,10 @@ public class Pais implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Pais other = (Pais) obj;
-		if (pais_id == null) {
-			if (other.pais_id != null)
+		if (pais_codigo == null) {
+			if (other.pais_codigo != null)
 				return false;
-		} else if (!pais_id.equals(other.pais_id))
+		} else if (!pais_codigo.equals(other.pais_codigo))
 			return false;
 		return true;
 	}

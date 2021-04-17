@@ -34,10 +34,10 @@ public class Estado implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "est_id")
+	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "est_codigo")
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estado_seq")
-	private Long est_id;
+	private Long est_codigo;
 	
 	@IdentificaCampoPesquisa(descricaoCampo = "Nome", campoConsulta = "est_nome", principal = 1)
 	@Column(nullable = false, length = 70)
@@ -64,12 +64,12 @@ public class Estado implements Serializable {
 	@Column(name = "versionNumero")
 	private Integer versionNumero;
 
-	public Long getEst_id() {
-		return est_id;
+	public Long getEst_codigo() {
+		return est_codigo;
 	}
 
-	public void setEst_id(Long est_id) {
-		this.est_id = est_id;
+	public void setEst_codigo(Long est_codigo) {
+		this.est_codigo = est_codigo;
 	}
 
 	public String getEst_nome() {
@@ -116,7 +116,7 @@ public class Estado implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((est_id == null) ? 0 : est_id.hashCode());
+		result = prime * result + ((est_codigo == null) ? 0 : est_codigo.hashCode());
 		return result;
 	}
 
@@ -129,10 +129,10 @@ public class Estado implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Estado other = (Estado) obj;
-		if (est_id == null) {
-			if (other.est_id != null)
+		if (est_codigo == null) {
+			if (other.est_codigo != null)
 				return false;
-		} else if (!est_id.equals(other.est_id))
+		} else if (!est_codigo.equals(est_codigo))
 			return false;
 		return true;
 	}
