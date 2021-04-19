@@ -43,7 +43,8 @@
 				
 				</p:panel>
 				
-				<div class="espacoBranco"/>
+				<div class="espacoBranco"/><!-- Espaço em branco -->
+				
 				<!-- Botoes de salvar e novo -->
 				<p:commandButton value="Salvar" ajax="false" actionListener="#{cidadeBeanView.save}"/>
 					
@@ -62,7 +63,9 @@
 		
 		<div class="espacoBranco"/><!-- Espaço em branco -->
 		
-		<p:dataTable id="tableResult" value="#{cidadeBeanView.list}"  var="objetoCidade" emptyMessage="Não existe valores para serem exibidos.">
+		<!-- tabela de cidades -->
+		<p:dataTable id="tableResult" value="#{cidadeBeanView.list}"  var="objetoCidade" emptyMessage="Não existe valores para serem exibidos."
+			rendered="#{cidadeBeanView.list.size() > 0}" paginator="true" rows="5">
 		
 			<p:column>
 				<f:facet name="header">Código</f:facet>
