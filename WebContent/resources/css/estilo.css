@@ -62,6 +62,18 @@ a:focus {
 	border-left: 10px;
 }
 
+.colunaCodigotabela{
+	width: 120px;
+}
+
+.colunaTabela{
+	text-align: center;
+}
+
+.colunaExcluirEditar{
+	width: 70px;
+}
+
 #imasetabaixo{
 	height: 30px;
 	width: 30px;
