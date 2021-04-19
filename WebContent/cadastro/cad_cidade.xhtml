@@ -67,64 +67,7 @@
 		<p:dataTable id="tableResult" value="#{cidadeBeanView.list}"  var="objetoCidade" emptyMessage="Não existe valores para serem exibidos."
 			rendered="#{cidadeBeanView.list.size() > 0}" paginator="true" rows="5" >
 		
-			<p:column styleClass="colunaTabela colunaCodigotabela">
-				<f:facet name="header">Código</f:facet>
-				<h:outputText value="#{objetoCidade.cid_codigo}" />
-			</p:column>
-			
-			<p:column styleClass="colunaTabela">
-				<f:facet name="header">Nome da Cidade</f:facet>
-				<h:outputText value="#{objetoCidade.cid_descricao}" />
-			</p:column>
-			
-			<p:column styleClass="colunaTabela">
-				<f:facet name="header">Estado</f:facet>
-				<h:outputText value="#{objetoCidade.estado.est_nome}" />
-			</p:column>
-			
-			<sec:ifAnyGranted roles="CIDADE_ACESSAR, ADMIN">
-			
-			<!-- Colunas para editar e excluir -->
-			<p:column styleClass="colunaExcluirEditar">
-			
-				<center>
-				
-				<f:facet name="header">Atualizar</f:facet>
-				<p:commandLink id="editarCidade" action="#{cidadeBeanView.editar}" ajax="false" immediate="true" 
-					update="@form:formCadastro" oncomplete="addFocoAoCampo('cidadeNome');">
-					<h:graphicImage library="images" name="editar.png" height="25" width="25"/>
-					<f:setPropertyActionListener value="#{objetoCidade}" target="#{cidadeBeanView.objetoSelecionado}" />
-				</p:commandLink>
-				<p:tooltip for="editarCidade" value="Editar Registro" position="top"/>
-				
-				</center>
-				
-			</p:column>
-			
-			</sec:ifAnyGranted>
-			
-			<p:column styleClass="colunaExcluirEditar">
-				<!-- html puro para centralizar os dados da coluna -->
-				<center>
-				
-				<f:facet name="header">Excluir</f:facet>
-				<p:commandLink id="excluirCidade" action="#{cidadeBeanView.excluir}" ajax="false" immediate="true"
-				update="tableResult">
-					
-					<!-- colocando uma imagem com jsf -->
-					<h:graphicImage library="images" name="excluir.png" height="25" width="25"/>
-					
-					<p:confirm header="Atenção" message="Deseja excluir o registro selecionado?" />
-					
-					<!-- value -> objeto que estar na tela -->
-					<f:setPropertyActionListener value="#{objetoCidade}" target="#{cidadeBeanView.objetoSelecionado}" />
-						
-				</p:commandLink>
-				<p:tooltip for="excluirCidade" value="Excluir Registro" position="top"/>
-				
-				</center>
-				
-			</p:column>
+			<ui:include src="/resources/components/colunasDataTableCidade.xhtml" />
 		
 		</p:dataTable>
 
