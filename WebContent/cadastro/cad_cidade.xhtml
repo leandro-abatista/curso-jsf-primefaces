@@ -46,7 +46,9 @@
 				<div class="espacoBranco"/><!-- Espaço em branco -->
 				
 				<!-- Chamndo o comoposite da página botoesCrud.xhtml -->
-				<util:botoesCrud managedBeanView="#{cidadeBeanView}">
+				<util:botoesCrud managedBeanView="#{cidadeBeanView}" 
+				camposReload=":formTemplate:msg, tableResult"
+				botaoNovo="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')}">
 				
 				</util:botoesCrud>
 			
