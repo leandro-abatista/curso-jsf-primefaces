@@ -45,10 +45,10 @@
 				
 				<div class="espacoBranco"/><!-- Espaço em branco -->
 				
-				<!-- Botoes de salvar e novo -->
-				<p:commandButton value="Salvar" ajax="false" actionListener="#{cidadeBeanView.save}"/>
-					
-				<p:commandButton value="Novo" ajax="false" actionListener="#{cidadeBeanView.novo}"/>
+				<!-- Chamndo o comoposite da página botoesCrud.xhtml -->
+				<util:botoesCrud managedBeanView="#{cidadeBeanView}">
+				
+				</util:botoesCrud>
 			
 			</p:fieldset>
 					
