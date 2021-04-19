@@ -81,7 +81,7 @@
 			<p:column>
 				<f:facet name="header">Excluir</f:facet>
 				<p:commandLink id="excluirCidade" action="#{cidadeBeanView.excluir}" value="Excluir" 
-				ajax="false" immediate="true" update=":formCadastro :panelCadastro">
+				ajax="false" immediate="true" update="tableResult">
 				
 					<f:setPropertyActionListener value="#{objetoCidade}" target="#{cidadeBeanView.objetoSelecionado}" />
 				</p:commandLink>
