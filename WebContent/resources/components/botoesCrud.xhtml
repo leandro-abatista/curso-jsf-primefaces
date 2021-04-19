@@ -12,6 +12,7 @@
 	<composite:interface name="botoesCrud">
 		<composite:attribute name="managedBeanView" required="true" />
 		<composite:attribute name="botaoNovo" required="false" default="true"/>
+		<composite:attribute name="botaoSalvar" required="false" default="true"/>
 		
 		<composite:attribute name="camposReload" required="false"/><!-- vira propriedade -->
 	</composite:interface> 
@@ -27,6 +28,23 @@
 		immediate="true" >
 		</p:commandButton>
 		<p:tooltip for="btnNovo" value="Novo Registro" position="bottom" />
+		<!-- ===================================================================================================================== -->
+		
+		<!-- botão salvar genérico -->
+		<p:commandButton id="btnSalvar" value="Salvar" 
+		style="height: 40px; width: 100px; background: #20B2AA; border: 2px solid #C0C0C0;"
+		actionListener="#{cc.attrs.managedBeanView.saveNotReturn}" 
+	    rendered="#{cc.attrs.botaoSalvar}"
+	    update="#{cc.attrs.camposReload}"
+		ajax="false" 
+		immediate="false"
+		partialSubmit="true" 
+		process="@this, @form">
+		
+		</p:commandButton>
+		<p:tooltip for="btnSalvar" value="Salvar Registro" position="bottom" />
+		<!-- ===================================================================================================================== -->
+		
 	</composite:implementation>
 
 </html>
