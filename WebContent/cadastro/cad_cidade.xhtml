@@ -17,7 +17,7 @@
 			
 			<c:set var="isCadastro" value="true" scope="view"/>
 			
-			<p:fieldset legend="Cadastro de cidade">
+			<p:fieldset legend="Cadastro de cidades">
 			
 				<p:panel id="panelCadastro">
 				
@@ -35,21 +35,32 @@
 						<h:outputLabel id="labelEstado" for="estado" value="Estado * :" />
 						<p:selectOneMenu id="estado" required="true" requiredMessage="Informe o estado" style="width: 200px;" 
 							value="#{cidadeBeanView.objetoSelecionado.estado}">
-							
 							<f:selectItems value="#{estadoBeanView.estados}"/>
 						</p:selectOneMenu>
+						<p:message for="estado"/>
 						
 					</h:panelGrid>
-					
-					<p:commandButton value="Salvar" ajax="false" actionListener="#{cidadeBeanView.save}"/>
-					
-					<p:commandButton value="Novo" ajax="false" actionListener="#{cidadeBeanView.novo}"/>
 				
 				</p:panel>
+				
+				<div class="espacoBranco"/>
+				<!-- Botoes de salvar e novo -->
+				<p:commandButton value="Salvar" ajax="false" actionListener="#{cidadeBeanView.save}"/>
+					
+				<p:commandButton value="Novo" ajax="false" actionListener="#{cidadeBeanView.novo}"/>
 			
 			</p:fieldset>
 					
 		</h:form>
+		
+		<script type="text/javascript" charset="UTF-8">
+
+			addFocoAoCampo("cidadeNome");
+			gerenciaTeclaEnter();
+
+		</script>
+		
+		<div class="espacoBranco"/><!-- Espaço em branco -->
 		
 		<p:dataTable id="tableResult" value="#{cidadeBeanView.list}"  var="objetoCidade" emptyMessage="Não existe valores para serem exibidos.">
 		
