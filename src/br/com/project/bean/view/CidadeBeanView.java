@@ -73,16 +73,17 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public String editar() throws Exception {
-		
+		list.clear();//limpa a lista
 		return url;
 	}
 	
 	@Override
 	public void excluir() throws Exception {
+		objetoSelecionado = (Cidade) cidadeController.getSession().get(Cidade.class, objetoSelecionado.getCid_codigo());
 		cidadeController.delete(objetoSelecionado);
 		list.remove(objetoSelecionado);
 		novo();
-		
+		sucesso();
 	}
 	
 	public Cidade getObjetoSelecionado() {
