@@ -33,5 +33,11 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 		return contextBean.getEntidadeLogada().getEnt_ultimoAcesso();
 
 	}
+
+	@Override
+	protected Class<?> getClassImplement() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

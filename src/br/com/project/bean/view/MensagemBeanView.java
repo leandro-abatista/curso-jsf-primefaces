@@ -19,4 +19,10 @@ public class MensagemBeanView extends BeanManagedViewAbstract {
 		System.out.println("Chamou método nova mensagem");
 		return "";
 	}
+
+	@Override
+	protected Class<?> getClassImplement() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

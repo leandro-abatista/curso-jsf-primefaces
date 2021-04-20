@@ -91,4 +91,10 @@ public class LoginBeanView extends BeanManagedViewAbstract {
 		this.password = password;
 	}
 
+	@Override
+	protected Class<?> getClassImplement() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

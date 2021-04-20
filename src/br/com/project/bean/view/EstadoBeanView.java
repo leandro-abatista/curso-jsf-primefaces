@@ -26,4 +26,10 @@ public class EstadoBeanView extends BeanManagedViewAbstract {
 		return estadoController.getListaEstado();
 	}
 
+	@Override
+	protected Class<?> getClassImplement() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
