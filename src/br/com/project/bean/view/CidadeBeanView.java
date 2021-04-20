@@ -66,6 +66,12 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	}
 	
 	@Override
+	public void saveEdit() throws Exception {
+		//faz algum processamento
+		saveNotReturn();
+	}
+	
+	@Override
 	public String editar() throws Exception {
 		
 		return url;

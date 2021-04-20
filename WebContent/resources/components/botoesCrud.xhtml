@@ -13,6 +13,8 @@
 		<composite:attribute name="managedBeanView" required="true" />
 		<composite:attribute name="botaoNovo" required="false" default="true"/>
 		<composite:attribute name="botaoSalvar" required="false" default="true"/>
+		<composite:attribute name="botaoAtualizar" required="false" default="true"/>
+		
 		
 		<composite:attribute name="camposReload" required="false"/><!-- vira propriedade -->
 	</composite:interface> 
@@ -43,6 +45,21 @@
 		
 		</p:commandButton>
 		<p:tooltip for="btnSalvar" value="Salvar Registro" position="bottom" />
+		<!-- ===================================================================================================================== -->
+		
+		<!-- botão atualizar genérico -->
+		<p:commandButton id="btnAtualizar" value="Atualizar" 
+		style="height: 40px; width: 100px; background: #8FBC8F; border: 2px solid #C0C0C0;"
+		actionListener="#{cc.attrs.managedBeanView.saveEdit}" 
+		rendered="#{cc.attrs.botaoAtualizar}"
+		ajax="false"
+		immediate="false"
+		partialSubmit="true" 
+		process="@this, @form"  
+		update="#{cc.attrs.camposReload}">
+		
+		</p:commandButton>
+		<p:tooltip for="btnAtualizar" value="Atualizar Registro" position="bottom" />
 		<!-- ===================================================================================================================== -->
 		
 	</composite:implementation>

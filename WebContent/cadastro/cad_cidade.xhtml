@@ -46,10 +46,13 @@
 				<div class="espacoBranco"/><!-- Espaço em branco -->
 				
 				<!-- Chamndo o comoposite da página botoesCrud.xhtml -->
+				<!-- Se o user for ADMIN tem acesso, e se tiver acesso a CIDADE_NOVO -->
 				<util:botoesCrud managedBeanView="#{cidadeBeanView}" 
 				camposReload=":formTemplate:msg, tableResult"
-				botaoNovo="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')}"
-				botaoSalvar="#{contextoBean.possuiAcesso('CIDADE_NOVO','ADMIN')}">
+				botaoNovo="#{contextBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')}"
+				
+				botaoSalvar="#{contextBean.possuiAcesso('CIDADE_NOVO', 'ADMIN') and cidadeBeanView.objetoSelecionado.cid_codigo == null}"
+				botaoAtualizar="#{contextBean.possuiAcesso('ACESSO_EDITAR', 'ADMIN') and cidadeBeanView.objetoSelecionado.cid_codigo != null}">
 				
 				</util:botoesCrud>
 			
