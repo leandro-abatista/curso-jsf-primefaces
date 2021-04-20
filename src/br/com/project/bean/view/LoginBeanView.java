@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.framework.interfaces.crud.InterfaceCrud;
-import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.geral.controller.SessionController;
 import br.com.srv.interfaces.ServiceLogin;
 

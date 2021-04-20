@@ -24,8 +24,8 @@ public abstract class BeanReportView extends BeanViewAbstract {
 	protected int tipoRelatorio;
 	protected List<?> listDataBeanCollectionReport;
 	protected HashMap<Object, Object> parametrosRelatorio;
-	protected String nomeRelatorioJasper = "default";
-	protected String nomeRelatorioSaida = "default";
+	protected String nomeRelatorioJasper = "rel_default";
+	protected String nomeRelatorioSaida = "rel_default";
 
 	@Autowired
 	private ReportUtil reportUtil;

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
+import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -35,7 +36,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	public String save() throws Exception {
 		//O merge faz o retorno do objeto salvo
 		objetoSelecionado = cidadeController.merge(objetoSelecionado);
-		return "";
+		return "";//fica na mesma página
 	}
 	
 	@Override
@@ -98,6 +99,11 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	public String redirecionarFindEntidade() throws Exception {
 		setarVariaveisNulas();
 		return urlFind;
+	}
+	
+	@Override
+	public StreamedContent getArquivoReport() throws Exception {
+		return super.getArquivoReport();
 	}
 	
 	public Cidade getObjetoSelecionado() {

@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import br.com.framework.interfaces.crud.InterfaceCrud;
-import br.com.project.bean.geral.BeanManagedViewAbstract;
 
 @Controller
 @Scope(value = "session")

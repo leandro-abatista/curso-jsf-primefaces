@@ -12,6 +12,7 @@ import javax.servlet.ServletContext;
 
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
+import org.springframework.stereotype.Component;
 
 import net.sf.jasperreports.engine.JRExporter;
 import net.sf.jasperreports.engine.JRExporterParameter;
@@ -26,6 +27,7 @@ import net.sf.jasperreports.engine.export.oasis.JROdtExporter;
 import net.sf.jasperreports.engine.util.JRLoader;
 
 @SuppressWarnings("unchecked")
+@Component
 public class ReportUtil implements Serializable {
 
 	private static final long serialVersionUID = 1L;

@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import br.com.framework.interfaces.crud.InterfaceCrud;
-import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.geral.controller.EntidadeController;
 import br.com.project.model.classes.Entidade;
 

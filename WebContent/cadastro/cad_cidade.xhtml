@@ -13,6 +13,12 @@
 
 	<ui:define name="corpo">
 	
+	<!-- impressão -->
+				<h:commandLink immediate="true">
+					<p:fileDownload value="#{cidadeBeanView.arquivoReport}"/>
+					<h:graphicImage library="images" name="impressora.jpg" style="height: 30px; width: 30px;"/>
+				</h:commandLink>
+	
 		<h:form id="formCadastro" prependId="false">
 			
 			<c:set var="isCadastro" value="true" scope="view"/>
@@ -60,6 +66,8 @@
 				botaoExcluir="#{contextBean.possuiAcesso('ACESSO_EDITAR', 'ADMIN')}">
 				
 				</util:botoesCrud>
+				
+				
 			
 			</p:fieldset>
 					
