@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import br.com.framework.interfaces.crud.InterfaceCrud;
 import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.geral.controller.EstadoController;
+import br.com.project.model.classes.Estado;
 
 @Controller
 @Scope(value = "session")
@@ -22,14 +24,19 @@ public class EstadoBeanView extends BeanManagedViewAbstract {
 	@Autowired
 	private EstadoController estadoController;
 	
+	
 	public List<SelectItem> getEstados() throws Exception {
 		return estadoController.getListaEstado();
 	}
 
 	@Override
-	protected Class<?> getClassImplement() {
-		// TODO Auto-generated method stub
-		return null;
+	protected Class<Estado> getClassImplement() {
+		return Estado.class;
+	}
+
+	@Override
+	protected InterfaceCrud<Estado> getController() {
+		return estadoController;
 	}
 
 }
