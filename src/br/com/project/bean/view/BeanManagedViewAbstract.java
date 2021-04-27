@@ -15,6 +15,7 @@ import br.com.project.annotation.IdentificaCampoPesquisa;
 import br.com.project.bean.geral.ObjetoCampoConsulta;
 import br.com.project.enums.CondicaoPesquisa;
 import br.com.project.report.util.BeanReportView;
+import br.com.project.util.all.UtilitarioRegex;
 
 @Component
 public abstract class BeanManagedViewAbstract extends BeanReportView {
@@ -32,6 +33,8 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	public List<SelectItem> listaCondicaoPesquisa;
 	
 	public CondicaoPesquisa condicaoPesquisaSelecionado;
+	
+	public String valorPesquisa;
 	
 	public ObjetoCampoConsulta getObjetoCampoConsultaSelecionado() {
 		return objetoCampoConsultaSelecionado;
@@ -124,6 +127,14 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 
 	public void setCondicaoPesquisaSelecionado(CondicaoPesquisa condicaoPesquisaSelecionado) {
 		this.condicaoPesquisaSelecionado = condicaoPesquisaSelecionado;
+	}
+	
+	public String getValorPesquisa() {
+		return valorPesquisa != null ? new UtilitarioRegex().retiraAcentos(valorPesquisa) : "";//condição ternária
+	}
+	
+	public void setValorPesquisa(String valorPesquisa) {
+		this.valorPesquisa = valorPesquisa;
 	}
 	
 }
