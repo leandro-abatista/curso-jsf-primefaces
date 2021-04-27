@@ -24,8 +24,53 @@ public class CarregamentoLazyListForObject<T> extends LazyDataModel<T> {
 	
 	@Override
 	public List<T> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
-		// TODO Auto-generated method stub
-		return super.load(first, pageSize, sortField, sortOrder, filters);
+		try {
+			
+			if (query != null && !query.isEmpty()) {
+				
+				list = (List<T>) controller.findListByQueryDinamica(query, first, pageSize);
+				
+				if (totalRegistroConsulta == 0) {
+					setRowCount(0);
+				} else {
+					setRowCount(totalRegistroConsulta);
+				}
+			}
+			
+			setPageSize(pageSize);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return (List<T>) list;
+	}
+	
+	public void setTotalRegistroConsulta(Integer totalRegistroConsulta, String queryDeBuscaConsulta) {
+		this.query = queryDeBuscaConsulta;
+		this.totalRegistroConsulta = totalRegistroConsulta;
+	}
+	
+	public List<T> getList() {
+		return list;
+	}
+	
+	public void clean() {
+		this.query = null;
+		this.totalRegistroConsulta = 0;
+		this.list.clear();
+	}
+	
+	public void remove(T objetoSelecionado) {
+		this.list.remove(objetoSelecionado);
+	}
+	
+	public void add(T objetoSelecionado) {
+		this.list.add(objetoSelecionado);
+	}
+	
+	public void addAll(List<T> collections) {
+		this.list.addAll(collections);
 	}
 
 }
