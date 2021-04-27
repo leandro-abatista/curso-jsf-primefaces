@@ -15,40 +15,9 @@
 	
 	<div class="espacoBranco"/><!-- Espaço em branco -->
 	
-	<!-- impressão Pdf-->
-	<h:commandLink immediate="true">
-		<f:setPropertyActionListener target="#{cidadeBeanView.tipoRelatorio}" value="1" />
-		<p:fileDownload value="#{cidadeBeanView.arquivoReport}"/>
-		<h:graphicImage library="images" name="pdf.png" style="height: 30px; width: 30px;"/>
-	</h:commandLink>
+	<util:menuImpressao bean="#{cidadeBeanView}">
 	
-	<!-- impressão Excel-->
-	<h:commandLink immediate="true">
-		<f:setPropertyActionListener target="#{cidadeBeanView.tipoRelatorio}" value="2" />
-		<p:fileDownload value="#{cidadeBeanView.arquivoReport}"/>
-		<h:graphicImage library="images" name="excel.png" style="height: 30px; width: 30px;"/>
-	</h:commandLink>
-	
-	<!-- impressão CSV-->
-	<h:commandLink immediate="true">
-		<f:setPropertyActionListener target="#{cidadeBeanView.tipoRelatorio}" value="3" />
-		<p:fileDownload value="#{cidadeBeanView.arquivoReport}"/>
-		<h:graphicImage library="images" name="csv.png" style="height: 30px; width: 30px;"/>
-	</h:commandLink>
-	
-	<!-- impressão Html-->
-	<h:commandLink immediate="true">
-		<f:setPropertyActionListener target="#{cidadeBeanView.tipoRelatorio}" value="4" />
-		<p:fileDownload value="#{cidadeBeanView.arquivoReport}"/>
-		<h:graphicImage library="images" name="html.png" style="height: 30px; width: 30px;"/>
-	</h:commandLink>
-	
-	<!-- impressão Ods-->
-	<h:commandLink immediate="true">
-		<f:setPropertyActionListener target="#{cidadeBeanView.tipoRelatorio}" value="5" />
-		<p:fileDownload value="#{cidadeBeanView.arquivoReport}"/>
-		<h:graphicImage library="images" name="ods.png" style="height: 30px; width: 30px;"/>
-	</h:commandLink>
+	</util:menuImpressao>
 	
 	<div class="espacoBranco"/><!-- Espaço em branco -->
 	
