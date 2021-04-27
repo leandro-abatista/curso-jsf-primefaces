@@ -48,5 +48,11 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 	protected InterfaceCrud<Entidade> getController() {
 		return entidadeController;
 	}
+
+	@Override
+	public String condicaoAndParaPesquisa() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

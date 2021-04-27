@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.faces.model.SelectItem;
 
+import org.hibernate.Query;
 import org.springframework.stereotype.Component;
 
 import br.com.framework.interfaces.crud.InterfaceCrud;
@@ -35,6 +36,8 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	public CondicaoPesquisa condicaoPesquisaSelecionado;
 	
 	public String valorPesquisa;
+	
+	public abstract String condicaoAndParaPesquisa() throws Exception;
 	
 	public ObjetoCampoConsulta getObjetoCampoConsultaSelecionado() {
 		return objetoCampoConsultaSelecionado;
@@ -135,6 +138,41 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	
 	public void setValorPesquisa(String valorPesquisa) {
 		this.valorPesquisa = valorPesquisa;
+	}
+
+	/**
+	 * Método que define o sql do filtro
+	 * @return
+	 */
+	public String getSqlLazyQuery() {
+		StringBuilder sql = new StringBuilder();
+		sql.append(" select entity from ");
+		sql.append(getQueryConsulta());
+		sql.append(" order by entity.");
+		sql.append(objetoCampoConsultaSelecionado.getCampoBanco());
+		
+		return sql.toString();
+	}
+
+	/**
+	 * Query de consulta
+	 * @return
+	 */
+	private Object getQueryConsulta() {
+		
+		return null;
+	}
+
+	/**
+	 * Método que retorna o total de registros da consulta
+	 * @return
+	 * @throws Exception
+	 */
+	public Integer totalRegistroConsulta() throws Exception {
+		Query query = getController().obterQuery(" select count(entity) from " + getQueryConsulta());
+		Number result = (Number) query.uniqueResult();
+		
+		return result.intValue();//retorna um número, um único resultado
 	}
 	
 }

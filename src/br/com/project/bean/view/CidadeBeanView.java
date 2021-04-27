@@ -1,8 +1,5 @@
 package br.com.project.bean.view;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 
 import org.primefaces.model.StreamedContent;
@@ -11,6 +8,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import br.com.framework.interfaces.crud.InterfaceCrud;
+import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
 import br.com.project.geral.controller.CidadeController;
 import br.com.project.model.classes.Cidade;
 
@@ -27,7 +25,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	private Cidade objetoSelecionado = new Cidade();
 	
-	private List<Cidade> list = new ArrayList<Cidade>();
+	private CarregamentoLazyListForObject<Cidade> list = new CarregamentoLazyListForObject<Cidade>();
 	
 	@Autowired//injeção de dependência
 	private CidadeController cidadeController;
@@ -41,7 +39,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void saveNotReturn() throws Exception {
-		list.clear();//limpa a lista
+		list.getList().clear();//limpa a lista
 		//O merge faz o retorno do objeto salvo
 		objetoSelecionado = cidadeController.merge(objetoSelecionado);
 		list.add(objetoSelecionado);//coloca na lista somente o objeto selecionado
@@ -54,8 +52,8 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	 * @returna uma lista de cidades
 	 * @throws Exception
 	 */
-	public List<Cidade> getList() throws Exception {
-		list = cidadeController.findList(getClassImplement());
+	public CarregamentoLazyListForObject<Cidade> getList() throws Exception {
+		//list = cidadeController.findList(getClassImplement());
 		return list;
 	}
 	
@@ -70,7 +68,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void setarVariaveisNulas() throws Exception {
-		list.clear();
+		list.getList().clear();
 		objetoSelecionado = new Cidade();
 	}
 	
@@ -82,7 +80,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public String editar() throws Exception {
-		list.clear();//limpa a lista
+		list.getList().clear();//limpa a lista
 		return url;
 	}
 	
@@ -111,6 +109,9 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void consultarEntidade() throws Exception {
+		objetoSelecionado = new Cidade();
+		list.getList().clear();
+		list.setTotalRegistroConsulta(super.totalRegistroConsulta(), super.getSqlLazyQuery());
 		super.consultarEntidade();
 	}
 	
@@ -129,6 +130,12 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	protected InterfaceCrud<?> getController() {
+		return null;
+	}
+
+	@Override
+	public String condicaoAndParaPesquisa() throws Exception {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	
