@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rel_default" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e61279da-e787-4993-8047-d9483e5cdb35">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rel_default" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e61279da-e787-4993-8047-d9483e5cdb35">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="406"/>
 	<parameter name="REPORT_PARAMETERS_IMG" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -23,14 +23,33 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="46" splitType="Stretch"/>
+		<band height="673" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="36" forecolor="#0000FF" backcolor="#999999" uuid="2975de3d-ad23-4ffe-8280-6b84eb4ce0dc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15" isBold="true"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO SEM DADOS]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
-	<summary>
-		<band height="42" splitType="Stretch">
-			<textField pattern="dd/MM/yyyy HH.mm.ss">
-				<reportElement x="360" y="0" width="195" height="25" uuid="c4da7fd2-c6c8-44e4-8996-d0ac2e88d587"/>
+	<pageFooter>
+		<band height="50">
+			<textField pattern="dd/MM/yyyy --  HH:mm:ss">
+				<reportElement x="360" y="25" width="195" height="25" uuid="c4da7fd2-c6c8-44e4-8996-d0ac2e88d587"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="0" y="30" width="100" height="20" uuid="9f481490-6249-4d85-b7a8-52cb3e8a91cd"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 		</band>
-	</summary>
+	</pageFooter>
 </jasperReport>

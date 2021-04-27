@@ -109,6 +109,4 @@ public class Cidade implements Serializable {
 		return "Cidade [cid_id=" + cid_codigo + ", cid_descricao=" + cid_descricao + "]";
 	}
 	
-	
-
 }

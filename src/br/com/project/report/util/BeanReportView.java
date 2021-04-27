@@ -74,7 +74,7 @@ public abstract class BeanReportView extends BeanViewAbstract {
 	public void setNomeRelatorioJasper(String nomeRelatorioJasper) {
 
 		if (nomeRelatorioJasper == null || nomeRelatorioJasper.isEmpty()) {
-			nomeRelatorioJasper = "default";
+			nomeRelatorioJasper = "rel_default";
 		}
 
 		this.nomeRelatorioJasper = nomeRelatorioJasper;
@@ -87,7 +87,7 @@ public abstract class BeanReportView extends BeanViewAbstract {
 	public void setNomeRelatorioSaida(String nomeRelatorioSaida) {
 
 		if (nomeRelatorioSaida == null || nomeRelatorioSaida.isEmpty()) {
-			nomeRelatorioSaida = "default";
+			nomeRelatorioSaida = "rel_default";
 		}
 
 		this.nomeRelatorioSaida = nomeRelatorioSaida;

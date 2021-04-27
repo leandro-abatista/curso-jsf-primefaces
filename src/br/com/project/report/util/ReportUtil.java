@@ -20,6 +20,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.export.JRCsvExporter;
 import net.sf.jasperreports.engine.export.JRHtmlExporter;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.export.JRXlsExporter;
@@ -38,13 +39,15 @@ public class ReportUtil implements Serializable {
 	private static final String SUBREPORT_DIR = "SUBREPORT_DIR";
 	private static final String EXTENSION_ODS = "ods";
 	private static final String EXTENSION_XLS = "xls";
+	private static final String EXTENSION_CSV = "csv";
 	private static final String EXTENSION_HTML = "html";
 	private static final String EXTENSION_PDF = "pdf";
 	private String SEPARATOR = File.separator;
 	private static final int RELATORIO_PDF = 1;
 	private static final int RELATORIO_EXCEL = 2;
-	private static final int RELATORIO_HTML = 3;
-	private static final int RELATORIO_PLANILHA_OPEN_OFFICE = 4;
+	private static final int RELATORIO_CSV = 3;
+	private static final int RELATORIO_HTML = 4;
+	private static final int RELATORIO_PLANILHA_OPEN_OFFICE = 5;
 	private StreamedContent arquivoRetorno = null;
 	private String caminhoArquivoRelatorio = null;
 	private JRExporter tipoArquivoExportado = null;
@@ -101,6 +104,7 @@ public class ReportUtil implements Serializable {
 				jrBeanCollectionDataSource);
 
 		switch (tipoRelatorio) {
+		
 		case RELATORIO_PDF:
 			tipoArquivoExportado = new JRPdfExporter();
 			extensaoArquivoExportado = EXTENSION_PDF;
@@ -109,6 +113,11 @@ public class ReportUtil implements Serializable {
 		case RELATORIO_EXCEL:
 			tipoArquivoExportado = new JRXlsExporter();
 			extensaoArquivoExportado = EXTENSION_XLS;
+			break;
+			
+		case RELATORIO_CSV:
+			tipoArquivoExportado = new JRCsvExporter();
+			extensaoArquivoExportado = EXTENSION_CSV;
 			break;
 
 		case RELATORIO_PLANILHA_OPEN_OFFICE:
