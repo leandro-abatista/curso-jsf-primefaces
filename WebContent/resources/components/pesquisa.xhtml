@@ -22,6 +22,8 @@
 			
 			<composite:attribute name="nomePesquisa" required="true"/>
 			
+			<composite:attribute name="colunasGridDataTableList" required="true"/>
+			
 		</composite:interface>
 		
 		<composite:implementation>
@@ -100,13 +102,28 @@
 						value="Filtrar" 
 						ajax="true"
 						process="@this, panelGridPesquisa"
-						actionListener="#{cc.attrs.managedBeanView.consultarEntidade}">
+						actionListener="#{cc.attrs.managedBeanView.consultarEntidade}"
+						oncomplete="addFocoAoCampo('valorPesquisa');"
+						onsuccess="addFocoAoCampo('valorPesquisa');"
+						update=":formTemplate:msg, tableResult">
 						
 						</p:commandButton>
 					
 					</h:panelGrid>
 				
 				</p:panel>
+				
+				<div class="espacoBranco"/><!-- Espaço em branco -->
+				
+				<!-- tabela de cadastro de cidade -->
+				<p:dataTable id="tableResult" rendered="true" value="#{cc.attrs.managedBeanView.list}" 
+				var="objeto" rows="10" widgetVar="tableResult" lazy="true" paginator="true"
+				emptyMessage="Não existe valores para exibição.">
+					
+					<ui:include src="#{cc.attrs.colunasGridDataTableList}" />
+				
+				
+				</p:dataTable>
 		
 			</p:fieldset>
 
@@ -134,7 +151,6 @@
 				
 				var buttonPesquisar = getValorElementPorIdJQuery('buttonPesquisar');
 				$(buttonPesquisar).click();
-				addFocoAoCampo('valorPesquisa');
 			}
 		}
 		
