@@ -11,17 +11,17 @@
 
 	<p:column styleClass="colunaTabela colunaCodigotabela">
 				<f:facet name="header">Código</f:facet>
-				<h:outputText value="#{objetoCidade.cid_codigo}" />
+				<h:outputText value="#{objeto.cid_codigo}" />
 			</p:column>
 			
 			<p:column styleClass="colunaTabela">
 				<f:facet name="header">Nome da Cidade</f:facet>
-				<h:outputText value="#{objetoCidade.cid_descricao}" />
+				<h:outputText value="#{objeto.cid_descricao}" />
 			</p:column>
 			
 			<p:column styleClass="colunaTabela">
 				<f:facet name="header">Estado</f:facet>
-				<h:outputText value="#{objetoCidade.estado.est_nome}" />
+				<h:outputText value="#{objeto.estado.est_nome}" />
 			</p:column>
 			
 			<sec:ifAnyGranted roles="CIDADE_EDITAR, ADMIN">
@@ -33,9 +33,9 @@
 				
 				<f:facet name="header">Atualizar</f:facet>
 				<p:commandLink id="editarCidade" action="#{cidadeBeanView.editar}" ajax="false" immediate="true" 
-					update="@form:formCadastro" oncomplete="addFocoAoCampo('cidadeNome');">
+					update="@form" oncomplete="addFocoAoCampo('cidadeNome');">
 					<h:graphicImage library="images" name="editar.png" height="25" width="25"/>
-					<f:setPropertyActionListener value="#{objetoCidade}" target="#{cidadeBeanView.objetoSelecionado}" />
+					<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}" />
 				</p:commandLink>
 				<p:tooltip for="editarCidade" value="Editar Registro" position="top"/>
 				
@@ -67,7 +67,7 @@
 					<p:confirm header="Atenção" message="Deseja excluir o registro selecionado?" />
 					
 					<!-- value -> objeto que estar na tela -->
-					<f:setPropertyActionListener value="#{objetoCidade}" target="#{cidadeBeanView.objetoSelecionado}" />
+					<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}" />
 						
 				</p:commandLink>
 				
@@ -84,7 +84,7 @@
 					<p:confirm header="Atenção" message="Deseja excluir o registro selecionado?" />
 					
 					<!-- value -> objeto que estar na tela -->
-					<f:setPropertyActionListener value="#{objetoCidade}" target="#{cidadeBeanView.objetoSelecionado}" />
+					<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}" />
 						
 				</p:commandLink>
 				
