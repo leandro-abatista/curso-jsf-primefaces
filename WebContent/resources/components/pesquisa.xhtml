@@ -80,6 +80,14 @@
 						
 						</p:selectOneMenu>
 						
+						<h:outputLabel id="labelCondicao" for="condicao" value="Onde :" />
+						<p:selectOneMenu id="condicao" style="width: 150px;" value="#{cc.attrs.managedBeanView.condicaoPesquisaSelecionado}">
+							
+							<f:selectItems id="itensCondicao" value="#{cc.attrs.managedBeanView.listaCondicaoPesquisa}">
+							
+							</f:selectItems>
+						</p:selectOneMenu>
+						
 						<p:commandButton id="buttonPesquisar" 
 						value="Filtrar" 
 						ajax="true"

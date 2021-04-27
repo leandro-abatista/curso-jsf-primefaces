@@ -2,10 +2,8 @@ package br.com.project.bean.view;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.faces.model.SelectItem;
@@ -15,6 +13,7 @@ import org.springframework.stereotype.Component;
 import br.com.framework.interfaces.crud.InterfaceCrud;
 import br.com.project.annotation.IdentificaCampoPesquisa;
 import br.com.project.bean.geral.ObjetoCampoConsulta;
+import br.com.project.enums.CondicaoPesquisa;
 import br.com.project.report.util.BeanReportView;
 
 @Component
@@ -29,7 +28,11 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	public ObjetoCampoConsulta objetoCampoConsultaSelecionado;
 	
 	public List<SelectItem> listaSelectItemsCampoPesquisa;
-
+	
+	public List<SelectItem> listaCondicaoPesquisa;
+	
+	public CondicaoPesquisa condicaoPesquisaSelecionado;
+	
 	public ObjetoCampoConsulta getObjetoCampoConsultaSelecionado() {
 		return objetoCampoConsultaSelecionado;
 	}
@@ -103,7 +106,24 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 		});
 		
 	}
-	
-	
+
+	public List<SelectItem> getListaCondicaoPesquisa() {
+		
+		listaCondicaoPesquisa = new ArrayList<SelectItem>();
+		
+		for (CondicaoPesquisa condicaoPesquisa : CondicaoPesquisa.values()) {
+			listaCondicaoPesquisa.add(new SelectItem(condicaoPesquisa, condicaoPesquisa.toString()));
+		}
+		
+		return listaCondicaoPesquisa;
+	}
+
+	public CondicaoPesquisa getCondicaoPesquisaSelecionado() {
+		return condicaoPesquisaSelecionado;
+	}
+
+	public void setCondicaoPesquisaSelecionado(CondicaoPesquisa condicaoPesquisaSelecionado) {
+		this.condicaoPesquisaSelecionado = condicaoPesquisaSelecionado;
+	}
 	
 }
