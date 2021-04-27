@@ -161,10 +161,11 @@
 							
 								<sec:ifAnyGranted roles="CIDADE_ACESSAR, ADMIN">
 									<!-- ?faces-redirect=true -> esse trecho força o redirecionamento para a página de cadastro indicada -->
-									<p:menuitem value="Cidade" id="menuCidade" action="/cadastro/cad_cidade.jsf?faces-redirect=true" style="background: #5F9EA0;">
+									<p:menuitem value="Cidade" id="menuCidade" action="#{cidadeBeanView.redirecionarFindEntidade}" 
+									immediate="true" style="background: #5F9EA0;">
 									
 									</p:menuitem>
-								
+								<!-- /cadastro/pesquisar_cidade.jsf?faces-redirect=true -->
 								</sec:ifAnyGranted>
 								
 							</p:submenu>
