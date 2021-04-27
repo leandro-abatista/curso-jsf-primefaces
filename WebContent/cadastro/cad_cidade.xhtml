@@ -37,7 +37,8 @@
 						<p:message for="cidadeNome"/>
 						
 						<h:outputLabel id="labelEstado" for="estado" value="Estado * :" />
-						<p:selectOneMenu id="estado" required="true" requiredMessage="Informe o estado" style="width: 200px;" 
+						<p:selectOneMenu id="estado" required="true" requiredMessage="Informe o estado" 
+							style="width: 200px; height: 25px;"
 							value="#{cidadeBeanView.objetoSelecionado.estado}">
 							
 							<f:selectItem itemLabel="Selecione um estado" itemValue="" />
