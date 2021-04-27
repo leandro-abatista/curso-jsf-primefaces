@@ -20,6 +20,8 @@
 			
 			<composite:attribute name="menuImpressao" required="false" default="false"/>
 			
+			<composite:attribute name="nomePesquisa" required="true"/>
+			
 		</composite:interface>
 		
 		<composite:implementation>
@@ -53,6 +55,29 @@
 			</p:panelGrid>
 	
 			<div class="espacoBranco"/><!-- Espaço em branco -->
+			
+			<p:fieldset id="fieldCidade" legend="#{cc.attrs.nomePesquisa}">
+			
+				<div class="espacoBranco"/><!-- Espaço em branco -->
+			
+				<p:panel id="panelPesquisa" >
+				
+					<h:panelGrid id="panelGridPesquisa" columns="7">
+				
+						<h:outputLabel id="labelCampo" for="campo" value="Campo: " />
+						<p:selectOneMenu id="campo" style="width: 150px;" onchange="" value="">
+							
+							<f:selectItems id="itensCampoPesquisa" var="campoPesquisaSelecionado">
+							
+							</f:selectItems>
+						
+						</p:selectOneMenu>
+					
+					</h:panelGrid>
+				
+				</p:panel>
+		
+			</p:fieldset>
 		
 		</composite:implementation>
 		
