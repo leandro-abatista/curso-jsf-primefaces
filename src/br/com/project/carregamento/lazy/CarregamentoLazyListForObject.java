@@ -10,43 +10,52 @@ import org.primefaces.model.SortOrder;
 import br.com.framework.controller.crud.Controller;
 import br.com.project.listener.ContextLoaderListenerCaixakiUtils;
 
+/**
+ * Classe que implementa o carregamento preguiçoso (Carregamento por demanda) para os dataTable do primefaces das telas
+ * Assim os carregamentos das tabelas quando tiver muitos registros serão sempre rapidos e sem lentidão
+ * @author leandro
+ *
+ * @param <T>
+ */
 public class CarregamentoLazyListForObject<T> extends LazyDataModel<T> {
 
 	private static final long serialVersionUID = 1L;
 	
 	private List<T> list = new ArrayList<T>();
 	
-	private Integer totalRegistroConsulta = 0;
+	private int totalRegistroConsulta = 0;
 	
 	private String query = null;
 	
 	private Controller controller = (Controller) ContextLoaderListenerCaixakiUtils.getBean(Controller.class);
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
-		try {
-			
-			if (query != null && !query.isEmpty()) {
+		
+			try {
 				
-				list = (List<T>) controller.findListByQueryDinamica(query, first, pageSize);
-				
-				if (totalRegistroConsulta == 0) {
-					setRowCount(0);
-				} else {
-					setRowCount(totalRegistroConsulta);
+				if (query != null && !query.isEmpty()) {
+					
+					list = (List<T>) controller.findListByQueryDinamica(query, first, pageSize);
+					
+					if (totalRegistroConsulta == 0) {
+						setRowCount(0);
+					} else {
+						setRowCount(totalRegistroConsulta);
+					}
 				}
+				
+				setPageSize(pageSize);//quantidae de registros por páginas definido na datatable de pesquisa
+				
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 			
-			setPageSize(pageSize);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return (List<T>) list;
+			return (List<T>) list;
 	}
 	
-	public void setTotalRegistroConsulta(Integer totalRegistroConsulta, String queryDeBuscaConsulta) {
+	public void setTotalRegistroConsulta(int totalRegistroConsulta, String queryDeBuscaConsulta) {
 		this.query = queryDeBuscaConsulta;
 		this.totalRegistroConsulta = totalRegistroConsulta;
 	}
@@ -69,8 +78,16 @@ public class CarregamentoLazyListForObject<T> extends LazyDataModel<T> {
 		this.list.add(objetoSelecionado);
 	}
 	
+	/**
+	 * Uma lista dentro de outra lista
+	 * @param collections
+	 */
 	public void addAll(List<T> collections) {
 		this.list.addAll(collections);
+	}
+	
+	public Object getRowKey(T object) {
+		return object;
 	}
 
 }

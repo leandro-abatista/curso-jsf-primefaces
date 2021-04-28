@@ -25,7 +25,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	private Cidade objetoSelecionado = new Cidade();
 	
-	private CarregamentoLazyListForObject<Cidade> list = new CarregamentoLazyListForObject<Cidade>();
+	private CarregamentoLazyListForObject<Cidade> list = new CarregamentoLazyListForObject<Cidade>();//carrega uma lista da consulta
 	
 	@Autowired//injeção de dependência
 	private CidadeController cidadeController;
@@ -39,7 +39,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void saveNotReturn() throws Exception {
-		list.getList().clear();//limpa a lista
+		list.clean();//limpa a lista
 		//O merge faz o retorno do objeto salvo
 		objetoSelecionado = cidadeController.merge(objetoSelecionado);
 		list.add(objetoSelecionado);//coloca na lista somente o objeto selecionado
@@ -54,7 +54,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	 */
 	public CarregamentoLazyListForObject<Cidade> getList() throws Exception {
 		//list = cidadeController.findList(getClassImplement());
-		return list;
+		return list;//abre vazio
 	}
 	
 	/**
@@ -68,7 +68,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void setarVariaveisNulas() throws Exception {
-		list.getList().clear();
+		list.clean();
 		objetoSelecionado = new Cidade();
 	}
 	
@@ -80,7 +80,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public String editar() throws Exception {
-		list.getList().clear();//limpa a lista
+		list.clean();//limpa a lista
 		return url;
 	}
 	
@@ -110,9 +110,9 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	@Override
 	public void consultarEntidade() throws Exception {
 		objetoSelecionado = new Cidade();
-		list.getList().clear();
+		list.clean();
 		list.setTotalRegistroConsulta(super.totalRegistroConsulta(), super.getSqlLazyQuery());
-		super.consultarEntidade();
+		//super.consultarEntidade();
 	}
 	
 	public Cidade getObjetoSelecionado() {
@@ -135,8 +135,7 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	public String condicaoAndParaPesquisa() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return " ";
 	}
 	
 }

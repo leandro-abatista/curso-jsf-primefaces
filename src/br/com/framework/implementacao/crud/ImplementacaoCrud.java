@@ -232,9 +232,8 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	public List<T> findListByQueryDinamica(String query, int iniciaNoRegistro, int maximoResultado) throws Exception {
 		validarSessionfactory();
 		List<T> lista = new ArrayList<T>();
-		lista = sessionFactory.getCurrentSession().createQuery(query)
-				.setFirstResult(iniciaNoRegistro)
-				.setMaxResults(maximoResultado).list();
+		lista = sessionFactory.getCurrentSession().createQuery(query.toString())
+				.setFirstResult(iniciaNoRegistro).setMaxResults(maximoResultado).list();
 		return lista;
 	}
 	

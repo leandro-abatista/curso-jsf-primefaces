@@ -86,16 +86,21 @@
 						<p:selectOneMenu id="condicao" style="width: 150px; height: 25px;" 
 							value="#{cc.attrs.managedBeanView.condicaoPesquisaSelecionado}">
 							
+							<f:selectItem itemLabel="Selecione" itemDisabled="true" noSelectionOption="true"/>
 							<f:selectItems id="itensCondicao" value="#{cc.attrs.managedBeanView.listaCondicaoPesquisa}">
 							
 							</f:selectItems>
 						</p:selectOneMenu>
 						
-						<p:inputText id="valorPesquisa" immediate="false" value="#{cc.attrs.managedBeanView.valorPesquisa}"
+						<p:inputText id="valorPesquisa" immediate="false" 
+						value="#{cc.attrs.managedBeanView.valorPesquisa}"
+						styleClass="valorPesquisa"
 						onblur="validarCampoPesquisa(event);"
 						maxlength="65"
 						onkeypress="executaPesquisaComEnter(event, this);" 
-						style="width: 40em;"/>
+						style="width: 40em;"
+						required="false"
+						requiredMessage="Informe o valor para pesquisa!"/>
 						
 						<p:commandButton id="buttonPesquisar"
 						style="height: 30px; width: 100px; background: #1E90FF; border: 2px solid #C0C0C0;" 
@@ -116,9 +121,19 @@
 				<div class="espacoBranco"/><!-- Espaço em branco -->
 				
 				<!-- tabela de cadastro de cidade -->
-				<p:dataTable id="tableResult" rendered="true" value="#{cc.attrs.managedBeanView.list}" 
-				var="objeto" rows="8" widgetVar="tableResult" lazy="true" paginator="true"
-				emptyMessage="Não existe valores para exibição.">
+				<p:dataTable id="tableResult" 
+				rendered="true" 
+				value="#{cc.attrs.managedBeanView.list.list}" 
+				var="objeto" 
+				rows="8" 
+				rowKey="#{objeto}"
+				selection="#{cc.attrs.managedBeanView.objetoSelecionado}"
+				selectionMode="single"
+				widgetVar="tableResult" 
+				lazy="true" 
+				rowIndexVar="index"
+				paginator="true"
+				emptyMessage="Não existe registros para exibição.">
 					
 					<ui:include src="#{cc.attrs.colunasGridDataTableList}" />
 				
