@@ -42,6 +42,10 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 		return contextBean.getEntidadeLogada().getEnt_ultimoAcesso();
 
 	}
+	
+	public void updateSenha() {
+		System.out.println("Ta sendo chamado");
+	}
 
 	@Override
 	protected Class<Entidade> getClassImplement() {

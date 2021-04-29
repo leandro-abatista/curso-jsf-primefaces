@@ -11,7 +11,7 @@
 
 	 <h:form id="formCadastroDialog" prependId="false">
 	 	
-	 	<p:panel style="border: 2px solid;">
+	 	<p:panel style="border: 2px solid; background: #EEE9E9;">
 	 	
 	 		<h:panelGrid id="gridAltSenhaDialog" columns="3">
 	 		
@@ -88,6 +88,25 @@
 	 		</h:panelGrid>
 	 	
 	 	</p:panel>
+	 	
+	 	<!-- botão salvar -->
+		<p:commandButton id="buttonSalvarSenha" value="Salvar" 
+		style="height: 40px; width: 100px; background: #1E90FF; border: 2px solid #C0C0C0; margin: 5px;" 
+		partialSubmit="true"
+		ajax="true"
+		action="#{entidadeBeanView.updateSenha()}"
+		process="@this, @form"
+		immediate="false">
+		</p:commandButton>
+	 	
+	 	<!-- botão  fechar-->
+		<p:commandButton id="buttomFecharSenha" value="Fechar" 
+		style="height: 40px; width: 100px; background: #FF4040; border: 2px solid #C0C0C0; margin: 5px;" 
+		onclick="alterarSenhaDialog.hide();"
+		ajax="true" 
+		>
+		
+		</p:commandButton>
 	 	
 	 </h:form>
 	 
