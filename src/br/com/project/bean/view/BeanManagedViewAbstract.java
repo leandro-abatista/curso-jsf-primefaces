@@ -228,16 +228,16 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	 * @throws Exception
 	 */
 	protected int totalRegistroConsulta() throws Exception {
-		/*
-		Query query = getController().obterQuery(" select count(entity) from " + getQueryConsulta());
+		
+		Query query = getController().obterQuery(" select count(1) from " + getQueryConsulta());
 		Number result = (Number) query.uniqueResult();
 		
 		return result.intValue();
-		*/
+		/*
 		String sql = (" select count(1) from " + getQueryConsulta()).toLowerCase();
 		
 		return getController().getJdbcTemplate().queryForInt(sql);
-		
+		*/
 	}
 
 }

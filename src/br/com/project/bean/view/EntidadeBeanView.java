@@ -43,8 +43,37 @@ public class EntidadeBeanView extends BeanManagedViewAbstract {
 
 	}
 	
-	public void updateSenha() {
-		System.out.println("Ta sendo chamado");
+	public void updateSenha() throws Exception {
+		Entidade entidadeLogada = contextBean.getEntidadeLogada();
+		
+		/*o primeiro if verifica se a senha atual que foi digitada, é a mesma que o usuário está logado no sistema
+		 * se for diferente, uma mensagem é enviada para o usuário*/
+		if (!entidadeAtualizarSenhaBean.getSenhaAtual().equals(entidadeLogada.getEnt_senha())) {
+			addMsg("A senha atual não é válida!");
+			return;
+		} else
+			
+		if (entidadeAtualizarSenhaBean.getSenhaAtual().equals(entidadeAtualizarSenhaBean.getNovaSenha())) {
+			addMsg("A senha atual não pode ser igual a nova senha!");
+			return;
+		} else
+			
+		if (!entidadeAtualizarSenhaBean.getNovaSenha().equals(entidadeAtualizarSenhaBean.getConfirmarSenha())) {
+			addMsg("A nova senha e confirmar nova senha, não conferem!");
+			return;
+		} else {
+			
+			entidadeLogada.setEnt_senha(entidadeAtualizarSenhaBean.getNovaSenha());
+			entidadeController.saveOrUpdate(entidadeLogada);
+			entidadeLogada = entidadeController.findByPorId(Entidade.class, entidadeLogada.getEnt_codigo());
+			
+			if (entidadeLogada.getEnt_senha().equals(entidadeAtualizarSenhaBean.getNovaSenha())) {
+				sucesso();
+			} else {
+				addMsg("A nova senha não foi atualizada!");
+				error();
+			}
+		}
 	}
 
 	@Override
