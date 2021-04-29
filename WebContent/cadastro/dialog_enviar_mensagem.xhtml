@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:sec="http://www.springframework.org/security/facelets/tags"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:util="http://java.sun.com/jsf/composite/components"> 
+      
+
+	 <h:form id="formCadastroMsgDialog" prependId="false">
+	 	
+	 	<c:set var="isCadastro" value="true" scope="view"/>
+	 	
+	 	<p:panel id="panelCadastroMsgDialog" header="Nova Mensagem" style="border: 2px solid; background: #EEE9E9;">
+	 	
+	 		<h:panelGrid id="panelGridMsgDialog" columns="3">
+	 		
+	 			<h:column><!-- 1º coluna -->
+	 				<p:row>
+	 					<h:outputLabel for="idMsgDialog" id="labelMsgDialog" value="Código: " />
+	 				</p:row>
+	 			</h:column>
+	 			
+	 			<h:column><!-- 2º coluna -->
+	 				<p:row>
+	 					<p:inputText id="idMsgDialog" 
+	 					readonly="true" 
+	 					value="#{mensagemBeanView.objetoSelecionado.men_cod}"/>
+	 				</p:row>
+	 			</h:column>
+	 			
+	 			<h:column><!-- 3º coluna -->
+	 				<!-- coluna vazia -->
+	 			</h:column>
+	 			
+	 			<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+	 			
+	 			<h:column>
+	 				<p:row>
+	 					<h:outputLabel id="labelOrigemMsgDialog" for="usuarioOrigemMsgDialog" value="Origem: " />
+	 				</p:row>
+	 			</h:column>
+	 			
+	 			<h:column><!-- 3º coluna -->
+	 				<p:row>
+	 					<p:inputText id="usuarioOrigemMsgDialog"
+	 					readonly="true"
+	 					immediate="true"
+	 					value="#{mensagemBeanView.objetoSelecionado.usu_origem.ent_codigo}"/>
+	 					
+	 					<p:spacer/>
+	 					
+	 					<p:inputText id="loginOrigemMsgDialog"
+	 					style="width: 30em;"
+	 					readonly="true"
+	 					immediate="true"
+	 					required="true"
+	 					requiredMessage="Usuário logado não foi carregado!"
+	 					value="#{mensagemBeanView.objetoSelecionado.usu_origem.ent_login}"/>
+	 				</p:row>
+	 			</h:column>
+	 			
+	 			<h:column><!-- 3º coluna -->
+	 				<p:row>
+	 					<p:message for="loginOrigemMsgDialog"/>
+	 				</p:row>
+	 			</h:column>
+	 		
+	 		</h:panelGrid>
+	 	
+	 	</p:panel>
+	 	
+	 </h:form>
+	
+</html>
