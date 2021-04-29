@@ -86,12 +86,12 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 																			// classe de cidade
 
 				String descricaoCampo = field.getAnnotation(IdentificaCampoPesquisa.class).descricaoCampo();
-				String descricaoCampoPesquisa = field.getAnnotation(IdentificaCampoPesquisa.class).campoConsulta();
+				String descricaoCampoConsulta = field.getAnnotation(IdentificaCampoPesquisa.class).campoConsulta();
 				int isPrincipal = field.getAnnotation(IdentificaCampoPesquisa.class).principal();
 
 				ObjetoCampoConsulta objetoCampoConsulta = new ObjetoCampoConsulta();
 				objetoCampoConsulta.setDescricao(descricaoCampo);
-				objetoCampoConsulta.setCampoBanco(descricaoCampoPesquisa);
+				objetoCampoConsulta.setCampoBanco(descricaoCampoConsulta);
 				objetoCampoConsulta.setTipoClass(field.getType().getCanonicalName());
 				objetoCampoConsulta.setPrincipal(isPrincipal);
 
@@ -99,7 +99,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 			}
 		}
 
-		orderReverse(listTemporaria);
+		ordenarReverse(listTemporaria);
 
 		for (ObjetoCampoConsulta objetoCampoConsulta : listTemporaria) {
 			// transforma a lista de objetoCampoConsulta em um selectItem
@@ -109,13 +109,13 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 		return listaSelectItemsCampoPesquisa;
 	}
 
-	private void orderReverse(List<ObjetoCampoConsulta> listTemporaria) {
+	private void ordenarReverse(List<ObjetoCampoConsulta> listTemporaria) {
 		Collections.sort(listTemporaria, new Comparator<ObjetoCampoConsulta>() {
 
 			@Override
 			public int compare(ObjetoCampoConsulta objeto1, ObjetoCampoConsulta objeto2) {
 
-				return objeto1.getPrincipal().compareTo(objeto2.getPrincipal());
+				return objeto1.isPrincipal().compareTo(objeto2.isPrincipal());
 			}
 		});
 
@@ -141,7 +141,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	}
 
 	public String getValorPesquisa() {
-		return valorPesquisa != null ? new UtilitarioRegex().retiraAcentos(valorPesquisa) : "";// condição ternária
+		return valorPesquisa != null ? new UtilitarioRegex().retiraAcentos(valorPesquisa.trim()) : "";// condição ternária
 	}
 
 	public void setValorPesquisa(String valorPesquisa) {
@@ -229,7 +229,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	 */
 	protected int totalRegistroConsulta() throws Exception {
 		
-		Query query = getController().obterQuery(" select count(1) from " + getQueryConsulta());
+		Query query = getController().obterQuery(" select count(entity) from " + getQueryConsulta());
 		Number result = (Number) query.uniqueResult();
 		
 		return result.intValue();

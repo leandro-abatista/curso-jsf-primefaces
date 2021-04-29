@@ -3,6 +3,7 @@ package br.com.project.model.classes;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,9 +23,15 @@ public class Entidade implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ent_codigo;
 
+	@Column(length = 50)
 	private String ent_login = null;
+	
+	@Column(length = 50)
 	private String ent_senha;
+	
 	private boolean ent_inativo = false;
+	
+	private String ent_nomeFantasia;
 	
 	@Temporal(TemporalType.TIMESTAMP)//essa anotação carrega hora e data
 	private Date ent_ultimoAcesso;
@@ -68,6 +75,14 @@ public class Entidade implements Serializable {
 	public void setEnt_ultimoAcesso(Date ent_ultimoAcesso) {
 		this.ent_ultimoAcesso = ent_ultimoAcesso;
 	}
+	
+	public String getEnt_nomeFantasia() {
+		return ent_nomeFantasia;
+	}
+
+	public void setEnt_nomeFantasia(String ent_nomeFantasia) {
+		this.ent_nomeFantasia = ent_nomeFantasia;
+	}
 
 	@Override
 	public int hashCode() {
@@ -94,6 +109,4 @@ public class Entidade implements Serializable {
 		return true;
 	}
 	
-	
-
 }

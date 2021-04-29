@@ -7,9 +7,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
-import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -140,8 +137,10 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	@Override
 	public List<T> findListByQueryDinamica(String s) throws Exception {
 		validarSessionfactory();
+		
 		List<T> lista = new ArrayList<T>();
 		lista = sessionFactory.getCurrentSession().createQuery(s).list();
+		
 		return lista;
 	}
 
@@ -153,14 +152,18 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	@Override
 	public void executeUpdateQueryDinamica(String s) throws Exception {
 		validarSessionfactory();
+		
 		sessionFactory.getCurrentSession().createQuery(s).executeUpdate();
+		
 		executeFlushSession();
 	}
 
 	@Override
 	public void executeUpdateSQLDinamica(String s) throws Exception {
 		validarSessionfactory();
+		
 		sessionFactory.getCurrentSession().createSQLQuery(s).executeUpdate();
+		
 		executeFlushSession();
 	}
 
@@ -176,6 +179,9 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		executeFlushSession();
 	}
 
+	/**
+	 * Retorna sessão corrente
+	 */
 	@Override
 	public Session getSession() throws Exception {
 		validarSessionfactory();
@@ -185,13 +191,23 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	@Override
 	public List<?> getListSQLDinamica(String sql) throws Exception {
 		validarSessionfactory();
+		
 		List<?> lista = sessionFactory.getCurrentSession().createSQLQuery(sql).list();
+		
 		return lista;
 	}
 
+	/**
+	 * TestUnit Ok
+	 */
+	@SuppressWarnings("unchecked")
 	@Override
-	public T carregar(Class<T> class1, Long long1) throws Exception {
-		return null;
+	public T carregar(Class<T> classe, Long codigo) throws Exception {
+		validarSessionfactory();
+		
+		T t = (T) sessionFactory.getCurrentSession().get(classe, codigo);
+		
+		return t;
 	}
 
 	@Override
@@ -209,17 +225,24 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		return null;
 	}
 
+	/**
+	 * Retorna o total de registro da tabela passada como parametro Return Long
+	 */
 	@Override
 	public Long totalRegistro(String tabela) throws Exception {
-		StringBuilder sql = new StringBuilder();
-		sql.append(" select count(1) from ").append(tabela);//retorna um long
-		return jdbcTemplate.queryForLong(sql.toString());//faz a conversão para string
+		StringBuilder sqlBuilder = new StringBuilder();
+		
+		sqlBuilder.append(" select count(1) from ").append(tabela);//retorna um long
+		
+		return jdbcTemplate.queryForLong(sqlBuilder.toString());//faz a conversão para string
 	}
 
 	@Override
 	public Query obterQuery(String query) throws Exception {
 		validarSessionfactory();
+		
 		Query queryReturn = sessionFactory.getCurrentSession().createQuery(query.toString());
+		
 		return queryReturn;
 	}
 
@@ -232,14 +255,18 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	@Override
 	public List<T> findListByQueryDinamica(String query, int iniciaNoRegistro, int maximoResultado) throws Exception {
 		validarSessionfactory();
+		
 		List<T> lista = new ArrayList<T>();
-		lista = sessionFactory.getCurrentSession().createQuery(query.toString())
-				.setFirstResult(iniciaNoRegistro).setMaxResults(maximoResultado).list();
+		lista = sessionFactory.
+				getCurrentSession().
+				createQuery(query.toString()).
+				setFirstResult(iniciaNoRegistro).
+				setMaxResults(maximoResultado).
+				list();
 		return lista;
 	}
 	
 	private void validarSessionfactory() {
-		
 		if (sessionFactory == null) {
 			sessionFactory = HibernateUtil.getSessionFactory();
 		}
@@ -247,7 +274,6 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	
 	@SuppressWarnings("unused")
 	private void validarTransaction() {
-		
 		if (!sessionFactory.getCurrentSession().getTransaction().isActive()) {//se não tiver transação ativa
 			sessionFactory.getCurrentSession().getTransaction();//vai iniciar uma transação no hibernate
 		}
@@ -258,6 +284,9 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		sessionFactory.getCurrentSession().getTransaction().commit();
 	}
 	
+	/**
+	 * Retorna o total de registro da tabela passada como parametro Return Long
+	 */
 	@SuppressWarnings("unused")
 	private void rollBackProcessoAjax() {
 		sessionFactory.getCurrentSession().getTransaction().rollback();
@@ -274,12 +303,14 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	@Override
 	public List<Object[]> getListSQLDinamicArray(String sql) throws Exception {
 		validarSessionfactory();
+		
 		List<Object[]> lista = (List<Object[]>) sessionFactory.getCurrentSession().createSQLQuery(sql).list();
+		
 		return lista;
 	}
 	
 	@SuppressWarnings("unchecked")
-	public T findUniqueByQueryDinamic(String query) throws Exception {
+	public T findUniqueByQueryDinamica(String query) throws Exception {
 		validarSessionfactory();
 		
 		T obj = (T) sessionFactory.getCurrentSession().createQuery(query.toString()).uniqueResult();
@@ -290,8 +321,8 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	public T findUniqueByProperty(Class<T> entidade, Object valor, String atributo, String condicao) throws Exception {
 		validarSessionfactory();
 		
-		StringBuilder query = new StringBuilder();
-		query.append(" select entity from ")
+		StringBuilder queryBuilder = new StringBuilder();
+		queryBuilder.append(" select entity from ")
 			 .append(entidade.getSimpleName())
 			 .append(" entity where entity.")
 			 .append(atributo)
@@ -300,7 +331,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 			 .append("' ")
 			 .append(condicao);
 
-		T obj = (T) this.findUniqueByQueryDinamic(query.toString());
+		T obj = (T) this.findUniqueByQueryDinamica(queryBuilder.toString());
 		
 		return obj;
 	}
@@ -317,7 +348,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		     .append(valor)
 		     .append("'");
 
-		T obj = (T) this.findUniqueByQueryDinamic(query.toString());
+		T obj = (T) this.findUniqueByQueryDinamica(query.toString());
 
 		return obj;
 

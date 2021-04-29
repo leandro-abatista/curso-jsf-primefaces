@@ -39,7 +39,7 @@ public class ObjetoCampoConsulta implements Serializable, Comparator<ObjetoCampo
 		this.tipoClass = tipoClass;
 	}
 
-	public Integer getPrincipal() {
+	public Integer isPrincipal() {
 		return principal;
 	}
 
@@ -79,7 +79,7 @@ public class ObjetoCampoConsulta implements Serializable, Comparator<ObjetoCampo
 
 	@Override
 	public int compare(ObjetoCampoConsulta o1, ObjetoCampoConsulta o2) {
-		return ((ObjetoCampoConsulta) o1).getPrincipal().compareTo(((ObjetoCampoConsulta) o2).getPrincipal());
+		return ((ObjetoCampoConsulta) o1).isPrincipal().compareTo(((ObjetoCampoConsulta) o2).isPrincipal());
 	}
 
 }
