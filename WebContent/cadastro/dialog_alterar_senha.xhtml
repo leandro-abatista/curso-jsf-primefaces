@@ -15,15 +15,73 @@
 	 	
 	 		<h:panelGrid id="gridAltSenhaDialog" columns="3">
 	 		
-	 			<h:column>
+	 			<h:column><!-- 1 coluna -->
 	 				<p:row>
-	 					<h:outputLabel id="senhaAtual" value="Senha Atual * :" style="width: 200px;"/>
+	 					<h:outputLabel id="labelSenhaAtual" for="senhaAtualDialog" value="Senha Atual * :" style="width: 200px;"/>
 	 				</p:row>
 	 			</h:column>
 	 			
-	 			<h:column>
+	 			<h:column><!-- 2 coluna -->
 	 				<p:row>
-	 					<p:password inline="senhaAtualDialog" maxlength="50" required="true" requiredMessage="Informe a senha atual!"/>
+	 					<p:password id="senhaAtualDialog" 
+	 					maxlength="50" 
+	 					required="true" 
+	 					requiredMessage="Informe a senha atual!"
+	 					value="#{entidadeBeanView.entidadeAtualizarSenhaBean.senhaAtual}"/>
+	 				</p:row>
+	 			</h:column>
+	 			
+	 			<h:column><!-- 3 coluna -->
+	 				<p:row>
+	 					<p:message for="senhaAtualDialog"/>
+	 				</p:row>
+	 			</h:column>
+	 			
+	 			<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+	 			
+	 			<h:column><!-- 1 coluna -->
+	 				<p:row>
+	 					<h:outputLabel id="labelNovaSenha" for="novaSenhaDialog" value="Nova Senha * :" style="width: 200px;"/>
+	 				</p:row>
+	 			</h:column>
+	 			
+	 			<h:column><!-- 2 coluna -->
+	 				<p:row>
+	 					<p:password id="novaSenhaDialog" 
+	 					maxlength="50" 
+	 					required="true" 
+	 					requiredMessage="Informe a nova senha!"
+	 					value="#{entidadeBeanView.entidadeAtualizarSenhaBean.novaSenha}"/>
+	 				</p:row>
+	 			</h:column>
+	 			
+	 			<h:column><!-- 3 coluna -->
+	 				<p:row>
+	 					<p:message for="novaSenhaDialog"/>
+	 				</p:row>
+	 			</h:column>
+	 			
+	 			<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+	 			
+	 			<h:column><!-- 1 coluna -->
+	 				<p:row>
+	 					<h:outputLabel id="labelConfirmeNovaSenha" for="confirmeNovaSenhaDialog" value="Confirme a Senha * :" style="width: 200px;"/>
+	 				</p:row>
+	 			</h:column>
+	 			
+	 			<h:column><!-- 2 coluna -->
+	 				<p:row>
+	 					<p:password id="confirmeNovaSenhaDialog" 
+	 					maxlength="50" 
+	 					required="true" 
+	 					requiredMessage="Confirme a nova senha!"
+	 					value="#{entidadeBeanView.entidadeAtualizarSenhaBean.confirmarSenha}"/>
+	 				</p:row>
+	 			</h:column>
+	 			
+	 			<h:column><!-- 3 coluna -->
+	 				<p:row>
+	 					<p:message for="confirmeNovaSenhaDialog"/>
 	 				</p:row>
 	 			</h:column>
 	 		
