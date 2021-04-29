@@ -118,7 +118,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	@Override
 	public Object findById(Class<T> entidade, Long id) throws Exception {
 		validarSessionfactory();
-		Object obj = sessionFactory.getCurrentSession().load(entidade.getSimpleName(), id);
+		Object obj = sessionFactory.getCurrentSession().load(entidade, id);
 		return obj;
 	}
 
@@ -127,7 +127,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	public T findByPorId(Class<T> entidade, Long id) throws Exception {
 		validarSessionfactory();
 		//T obj = (T) sessionFactory.getCurrentSession().load(getClass(), id);
-		T obj = (T) sessionFactory.getCurrentSession().load(entidade.getSimpleName(), id);
+		T obj = (T) sessionFactory.getCurrentSession().load(entidade, id);
 		return obj;
 	}
 
