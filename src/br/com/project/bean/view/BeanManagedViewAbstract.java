@@ -180,7 +180,8 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 		sqlBuilder.append(" entity where ");
 		sqlBuilder.append("retira_acentos(upper(cast(entity.");
 		sqlBuilder.append(objetoCampoConsultaSelecionado.getCampoBanco());
-		sqlBuilder.append(" as text))) ");
+		sqlBuilder.append(" as character varying(150)))) ");
+		//sqlBuilder.append(" as text))) ");
 
 		if (condicaoPesquisaSelecionado.name().equals(CondicaoPesquisa.CONTEM.name())) {
 
@@ -226,11 +227,17 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 	 * @return
 	 * @throws Exception
 	 */
-	public int totalRegistroConsulta() throws Exception {
+	protected int totalRegistroConsulta() throws Exception {
+		/*
 		Query query = getController().obterQuery(" select count(entity) from " + getQueryConsulta());
 		Number result = (Number) query.uniqueResult();
-
+		
 		return result.intValue();
+		*/
+		String sql = (" select count(1) from " + getQueryConsulta()).toLowerCase();
+		
+		return getController().getJdbcTemplate().queryForInt(sql);
+		
 	}
 
 }

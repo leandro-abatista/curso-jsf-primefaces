@@ -142,36 +142,36 @@
 		
 			</p:fieldset>
 
-		<script type="text/javascript" charset="UTF-8">   
-	
-		var idCampo = getValorElementPorIdJQuery('campo');
-		var idCampoCondicao = getValorElementPorIdJQuery('condicao');
-		var idPesquisa = getValorElementPorIdJQuery('valorPesquisa');
+			<script type="text/javascript" charset="UTF-8">   
 		
-		$(idPesquisa).keypress(permitNumber);
-		
-		$(idCampo + ' :nth-child(1)').prop('selected', true);
-		$(idCampoCondicao + ' :nth-child(1)').prop('selected', true);
-		$(idPesquisa).val('');
-		
-		addMascaraPesquisa($(idCampo).val()); 
-		
-		addFocoAoCampo('valorPesquisa');
-		
-		//chama o pesquisar ao dar enter na pesquisa
-		function executaPesquisaComEnter(event, button){
-			if (event.keyCode == 13){
-				event.preventDefault();    
-				addFocoAoCampo('buttonPesquisar');
-				
-				var buttonPesquisar = getValorElementPorIdJQuery('buttonPesquisar');
-				$(buttonPesquisar).click();
+			var idCampo = getValorElementPorIdJQuery('campo');
+			var idCampoCondicao = getValorElementPorIdJQuery('condicao');
+			var idPesquisa = getValorElementPorIdJQuery('valorPesquisa');
+			
+			$(idPesquisa).keypress(permitNumber);
+			
+			$(idCampo + ' :nth-child(1)').prop('selected', true);
+			$(idCampoCondicao + ' :nth-child(1)').prop('selected', true);
+			$(idPesquisa).val('');
+			
+			addMascaraPesquisa($(idCampo).val()); 
+			
+			addFocoAoCampo('valorPesquisa');
+			
+			//chama o pesquisar ao dar enter na pesquisa
+			function executaPesquisaComEnter(event, button){
+				if (event.keyCode == 13){
+					event.preventDefault();    
+					addFocoAoCampo('buttonPesquisar');
+					
+					var buttonPesquisar = getValorElementPorIdJQuery('buttonPesquisar');
+					$(buttonPesquisar).click();
+				}
 			}
-		}
-		
-	</script>
+			
+		</script>
 
-	</composite:implementation>
+		</composite:implementation>
 		
 	</h:form>
 	
