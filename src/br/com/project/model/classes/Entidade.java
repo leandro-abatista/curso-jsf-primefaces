@@ -16,12 +16,15 @@ import javax.persistence.TemporalType;
 import org.hibernate.envers.Audited;
 import org.primefaces.json.JSONObject;
 
+import br.com.project.annotation.IdentificaCampoPesquisa;
+
 @Audited
 @Entity
 public class Entidade implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
+	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "ent_codigo", principal = 1)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long ent_codigo;
@@ -29,11 +32,13 @@ public class Entidade implements Serializable {
 	@Column(length = 50)
 	private String ent_login = null;
 	
-	@Column(length = 50)
+	@Column(length = 100)
 	private String ent_senha;
 	
 	private boolean ent_inativo = false;
 	
+	@IdentificaCampoPesquisa(descricaoCampo = "Nome Fantasia", campoConsulta = "ent_nomeFantasia", principal = 2)
+	@Column(length = 100)
 	private String ent_nomeFantasia;
 	
 	@Temporal(TemporalType.TIMESTAMP)//essa anotação carrega hora e data

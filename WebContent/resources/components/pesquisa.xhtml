@@ -67,7 +67,7 @@
 					<h:panelGrid id="panelGridPesquisa" columns="7">
 				
 						<h:outputLabel id="labelCampo" for="campo" value="Pesquisar por: " />
-						<p:selectOneMenu id="campo" style="width: 150px; height: 25px;" 
+						<p:selectOneMenu id="campo" style="width: 120px; height: 25px;" 
 							onchange="addMascaraPesquisa(this.value);" 
 							value="#{cc.attrs.managedBeanView.objetoCampoConsultaSelecionado}">
 							
@@ -83,7 +83,7 @@
 						</p:selectOneMenu>
 						
 						<h:outputLabel id="labelCondicao" for="condicao" value="Onde :" />
-						<p:selectOneMenu id="condicao" style="width: 150px; height: 25px;" 
+						<p:selectOneMenu id="condicao" style="width: 120px; height: 25px;" 
 							value="#{cc.attrs.managedBeanView.condicaoPesquisaSelecionado}">
 							<!--  
 							<f:selectItem itemLabel="Selecione" itemDisabled="true" noSelectionOption="true"/>
@@ -99,7 +99,7 @@
 						onblur="validarCampoPesquisa(event);"
 						maxlength="65"
 						onkeypress="executaPesquisaComEnter(event, this);" 
-						style="width: 40em;"
+						style="width: 30em;"
 						required="false"
 						requiredMessage="Informe o valor para pesquisa!"/>
 						
@@ -132,7 +132,6 @@
 				selectionMode="single"
 				widgetVar="tableResult" 
 				lazy="true" 
-				rowIndexVar="index"
 				paginator="true"
 				emptyMessage="Não existe registros para exibição.">
 					

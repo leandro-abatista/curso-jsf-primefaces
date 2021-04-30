@@ -180,7 +180,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 		sqlBuilder.append(" entity where ");
 		sqlBuilder.append("retira_acentos(upper(cast(entity.");
 		sqlBuilder.append(objetoCampoConsultaSelecionado.getCampoBanco());
-		sqlBuilder.append(" as character varying(150)))) ");
+		sqlBuilder.append(" as text))) ");
 		//sqlBuilder.append(" as text))) ");
 
 		if (condicaoPesquisaSelecionado.name().equals(CondicaoPesquisa.CONTEM.name())) {

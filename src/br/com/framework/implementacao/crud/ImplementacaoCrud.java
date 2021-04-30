@@ -340,7 +340,7 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 		validarSessionfactory();
 		StringBuilder query = new StringBuilder();
 
-		query.append("select entity from ")
+		query.append(" select entity from ")
 		     .append(entidade.getSimpleName())
 			 .append(" entity where entity.")
 			 .append(atributo)

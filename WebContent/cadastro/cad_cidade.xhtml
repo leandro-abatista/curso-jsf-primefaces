@@ -85,7 +85,7 @@
 		
 		<!-- tabela de cidades -->
 		<p:dataTable id="tableResult" value="#{cidadeBeanView.list.list}"  var="objeto" emptyMessage="Não existe valores para serem exibidos."
-			rendered="#{cidadeBeanView.list.list.length() > 0}" paginator="true" rows="5" >
+			rendered="#{cidadeBeanView.list.list.size() > 0}" paginator="true" rows="5" >
 		
 			<ui:include src="/resources/components/colunasDataTableCidade.xhtml" />
 		

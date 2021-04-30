@@ -130,12 +130,12 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 
 	@Override
 	protected InterfaceCrud<?> getController() {
-		return null;
+		return cidadeController;
 	}
 
 	@Override
 	public String condicaoAndParaPesquisa() throws Exception {
-		return " ";
+		return "";
 	}
 	
 }

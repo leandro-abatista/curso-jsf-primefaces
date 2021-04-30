@@ -35,14 +35,14 @@ body{
 }
 
 .imgPesquisa {
-	height: 10px;
-	width: 10px;
-	background-image: url("#{resource['images/pesquisar.png']}") !important;
+	height: 15px;
+	width: 15px;
+	background-image: url("#{resource['images/search.png']}") !important;
 }
 
 .imgAdiciona {
 	height: 15px;
-	width: 18px;
+	width: 15px;
 	background-image: url("#{resource['img/add_16.png']}") !important;
 }
 
