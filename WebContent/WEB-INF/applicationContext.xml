@@ -133,7 +133,7 @@
 	<bean id="utilFramework" class="br.com.framework.util.UtilFramework" scope="session"/>
 	
 	<!-- Controller genérico -->
-	<bean id="controller" name="controller" class="br.com.framework.controller.crud.Controller"/>
+	<bean id="controller" class="br.com.framework.controller.crud.Controller"/>
 	
 	<!-- Controllers | o id -> é o nome da interface -->
 	<bean id="sessionController" class="br.com.project.geral.controller.SessionControllerImpl" scope="singleton"/>
