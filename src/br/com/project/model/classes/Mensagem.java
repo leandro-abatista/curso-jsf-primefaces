@@ -174,6 +174,10 @@ public class Mensagem implements Serializable {
 		return "Mensagem [men_cod=" + men_cod + ", men_assunto=" + men_assunto + ", men_descricao=" + men_descricao	+ "]";
 	}
 
+	/**
+	 * Jason do primefaces
+	 * @return
+	 */
 	public JSONObject getJson() {
 		Map<Object, Object> map = new HashMap<Object, Object>();
 		map.put("men_cod", men_cod);
@@ -181,6 +185,6 @@ public class Mensagem implements Serializable {
 		map.put("men_assunto", men_assunto);
 		map.put("men_descricao", men_descricao);
 		
-		return new JSONObject();
+		return new JSONObject(map);
 	}
 }

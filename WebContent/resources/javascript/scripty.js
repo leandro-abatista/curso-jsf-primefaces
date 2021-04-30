@@ -618,21 +618,18 @@ function pesquisarUserDestinoPerderFoco(id) {
 	}
 }
 
-function pesquisarUserDestinoPerderFocoDialog(id) {
-	if (id.trim() != '') {
-	 statusDialog.show();
-	 $("#loginDestinoMsgDialog").val('');
-	 $.get("findUserDestino?codEntidade=" + id, function(resposta) {
-	        if (resposta != 'erro' && resposta.trim() != ''){
-	        	var entidadeObj = JSON.parse(resposta);
-	        	$("#usr_destinoMsgDialog").val(entidadeObj.ent_codigo);
-	        	$("#loginDestinoMsgDialog").val(validaDescricao(entidadeObj.ent_login));
-	        }
-	   })
-	   .always(function() { 
-		   statusDialog.hide();
-		});
-	}
+function pesquisarUserDestinoPerderFocoDialog(codUser) {
+	if (codUser.trim() != '') {
+		 $("#usuarioDestinoMsgDialog").val('');
+		 $("#loginDestinoMsgDialog").val('');
+		 $.get("buscarUsuarioDestinoMsg?codEntidade=" + codUser, function(resposta) {
+			 if (resposta.trim() != ''){
+		        	var entidade = JSON.parse(resposta);
+		        	$("#usuarioDestinoMsgDialog").val(entidade.ent_codigo);
+		        	$("#loginDestinoMsgDialog").val(entidade.ent_login);
+		        }
+		   });
+		}
 }
 
 

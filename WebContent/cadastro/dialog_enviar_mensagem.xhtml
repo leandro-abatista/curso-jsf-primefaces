@@ -39,7 +39,7 @@
 	 			
 	 			<h:column>
 	 				<p:row>
-	 					<h:outputLabel id="labelOrigemMsgDialog" for="usuarioOrigemMsgDialog" value="Origem: " />
+	 					<h:outputLabel id="labelOrigemMsgDialog" for="usuarioOrigemMsgDialog" value="Usuário de Origem: " />
 	 				</p:row>
 	 			</h:column>
 	 			
@@ -66,6 +66,38 @@
 	 				<p:row>
 	 					<p:message for="loginOrigemMsgDialog"/>
 	 				</p:row>
+	 			</h:column>
+	 			
+	 			<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+	 			
+	 			<h:column><!-- 1º coluna -->
+	 				<p:row>
+	 					<h:outputLabel id="labelDestinoMsgDialog" for="usuarioDestinoMsgDialog" value="Usuário de Destino: " />
+	 				</p:row>
+	 			</h:column>
+	 			
+	 			<h:column><!-- 2º coluna -->
+	 				<p:row>
+	 					<p:inputText id="usuarioDestinoMsgDialog"
+	 					immediate="false"
+	 					required="true"
+	 					requiredMessage="Informe o usuário de destino!"
+	 					value="#{mensagemBeanView.objetoSelecionado.usu_destino.ent_codigo}"
+	 					onblur="pesquisarUserDestinoPerderFocoDialog(this.value);"/>
+	 					
+	 					<p:spacer/>
+	 					
+	 					<p:inputText id="loginDestinoMsgDialog"
+	 					style="width: 30em;"
+	 					immediate="true"
+	 					required="true"
+	 					requiredMessage="Informe o usuário de destino!"
+	 					value="#{mensagemBeanView.objetoSelecionado.usu_destino.ent_login}"/>
+	 				</p:row>
+	 			</h:column>
+	 			
+	 			<h:column>
+	 			
 	 			</h:column>
 	 		
 	 		</h:panelGrid>

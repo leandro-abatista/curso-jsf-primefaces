@@ -2,6 +2,8 @@ package br.com.project.model.classes;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.envers.Audited;
+import org.primefaces.json.JSONObject;
 
 @Audited
 @Entity
@@ -107,6 +110,19 @@ public class Entidade implements Serializable {
 		} else if (!ent_codigo.equals(other.ent_codigo))
 			return false;
 		return true;
+	}
+	
+	/**
+	 * Jason do primefaces
+	 * @return
+	 */
+	public JSONObject getJson() {
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("ent_codigo", ent_codigo);
+		map.put("ent_login", ent_login);
+		map.put("ent_nomeFantasia", ent_nomeFantasia);
+		
+		return new JSONObject(map);
 	}
 	
 }
