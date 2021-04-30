@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.framework.interfaces.crud.InterfaceCrud;
 import br.com.project.geral.controller.EntidadeController;
+import br.com.project.geral.controller.MensagemController;
 import br.com.project.model.classes.Entidade;
 import br.com.project.model.classes.Mensagem;
 
@@ -30,12 +31,22 @@ public class MensagemBeanView extends BeanManagedViewAbstract {
 	@Autowired
 	private EntidadeController entidadeController;
 	
+	@Autowired
+	private MensagemController mensagemController;
+	
 	@Override
 	public String novo() throws Exception {
 		objetoSelecionado = new Mensagem();
 		//carrega o usuário logado e seta o usuário de origem no objeto selecionado
 		objetoSelecionado.setUsu_origem(contextBean.getEntidadeLogada());
 		return "";
+	}
+	
+	@Override
+	public void saveNotReturn() throws Exception {
+		mensagemController.merge(objetoSelecionado);
+		novo();
+		addMsg("Mensagem enviada com sucesso!");
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "**/buscarUsuarioDestinoMsg")

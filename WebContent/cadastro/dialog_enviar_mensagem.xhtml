@@ -212,7 +212,7 @@
 	 	
 	 	<div class="espacoBranco"/><!-- Espaço em branco -->
 	 	
-	 	<!-- botão salvar -->
+	 	<!-- botão novo -->
 		<p:commandButton id="buttonNovo" value="Novo" 
 		style="height: 40px; width: 100px; background: #1E90FF; border: 2px solid #C0C0C0; margin: 5px;" 
 		rendered="#{contextBean.possuiAcesso('MENSAGENS_ENVIAR_NOVO', 'ADMIN')}"
@@ -224,6 +224,28 @@
 			
 			<p:ajax listener="#{mensagemBeanView.novo}"/>
 			
+		</p:commandButton>
+		
+		<!-- botão Cancelar -->
+		<p:commandButton id="buttonCancelar" value="Cancelar" 
+		style="height: 40px; width: 100px; background: #FF4040; border: 2px solid #C0C0C0; margin: 5px;" 
+		ajax="true"
+		actionListener="#{mensagemBeanView.novo}"
+		immediate="false"
+		update="formCadastroMsgDialog, :formTemplate:msg"
+		onclick="enviarMsgDialog.hide();">
+		</p:commandButton>
+		
+		<!-- botão salvar/enviar -->
+		<p:commandButton id="buttonEnviar" value="Enviar" 
+		style="height: 40px; width: 100px; background: #00FF7F; border: 2px solid #C0C0C0; margin: 5px;" 
+		rendered="#{contextBean.possuiAcesso('MENSAGENS_ENVIAR_NOVO', 'ADMIN')}"
+		ajax="true"
+		actionListener="#{mensagemBeanView.saveNotReturn}"
+		process="@this, @form"
+		immediate="false"
+		update="formCadastroMsgDialog, :formTemplate:msg"
+		partialSubmit="true">
 		</p:commandButton>
 	 	
 	 </h:form>
