@@ -53,7 +53,7 @@
 	 					<p:spacer/>
 	 					
 	 					<p:inputText id="loginOrigemMsgDialog"
-	 					style="width: 30em;"
+	 					style="width: 20em;"
 	 					readonly="true"
 	 					immediate="true"
 	 					required="true"
@@ -86,10 +86,20 @@
 	 					value="#{mensagemBeanView.objetoSelecionado.usu_destino.ent_codigo}"
 	 					onblur="pesquisarUserDestinoPerderFocoDialog(this.value);"/>
 	 					
-	 					<p:spacer/>
+	 					<!-- Botão de pesquisa usuário -->
+	 					<p:commandButton id="buttonPesquisarDestinoDialog"
+	 					icon="imgPesquisa" 
+	 					style="height: 30px; width: 50px; border: 2px solid #C0C0C0; border-radius: 5px;"
+	 					ajax="true" 
+	 					immediate="true" 
+	 					oncomplete="PF('pesquisarUsuarioMsgDialog').show();">
+	 					
+	 					</p:commandButton>
+	 					<p:tooltip for="buttonPesquisarDestinoDialog" value="Pesquisar usuário" position="bottom" />
+	 					<!-- ============================================================================================== -->
 	 					
 	 					<p:inputText id="loginDestinoMsgDialog"
-	 					style="width: 30em;"
+	 					style="width: 20em;"
 	 					immediate="true"
 	 					required="true"
 	 					requiredMessage="Informe o usuário de destino!"
@@ -162,7 +172,7 @@
 	 			<p:column>
 	 				<p:row>
 	 					<p:inputText id="mensagemAssuntoMsgDialog"
-	 					style="width: 45em;"
+	 					style="width: 40em;"
 	 					immediate="true"
 	 					required="true"
 	 					requiredMessage="Informe o assunto!"
@@ -188,7 +198,7 @@
 	 			<p:column>
 	 				<p:row>
 	 					<p:inputTextarea id="mensagemMsgDialog"
-	 					style="heigth: 110px; width: 45em;"
+	 					style="heigth: 110px; width: 40em;"
 	 					autoResize="true"
 	 					immediate="false"
 	 					required="true"
@@ -238,7 +248,7 @@
 		
 		<!-- botão salvar/enviar -->
 		<p:commandButton id="buttonEnviar" value="Enviar" 
-		style="height: 40px; width: 100px; background: #00FF7F; border: 2px solid #C0C0C0; margin: 5px;" 
+		style="height: 40px; width: 100px; background: #00CD66; border: 2px solid #C0C0C0; margin: 5px;" 
 		rendered="#{contextBean.possuiAcesso('MENSAGENS_ENVIAR_NOVO', 'ADMIN')}"
 		ajax="true"
 		actionListener="#{mensagemBeanView.saveNotReturn}"
@@ -247,6 +257,16 @@
 		update="formCadastroMsgDialog, :formTemplate:msg"
 		partialSubmit="true">
 		</p:commandButton>
+		
+		<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+		
+		<!-- Abre uma janela para consultar usuário -->
+			<p:dialog widgetVar="pesquisarUsuarioMsgDialog" id="pesquisarUsuarioMsgDialog" width="700" draggable="false" responsive="true"
+				modal="false" resizable="false" height="360" header="Enviar mensagem" appendToBody="false" dynamic="true" closable="true">
+				
+				teste
+				
+			</p:dialog>
 	 	
 	 </h:form>
 	
