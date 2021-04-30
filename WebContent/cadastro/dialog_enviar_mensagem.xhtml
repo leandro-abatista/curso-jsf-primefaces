@@ -203,10 +203,28 @@
 	 					<p:message for="mensagemMsgDialog"/>
 	 				</p:row>
 	 			</p:column>
+	 			
+	 			<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 	 		
 	 		</h:panelGrid>
 	 	
 	 	</p:panel>
+	 	
+	 	<div class="espacoBranco"/><!-- Espaço em branco -->
+	 	
+	 	<!-- botão salvar -->
+		<p:commandButton id="buttonNovo" value="Novo" 
+		style="height: 40px; width: 100px; background: #1E90FF; border: 2px solid #C0C0C0; margin: 5px;" 
+		rendered="#{contextBean.possuiAcesso('MENSAGENS_ENVIAR_NOVO', 'ADMIN')}"
+		ajax="true"
+		actionListener="#{mensagemBeanView.novo}"
+		process="@this, @form"
+		immediate="false"
+		update="formCadastroMsgDialog, :formTemplate:msg">
+			
+			<p:ajax listener="#{mensagemBeanView.novo}"/>
+			
+		</p:commandButton>
 	 	
 	 </h:form>
 	
