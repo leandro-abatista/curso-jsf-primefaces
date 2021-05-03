@@ -26,6 +26,8 @@
 			
 			<composite:attribute name="funcaoJavaScript" required="false"/>
 			
+			<composite:attribute name="exibirBotaoAdd" required="true" default="false"/>
+			
 		</composite:interface>
 		
 		<composite:implementation>
@@ -137,7 +139,7 @@
 					
 					<ui:include src="#{cc.attrs.colunasGridDataTableList}" />
 				
-					<p:column id="colunaSelecionar" styleClass="colunaSelecionarAdd">
+					<p:column id="colunaSelecionar" styleClass="colunaSelecionarAdd" rendered="#{cc.attrs.exibirBotaoAdd}">
 						<center>
 							<f:facet name="header">Selecionar</f:facet>
 							<p:commandLink id="addPesquisa"
