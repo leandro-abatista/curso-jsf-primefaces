@@ -9,96 +9,112 @@
 	xmlns:util="http://java.sun.com/jsf/composite/comonents">
 
 
-	<p:column styleClass="colunaTabela colunaCodigotabela">
-				<f:facet name="header">Código</f:facet>
-				<h:outputText value="#{objeto.cid_codigo}" />
-			</p:column>
-			
-			<p:column styleClass="colunaTabela">
-				<f:facet name="header">Nome da Cidade</f:facet>
-				<h:outputText value="#{objeto.cid_descricao}" />
-			</p:column>
-			
-			<p:column styleClass="colunaTabela">
-				<f:facet name="header">Estado</f:facet>
-				<h:outputText value="#{objeto.estado.est_nome}" />
-			</p:column>
-			
-			<sec:ifAnyGranted roles="CIDADE_EDITAR, ADMIN">
-			
-			<!-- Colunas para editar e excluir -->
-			<p:column styleClass="colunaExcluirEditar">
-			
-				<center>
+<p:column styleClass="colunaTabela colunaCodigotabela">
+	<f:facet name="header">Código</f:facet>
+	<h:outputText value="#{objeto.cid_codigo}" />
+</p:column>
+
+<p:column styleClass="colunaTabela">
+	<f:facet name="header">Nome da Cidade</f:facet>
+	<h:outputText value="#{objeto.cid_descricao}" />
+</p:column>
+
+<p:column styleClass="colunaTabela">
+	<f:facet name="header">Estado</f:facet>
+	<h:outputText value="#{objeto.estado.est_nome}" />
+</p:column>
+
+<sec:ifAnyGranted roles="CIDADE_EDITAR, ADMIN">
+
+	<!-- Colunas para editar e excluir -->
+	<p:column styleClass="colunaExcluirEditar">
+
+		<center>
+
+			<f:facet name="header">Atualizar</f:facet>
+			<p:commandLink id="editarCidade" 
+			action="#{cidadeBeanView.editar}"
+			ajax="false" 
+			immediate="true" 
+			update="@form"
+			oncomplete="addFocoAoCampo('cidadeNome');">
 				
-				<f:facet name="header">Atualizar</f:facet>
-				<p:commandLink id="editarCidade" action="#{cidadeBeanView.editar}" ajax="false" immediate="true" 
-					update="@form" oncomplete="addFocoAoCampo('cidadeNome');">
-					<h:graphicImage library="images" name="editar.png" height="25" width="25"/>
-					<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}" />
-				</p:commandLink>
-				<p:tooltip for="editarCidade" value="Editar Registro" position="top"/>
-				
-				</center>
-				
-			</p:column>
-			
-			</sec:ifAnyGranted>
-			
-			<sec:ifAnyGranted roles="CIDADE_EXCLUIR, ADMIN">
-			
-			<p:column styleClass="colunaExcluirEditar">
-				<!-- html puro para centralizar os dados da coluna -->
-				<center>
-				
-				<f:facet name="header">Excluir</f:facet>
-				
-				<!-- fazendo uma verificação com jsp -->
-				<c:choose>
-				
-				<c:when test="${isCadastro == false}"><!-- se não for cadastro -->
-				
-				<p:commandLink id="excluirCidade" action="#{cidadeBeanView.excluir}" ajax="true" immediate="true"
-					update="tableResult">
+				<h:graphicImage library="images" name="editar.png" height="25"
+					width="25" />
 					
-					<!-- colocando uma imagem com jsf -->
-					<h:graphicImage library="images" name="excluir.png" height="25" width="25"/>
-					
-					<p:confirm header="Atenção" message="Deseja excluir o registro selecionado?" />
-					
-					<!-- value -> objeto que estar na tela -->
-					<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}" />
-						
-				</p:commandLink>
-				
+				<f:setPropertyActionListener value="#{objeto}"
+					target="#{cidadeBeanView.objetoSelecionado}" />
+			</p:commandLink>
+			<p:tooltip for="editarCidade" value="Editar Registro" position="top" />
+
+		</center>
+
+	</p:column>
+
+</sec:ifAnyGranted>
+
+<sec:ifAnyGranted roles="CIDADE_EXCLUIR, ADMIN">
+
+	<p:column styleClass="colunaExcluirEditar">
+		<!-- html puro para centralizar os dados da coluna -->
+		<center>
+
+			<f:facet name="header">Excluir</f:facet>
+
+			<!-- fazendo uma verificação com jsp -->
+			<c:choose>
+
+				<c:when test="${isCadastro == false}">
+					<!-- se não for cadastro -->
+
+					<p:commandLink id="excluirCidade"
+						action="#{cidadeBeanView.excluir}" 
+						ajax="true" 
+						immediate="true"
+						update="tableResult">
+
+						<!-- colocando uma imagem com jsf -->
+						<h:graphicImage library="images" name="excluir.png" height="25"
+							width="25" />
+
+						<p:confirm header="Atenção" message="Deseja excluir o registro selecionado?" />
+
+						<!-- value -> objeto que estar na tela -->
+						<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}" />
+
+					</p:commandLink>
+
 				</c:when>
-				
+
 				<c:otherwise>
-				
-					<p:commandLink id="excluirCidade" action="#{cidadeBeanView.excluir}" ajax="false" immediate="true"
-					update="tableResult">
-					
-					<!-- colocando uma imagem com jsf -->
-					<h:graphicImage library="images" name="excluir.png" height="25" width="25"/>
-					
-					<p:confirm header="Atenção" message="Deseja excluir o registro selecionado?" />
-					
-					<!-- value -> objeto que estar na tela -->
-					<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}" />
-						
-				</p:commandLink>
-				
+
+					<p:commandLink id="excluirCidade"
+						action="#{cidadeBeanView.excluir}" 
+						ajax="false" 
+						immediate="true"
+						update="tableResult">
+
+						<!-- colocando uma imagem com jsf -->
+						<h:graphicImage library="images" name="excluir.png" height="25"
+							width="25" />
+
+						<p:confirm header="Atenção" message="Deseja excluir o registro selecionado?" />
+
+						<!-- value -> objeto que estar na tela -->
+						<f:setPropertyActionListener value="#{objeto}" target="#{cidadeBeanView.objetoSelecionado}" />
+
+					</p:commandLink>
+
 				</c:otherwise>
-				
-				</c:choose>
-				<p:tooltip for="excluirCidade" value="Excluir Registro" position="top"/>
-				
-				</center>
-				
-			</p:column>
-			
-			</sec:ifAnyGranted>
 
+			</c:choose>
+			<p:tooltip for="excluirCidade" value="Excluir Registro" position="top" />
 
+		</center>
+
+	</p:column>
+	
+
+</sec:ifAnyGranted>
 
 </html>

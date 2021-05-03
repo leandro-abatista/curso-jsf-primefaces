@@ -124,12 +124,10 @@
 				<!-- tabela de cadastro de cidade -->
 				<p:dataTable id="tableResult" 
 				rendered="true" 
-				value="#{cc.attrs.managedBeanView.list.list}" 
+				value="#{cc.attrs.managedBeanView.list}" 
 				var="objeto" 
 				rows="8" 
-				rowKey="#{objeto}"
 				selection="#{cc.attrs.managedBeanView.objetoSelecionado}"
-				selectionMode="single"
 				widgetVar="tableResult" 
 				lazy="true" 
 				paginator="true"

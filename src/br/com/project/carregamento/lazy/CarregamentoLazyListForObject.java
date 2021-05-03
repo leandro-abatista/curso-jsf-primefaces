@@ -86,8 +86,9 @@ public class CarregamentoLazyListForObject<T> extends LazyDataModel<T> {
 		this.list.addAll(collections);
 	}
 	
+	@Override
 	public Object getRowKey(T object) {
-		return object;
+		return super.getRowKey(object);
 	}
-
+	
 }
