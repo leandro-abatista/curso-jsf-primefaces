@@ -70,8 +70,16 @@ a:focus {
 	text-align: center;
 }
 
+.colunaSelecionarAdd{
+	width: 80px;
+}
+
 .colunaExcluirEditar{
 	width: 70px;
+}
+
+.colunaNomeestado{
+	width: 220px;
 }
 
 #imasetabaixo{

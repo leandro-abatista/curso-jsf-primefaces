@@ -44,6 +44,10 @@ public class Entidade implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)//essa anotação carrega hora e data
 	private Date ent_ultimoAcesso;
 	
+	
+	private String tipoEntidade = "";
+	
+	/*===================================Getters e Setters====================================================================================*/
 	public Long getEnt_codigo() {
 		return ent_codigo;
 	}
@@ -90,6 +94,14 @@ public class Entidade implements Serializable {
 
 	public void setEnt_nomeFantasia(String ent_nomeFantasia) {
 		this.ent_nomeFantasia = ent_nomeFantasia;
+	}
+	
+	public String getTipoEntidade() {
+		return tipoEntidade;
+	}
+	
+	public void setTipoEntidade(String tipoEntidade) {
+		this.tipoEntidade = tipoEntidade;
 	}
 
 	@Override
