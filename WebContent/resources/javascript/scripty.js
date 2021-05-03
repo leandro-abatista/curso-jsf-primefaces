@@ -619,7 +619,7 @@ function pesquisarUserDestinoPerderFoco(id) {
 }
 
 function pesquisarUserDestinoPerderFocoDialog(codUser) {
-	if (codUser.trim() != '') {
+	if (codUser != '') {
 		 $("#usuarioDestinoMsgDialog").val('');
 		 $("#loginDestinoMsgDialog").val('');
 		 $.get("buscarUsuarioDestinoMsg?codEntidade=" + codUser, function(resposta) {

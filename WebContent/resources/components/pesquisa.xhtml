@@ -24,6 +24,8 @@
 			
 			<composite:attribute name="colunasGridDataTableList" required="true"/>
 			
+			<composite:attribute name="funcaoJavaScript" required="false"/>
+			
 		</composite:interface>
 		
 		<composite:implementation>
@@ -135,6 +137,21 @@
 					
 					<ui:include src="#{cc.attrs.colunasGridDataTableList}" />
 				
+					<p:column id="colunaSelecionar" styleClass="colunaExcluirEditar">
+						<center>
+							<f:facet name="header">Selecionar</f:facet>
+							<p:commandLink id="addPesquisa"
+							immediate="true"
+							partialSubmit="true"
+							ajax="true"
+							process="@this, colunaSelecionar"
+							onclick="#{cc.attrs.funcaoJavaScript}">
+							
+								<h:graphicImage library="images" name="add.png" height="20" width="20"/>
+							
+							</p:commandLink>
+						</center>
+					</p:column>
 				
 				</p:dataTable>
 		

@@ -35,9 +35,9 @@ body{
 }
 
 .imgPesquisa {
-	height: 15px;
-	width: 15px;
-	background-image: url("#{resource['images/search.png']}") !important;
+	height: 14px;/*vertical*/
+	width: 16px;/*horizontal*/
+	background-image: url("#{resource['images/pesquisa.png']}") !important;
 }
 
 .imgAdiciona {

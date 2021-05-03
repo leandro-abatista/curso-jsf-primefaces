@@ -89,7 +89,7 @@
 	 					<!-- Botão de pesquisa usuário -->
 	 					<p:commandButton id="buttonPesquisarDestinoDialog"
 	 					icon="imgPesquisa"
-	 					style="height: 30px; width: 50px; border: 2px solid #C0C0C0; border-radius: 5px;"
+	 					style="height: 30px; width: 30px; border: 2px solid #C0C0C0; border-radius: 5px;"
 	 					ajax="true" 
 	 					immediate="true" 
 	 					oncomplete="PF('pesquisarUsuarioMsgDialog').show();">
@@ -262,13 +262,14 @@
 		
 		<!-- Abre uma janela para consultar usuário -->
 			<p:dialog widgetVar="pesquisarUsuarioMsgDialog" id="pesquisarUsuarioMsgDialog" width="1000" draggable="false" responsive="true"
-				modal="false" resizable="false" height="360" header="Enviar mensagem" appendToBody="false" dynamic="true" closable="true">
+				modal="false" resizable="false" height="360" appendToBody="false" dynamic="true" closable="true" header="Tela de consulta">
 				
 				<util:pesquisa 
 				ocultaNovo="false" 
 				colunasGridDataTableList="/resources/components/colunasDataTableFuncionario.xhtml" 
 				nomePesquisa="Pesquisar usuário" 
-				managedBeanView="#{funcionarioBeanView}">
+				managedBeanView="#{funcionarioBeanView}"
+				funcaoJavaScript="pesquisarUserDestinoPerderFocoDialog(#{objeto.ent_codigo}), PF('pesquisarUsuarioMsgDialog').hide()">
 				
 				</util:pesquisa>
 				
