@@ -26,26 +26,80 @@
 				<p:panel id="panelCadastro">
 				
 					<h:panelGrid id="gridCidade" columns="3">
-					
-						<h:outputLabel for="id" value="Código: " id="labelId" />
-						<p:inputText id="id" styleClass="estiloIdCadastro" disabled="true" value="#{cidadeBeanView.objetoSelecionado.cid_codigo}"/>
-						<h:outputLabel />
+
+						<p:column>
+							<p:row>
+								<h:outputLabel for="id" value="Código: " id="labelId" />
+							</p:row>
+						</p:column>
+
+						<p:column>
+							<p:row>
+								<p:inputText id="id" styleClass="estiloIdCadastro"
+									disabled="true"
+									value="#{cidadeBeanView.objetoSelecionado.cid_codigo}" />
+							</p:row>
+						</p:column>
+
+						<p:column>
+							<p:row>
+								<h:outputLabel />
+							</p:row>
+						</p:column>
 						
-						<h:outputLabel for="cidadeNome" value="Nome * :" id="labelNomeConsultaCidade"/>
-						<p:inputText id="cidadeNome" styleClass="estiloInputNome" value="#{cidadeBeanView.objetoSelecionado.cid_descricao}"
-						required="true" maxlength="70" requiredMessage="Informe o nome da cidade!" size="50"/>
-						<p:message for="cidadeNome"/>
+						<!-- ========================================================================================== -->
+
+						<p:column>
+							<p:row>
+								<h:outputLabel for="cidadeNome" value="Nome * :"
+									id="labelNomeConsultaCidade" />
+							</p:row>
+						</p:column>
+
+						<p:column>
+							<p:row>
+								<p:inputText id="cidadeNome" styleClass="estiloInputNome"
+									value="#{cidadeBeanView.objetoSelecionado.cid_descricao}"
+									required="true" maxlength="70"
+									requiredMessage="Informe o nome da cidade!" size="50" />
+							</p:row>
+						</p:column>
+
+						<p:column>
+							<p:row>
+								<p:message for="cidadeNome" />
+							</p:row>
+						</p:column>
 						
-						<h:outputLabel id="labelEstado" for="estado" value="Estado * :" />
-						<p:selectOneMenu id="estado" required="true" requiredMessage="Informe o estado!" 
-							style="width: 200px; height: 25px;"
-							value="#{cidadeBeanView.objetoSelecionado.estado}">
-							
-							<f:selectItem itemLabel="Selecione um estado" itemValue="" />
-							<f:selectItems value="#{estadoBeanView.estados}"/>
-						</p:selectOneMenu>
-						<p:message for="estado"/>
+						<!-- ========================================================================================== -->
+
+						<p:column>
+							<p:row>
+								<h:outputLabel id="labelEstado" for="estado" value="Estado * :" />
+							</p:row>
+						</p:column>
+
+						<p:column>
+							<p:row>
+								<p:selectOneMenu id="estado" required="true"
+									requiredMessage="Informe o estado!"
+									style="width: 200px; height: 25px;"
+									value="#{cidadeBeanView.objetoSelecionado.estado}">
+
+									<f:selectItem itemLabel="Selecione um estado" itemValue="" />
+									<f:selectItems value="#{estadoBeanView.estados}" />
+								</p:selectOneMenu>
+							</p:row>
+						</p:column>
+
+						<p:column>
+							<p:row>
+								<p:message for="estado" />
+							</p:row>
+						</p:column>
 						
+						<!-- ========================================================================================== -->
+
 					</h:panelGrid>
 				
 				</p:panel>
