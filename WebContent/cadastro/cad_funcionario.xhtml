@@ -181,6 +181,20 @@
 					</h:panelGrid>
 				
 				</p:panel>
+				
+				<div class="espacoBranco"/><!-- Espaço em branco -->
+				
+				<!-- chamando os botões genéricos -->
+				<util:botoesCrud managedBeanView="#{funcionarioBeanView}"
+				camposReload=":formTemplate:msg"
+				botaoNovo="#{contextBean.possuiAcesso('FUNCIONARIO_NOVO', 'ADMIN')}"
+				botaoSalvar="#{contextBean.possuiAcesso('FUNCIONARIO_NOVO', 'ADMIN') 
+				and funcionarioBeanView.objetoSelecionado.ent_codigo == null}"
+				botaoAtualizar="#{contextBean.possuiAcesso('FUNCIONARIO_EDITAR', 'ADMIN') 
+				and funcionarioBeanView.objetoSelecionado.ent_codigo != null}"
+				botaoExcluir="#{contextBean.possuiAcesso('ACESSO_EXCLUIR', 'ADMIN')}">
+				
+				</util:botoesCrud>
 			
 			</p:fieldset>
 		

@@ -40,6 +40,16 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 	}
 	
 	@Override
+	public void saveNotReturn() throws Exception {
+		System.out.println("chamou salvar");
+	}
+	
+	@Override
+	public void saveEdit() throws Exception {
+		System.out.println("chamou edite");
+	}
+	
+	@Override
 	public void setarVariaveisNulas() throws Exception {
 		list.clean();
 		objetoSelecionado = new Entidade();
