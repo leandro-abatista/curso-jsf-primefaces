@@ -68,8 +68,6 @@
 				
 				</util:botoesCrud>
 				
-				
-			
 			</p:fieldset>
 					
 		</h:form>
@@ -90,25 +88,11 @@
 		emptyMessage="Não existe valores para serem exibidos."
 		rendered="#{cidadeBeanView.list.list.size() > 0}" 
 		paginator="true" 
-		rows="5" 
-		>
+		rows="5" >
 		
 			<ui:include src="/resources/components/colunasDataTableCidade.xhtml" />
 		
 		</p:dataTable>
-
-		<!-- Janela de confirmação -->
-		<p:confirmDialog global="true" closable="false">
-
-			<p:commandButton value="Sim" type="button"
-			style="height: 30px; width: 100px; background: #00CD66; border: 2px solid #C0C0C0; margin: 5px;"
-				styleClass="ui-confirmdialog-yes" ícone="ui-icon-check" />
-
-			<p:commandButton value="Não" type="button"
-			style="height: 30px; width: 100px; background: #CD3333; border: 2px solid #C0C0C0; margin: 5px;"
-				styleClass="ui-confirmdialog-no" ícone="ui-icon-times" />
-
-		</p:confirmDialog>
 
 	</ui:define>
 	

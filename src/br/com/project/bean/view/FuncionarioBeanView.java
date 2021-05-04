@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import br.com.framework.interfaces.crud.InterfaceCrud;
 import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
 import br.com.project.geral.controller.EntidadeController;
+import br.com.project.model.classes.Cidade;
 import br.com.project.model.classes.Entidade;
 
 @Controller
@@ -24,10 +25,22 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 	private ContextBean contextBean;
 	
 	private CarregamentoLazyListForObject<Entidade> list = new CarregamentoLazyListForObject<Entidade>();
+	
+	private String urlFind = "/cadastro/find_funcionario.jsf?faces-redirect=true";
 
 	@Autowired
 	private EntidadeController entidadeController;
-
+	
+	@Override
+	public void excluir() throws Exception {
+		if (objetoSelecionado.getEnt_codigo() != null && objetoSelecionado.getEnt_codigo() > 0) {
+			entidadeController.delete(objetoSelecionado);
+			list.remove(objetoSelecionado);
+			objetoSelecionado = new Entidade();
+			sucesso();
+		}
+	}
+	
 	@Override
 	protected Class<?> getClassImplement() {
 		return Entidade.class;
@@ -48,6 +61,11 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 		objetoSelecionado = new Entidade();
 		list.clean();
 		list.setTotalRegistroConsulta(super.totalRegistroConsulta(), super.getSqlLazyQuery());
+	}
+	
+	@Override
+	public String redirecionarFindEntidade() throws Exception {
+		return urlFind;
 	}
 
 	public Entidade getObjetoSelecionado() {

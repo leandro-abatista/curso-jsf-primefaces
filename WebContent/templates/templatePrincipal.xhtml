@@ -154,24 +154,42 @@
 						<p:menuitem id="menuinicio" value="Início" ajax="true" 
 						onclick="redirecionarPagina('#{request.contextPath}', '/restrito/principal');"/>
 						<!-- Outra maneira de redirecionar direto -> onclick="/restrito/principal.jsf" -->
+						
+						<!-- =============================================================================================================== -->
 					
 						<sec:ifAnyGranted roles="CADASTRO_ACESSAR, ADMIN">
 							
 							<p:submenu label="Cadastros" id="subMenuCadastro">
-							
+
 								<sec:ifAnyGranted roles="CIDADE_ACESSAR, ADMIN">
 									<!-- ?faces-redirect=true -> esse trecho força o redirecionamento para a página de cadastro indicada -->
-									<p:menuitem value="Cidade" id="menuCidade" action="#{cidadeBeanView.redirecionarFindEntidade}" 
-									immediate="true" style="background: #5F9EA0;">
-									
+									<p:menuitem value="Cidade" id="menuCidade"
+										action="#{cidadeBeanView.redirecionarFindEntidade}"
+										immediate="true" style="background: #5F9EA0;">
+
 									</p:menuitem>
-								<!-- /cadastro/pesquisar_cidade.jsf?faces-redirect=true -->
+									<!-- /cadastro/pesquisar_cidade.jsf?faces-redirect=true -->
 								</sec:ifAnyGranted>
 								
+								<!-- =============================================================================================================== -->
+
+								<sec:ifAnyGranted roles="FUNCIONARIO_ACESSAR, ADMIN">
+
+									<p:menuitem value="Funcionário" id="menuFuncinario"
+										action="#{funcionarioBeanView.redirecionarFindEntidade}"
+										immediate="true" style="background: #5F9EA0;">
+
+									</p:menuitem>
+									<!-- /cadastro/pesquisar_cidade.jsf?faces-redirect=true -->
+								</sec:ifAnyGranted>
+								
+								<!-- =============================================================================================================== -->
+
 							</p:submenu>
 							
 						</sec:ifAnyGranted>
-					
+						
+						<!-- =============================================================================================================== -->
 						
 						<p:menuitem id="menusair" value="Sair" ajax="true" 
 						onclick="javascript:logout('#{request.contextPath}')"/>

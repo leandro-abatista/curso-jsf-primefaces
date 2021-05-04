@@ -3,16 +3,25 @@ package br.com.project.model.classes;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
+import javax.persistence.Version;
 
+import org.hibernate.annotations.CollectionOfElements;
 import org.hibernate.envers.Audited;
 import org.primefaces.json.JSONObject;
 
@@ -44,8 +53,19 @@ public class Entidade implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)//essa anotação carrega hora e data
 	private Date ent_ultimoAcesso;
 	
-	
+	@Column(length = 50)
 	private String tipoEntidade = "";
+	
+	@CollectionOfElements
+	@ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
+	@JoinTable(name = "entidadeacesso", uniqueConstraints = {@UniqueConstraint(name = "unique_acesso_entidade_key", 
+	columnNames = {"codigo_entidade", "entidade_acesso"})}, joinColumns = {@JoinColumn(name = "codigo_entidade")})
+	@Column(name = "entidade_acesso", length = 50)
+	private Set<String> acessos = new HashSet<String>();
+	
+	@Version // verificar se o objeto utilizado na transição foi atualizado desde a ultima vez em que ele foi requisitado
+	@Column(name = "versionNumero")
+	private Integer versionNumero;
 	
 	/*===================================Getters e Setters====================================================================================*/
 	public Long getEnt_codigo() {
@@ -102,6 +122,22 @@ public class Entidade implements Serializable {
 	
 	public void setTipoEntidade(String tipoEntidade) {
 		this.tipoEntidade = tipoEntidade;
+	}
+	
+	public Set<String> getAcessos() {
+		return acessos;
+	}
+
+	public void setAcessos(Set<String> acessos) {
+		this.acessos = acessos;
+	}
+	
+	public Integer getVersionNumero() {
+		return versionNumero;
+	}
+
+	public void setVersionNumero(Integer versionNumero) {
+		this.versionNumero = versionNumero;
 	}
 
 	@Override

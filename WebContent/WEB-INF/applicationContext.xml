@@ -144,4 +144,5 @@
 	
 	<!-- Services | o id -> é o nome da interface -->
 	<bean id="serviceLogin" class="br.com.srv.implementacao.ServiceLoginImpl"/>
+	
 </beans>

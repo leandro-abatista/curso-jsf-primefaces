@@ -80,8 +80,6 @@
 								itemLabel="#{campoPesquisaSelecionado.descricao}"
 								itemValue="#{campoPesquisaSelecionado.tipoClass}">
 								
-								
-								
 							</f:selectItems>
 						
 						</p:selectOneMenu>
@@ -97,7 +95,8 @@
 							</f:selectItems>
 						</p:selectOneMenu>
 						
-						<p:inputText id="valorPesquisa" immediate="false" 
+						<p:inputText id="valorPesquisa" 
+						immediate="false" 
 						value="#{cc.attrs.managedBeanView.valorPesquisa}"
 						styleClass="valorPesquisa"
 						onblur="validarCampoPesquisa(event);"
