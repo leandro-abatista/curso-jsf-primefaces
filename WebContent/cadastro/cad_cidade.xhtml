@@ -19,7 +19,7 @@
 			
 			<c:set var="isCadastro" value="true" scope="view"/>
 			
-			<p:fieldset legend="Cadastro de cidades">
+			<p:fieldset legend="Cadastro de cidade">
 			
 				<div class="espacoBranco"/><!-- Espaço em branco -->
 			
@@ -33,11 +33,11 @@
 						
 						<h:outputLabel for="cidadeNome" value="Nome * :" id="labelNomeConsultaCidade"/>
 						<p:inputText id="cidadeNome" styleClass="estiloInputNome" value="#{cidadeBeanView.objetoSelecionado.cid_descricao}"
-						required="true" maxlength="70" requiredMessage="Informe o nome da cidade" size="50"/>
+						required="true" maxlength="70" requiredMessage="Informe o nome da cidade!" size="50"/>
 						<p:message for="cidadeNome"/>
 						
 						<h:outputLabel id="labelEstado" for="estado" value="Estado * :" />
-						<p:selectOneMenu id="estado" required="true" requiredMessage="Informe o estado" 
+						<p:selectOneMenu id="estado" required="true" requiredMessage="Informe o estado!" 
 							style="width: 200px; height: 25px;"
 							value="#{cidadeBeanView.objetoSelecionado.estado}">
 							

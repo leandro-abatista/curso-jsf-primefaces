@@ -58,10 +58,15 @@ public class Entidade implements Serializable {
 	
 	@CollectionOfElements
 	@ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
-	@JoinTable(name = "entidadeacesso", uniqueConstraints = {@UniqueConstraint(name = "unique_acesso_entidade_key", 
-	columnNames = {"codigo_entidade", "entidade_acesso"})}, joinColumns = {@JoinColumn(name = "codigo_entidade")})
+	@JoinTable(name = "entidadeacesso", 
+			   uniqueConstraints = {@UniqueConstraint(name = "unique_acesso_entidade_key", 
+			   columnNames = {"codigo_entidade", "entidade_acesso"})}, 
+			   joinColumns = {@JoinColumn(name = "codigo_entidade")})
 	@Column(name = "entidade_acesso", length = 50)
 	private Set<String> acessos = new HashSet<String>();
+	
+	@Column(length = 150)
+	private String ent_email;
 	
 	@Version // verificar se o objeto utilizado na transição foi atualizado desde a ultima vez em que ele foi requisitado
 	@Column(name = "versionNumero")
@@ -138,6 +143,14 @@ public class Entidade implements Serializable {
 
 	public void setVersionNumero(Integer versionNumero) {
 		this.versionNumero = versionNumero;
+	}
+	
+	public String getEnt_email() {
+		return ent_email;
+	}
+
+	public void setEnt_email(String ent_email) {
+		this.ent_email = ent_email;
 	}
 
 	@Override

@@ -27,9 +27,23 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 	private CarregamentoLazyListForObject<Entidade> list = new CarregamentoLazyListForObject<Entidade>();
 	
 	private String urlFind = "/cadastro/find_funcionario.jsf?faces-redirect=true";
+	
+	private String url = "/cadastro/cad_funcionario.jsf?faces-redirect=true";
 
 	@Autowired
 	private EntidadeController entidadeController;
+	
+	@Override
+	public String novo() throws Exception {
+		setarVariaveisNulas();
+		return url;
+	}
+	
+	@Override
+	public void setarVariaveisNulas() throws Exception {
+		list.clean();
+		objetoSelecionado = new Entidade();
+	}
 	
 	@Override
 	public void excluir() throws Exception {
