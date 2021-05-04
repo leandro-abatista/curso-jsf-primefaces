@@ -16,6 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
@@ -29,13 +31,15 @@ import br.com.project.annotation.IdentificaCampoPesquisa;
 
 @Audited
 @Entity
+@Table(name = "entidade")
+@SequenceGenerator(name = "entidade_seq", sequenceName = "entidade_seq", initialValue = 1, allocationSize = 1)
 public class Entidade implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
 	@IdentificaCampoPesquisa(descricaoCampo = "Código", campoConsulta = "ent_codigo", principal = 1)
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "entidade_seq")
 	private Long ent_codigo;
 
 	@Column(length = 50)
@@ -60,9 +64,9 @@ public class Entidade implements Serializable {
 	@ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
 	@JoinTable(name = "entidadeacesso", 
 			   uniqueConstraints = {@UniqueConstraint(name = "unique_acesso_entidade_key", 
-			   columnNames = {"codigo_entidade", "entidade_acesso"})}, 
-			   joinColumns = {@JoinColumn(name = "codigo_entidade")})
-	@Column(name = "entidade_acesso", length = 50)
+			   columnNames = {"ent_codigo", "esa_codigo"})}, 
+			   joinColumns = {@JoinColumn(name = "ent_codigo")})
+	@Column(name = "esa_codigo", length = 50)
 	private Set<String> acessos = new HashSet<String>();
 	
 	@Column(length = 150)

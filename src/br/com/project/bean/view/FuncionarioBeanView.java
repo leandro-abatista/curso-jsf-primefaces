@@ -41,12 +41,18 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void saveNotReturn() throws Exception {
-		System.out.println("chamou salvar");
+		entidadeController.merge(objetoSelecionado);
+		sucesso();
 	}
 	
 	@Override
 	public void saveEdit() throws Exception {
 		System.out.println("chamou edite");
+	}
+	
+	@Override
+	public String editar() throws Exception {
+		return url;
 	}
 	
 	@Override

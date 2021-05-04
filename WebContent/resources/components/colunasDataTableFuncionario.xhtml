@@ -23,6 +23,29 @@
 		<f:facet name="header">Nome Fantasia</f:facet>
 		<h:outputText value="#{objeto.ent_nomeFantasia}" />
 	</p:column>
+	
+	<p:column styleClass="colunaExcluirEditar">
+	
+		<center><!-- html puro para centralizar os dados da coluna -->
+		
+			<f:facet name="header">Atualizar</f:facet>
+			
+			<p:commandLink id="editarFuncionario"
+			ajax="true"
+			immediate="true"
+			action="#{funcionarioBeanView.editar}">
+				
+				<!-- colocando uma imagem com jsf -->
+				<h:graphicImage library="images" name="editar.png" height="25" width="25" />
+			
+				<!-- value -> objeto que estar na tela -->
+				<f:setPropertyActionListener value="#{objeto}" target="#{funcionarioBeanView.objetoSelecionado}" />
+				
+			</p:commandLink>
+		
+		</center>
+		
+	</p:column>
 
 <sec:ifAnyGranted roles="FUNCIONARIO_EXCLUIR, ADMIN">
 
