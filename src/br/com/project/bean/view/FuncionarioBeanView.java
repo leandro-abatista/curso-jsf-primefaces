@@ -47,21 +47,24 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 			objetoSelecionado.getAcessos().add("USER");
 		}
 		
-		/*e depois é que salva*/
-		entidadeController.merge(objetoSelecionado);
+		/*e depois é que salva e retorna o objeto selecionado*/
+		objetoSelecionado = entidadeController.merge(objetoSelecionado);
+		list.add(objetoSelecionado);
 		objetoSelecionado = new Entidade();
 		sucesso();
 	}
 	
 	@Override
 	public void saveEdit() throws Exception {
-		entidadeController.merge(objetoSelecionado);
+		objetoSelecionado = entidadeController.merge(objetoSelecionado);
+		list.add(objetoSelecionado);
 		objetoSelecionado = new Entidade();
 		Messagens.msgSeverityInf("Registro atualizado com sucesso!");
 	}
 	
 	@Override
 	public String editar() throws Exception {
+		list.clean();//limpa a lista
 		return url;
 	}
 	

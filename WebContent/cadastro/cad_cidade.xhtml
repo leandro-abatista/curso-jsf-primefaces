@@ -139,7 +139,8 @@
 		emptyMessage="Não existe valores para serem exibidos."
 		rendered="#{cidadeBeanView.list.list.size() > 0}" 
 		paginator="true" 
-		rows="5" >
+		rows="5" 
+		lazy="true">
 		
 			<ui:include src="/resources/components/colunasDataTableCidade.xhtml" />
 		

@@ -186,7 +186,7 @@
 				
 				<!-- chamando os botões genéricos -->
 				<util:botoesCrud managedBeanView="#{funcionarioBeanView}"
-				camposReload=":formTemplate:msg"
+				camposReload=":formTemplate:msg, tableResult"
 				botaoNovo="#{contextBean.possuiAcesso('FUNCIONARIO_NOVO', 'ADMIN')}"
 				botaoSalvar="#{contextBean.possuiAcesso('FUNCIONARIO_NOVO', 'ADMIN') 
 				and funcionarioBeanView.objetoSelecionado.ent_codigo == null}"
@@ -199,6 +199,28 @@
 			</p:fieldset>
 		
 		</h:form>
+		
+		<script type="text/javascript" charset="UTF-8">
+
+			addFocoAoCampo("nomefantasia");
+			gerenciaTeclaEnter();
+
+		</script>
+		
+		<div class="espacoBranco"/><!-- Espaço em branco -->
+		
+		<p:dataTable id="tableResult" 
+		var="objeto" 
+		value="#{funcionarioBeanView.list.list}"
+		emptyMessage="Não existe valores para serem exibidos."
+		paginator="true"
+		rows="5"
+		lazy="true"
+		rendered="#{funcionarioBeanView.list.list.size() > 0}">
+			
+			<ui:include src="/resources/components/colunasDataTableFuncionario.xhtml" />
+		
+		</p:dataTable>
 
 	</ui:define>
 	
