@@ -11,6 +11,7 @@ import br.com.framework.interfaces.crud.InterfaceCrud;
 import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
 import br.com.project.geral.controller.CidadeController;
 import br.com.project.model.classes.Cidade;
+import br.com.project.util.all.Messagens;
 
 @Controller//do spring
 @Scope(value = "session")
@@ -74,8 +75,8 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void saveEdit() throws Exception {
-		//faz algum processamento
 		saveNotReturn();
+		Messagens.msgSeverityInf("Registro atualizado com sucesso!");
 	}
 	
 	@Override

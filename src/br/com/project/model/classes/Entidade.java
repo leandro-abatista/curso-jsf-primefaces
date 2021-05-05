@@ -32,7 +32,7 @@ import br.com.project.annotation.IdentificaCampoPesquisa;
 @Audited
 @Entity
 @Table(name = "entidade")
-@SequenceGenerator(name = "entidade_seq", sequenceName = "entidade_seq", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "entidade_seq", sequenceName = "entidade_seq", initialValue = 3, allocationSize = 1)
 public class Entidade implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

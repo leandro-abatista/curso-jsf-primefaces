@@ -11,6 +11,7 @@ import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
 import br.com.project.geral.controller.EntidadeController;
 import br.com.project.model.classes.Cidade;
 import br.com.project.model.classes.Entidade;
+import br.com.project.util.all.Messagens;
 
 @Controller
 @Scope("session")
@@ -41,13 +42,22 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void saveNotReturn() throws Exception {
+		/*primeiro seta o acesso do usuário*/
+		if (!objetoSelecionado.getAcessos().contains("USER")) {
+			objetoSelecionado.getAcessos().add("USER");
+		}
+		
+		/*e depois é que salva*/
 		entidadeController.merge(objetoSelecionado);
+		objetoSelecionado = new Entidade();
 		sucesso();
 	}
 	
 	@Override
 	public void saveEdit() throws Exception {
-		System.out.println("chamou edite");
+		entidadeController.merge(objetoSelecionado);
+		objetoSelecionado = new Entidade();
+		Messagens.msgSeverityInf("Registro atualizado com sucesso!");
 	}
 	
 	@Override
@@ -67,7 +77,7 @@ public class FuncionarioBeanView extends BeanManagedViewAbstract {
 			entidadeController.delete(objetoSelecionado);
 			list.remove(objetoSelecionado);
 			objetoSelecionado = new Entidade();
-			sucesso();
+			Messagens.msgSeverityInf("Registro excluído com sucesso!");
 		}
 	}
 	
