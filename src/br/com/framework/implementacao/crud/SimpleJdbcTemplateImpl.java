@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.sql.DataSource;
 
-import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;

@@ -13,7 +13,7 @@ import br.com.project.geral.controller.CidadeController;
 import br.com.project.model.classes.Cidade;
 import br.com.project.util.all.Messagens;
 
-@Controller//do spring
+@Controller
 @Scope(value = "session")
 @ManagedBean(name = "cidadeBeanView")
 public class CidadeBeanView extends BeanManagedViewAbstract {
@@ -137,6 +137,14 @@ public class CidadeBeanView extends BeanManagedViewAbstract {
 	@Override
 	public String condicaoAndParaPesquisa() throws Exception {
 		return "";
+	}
+
+	public CidadeController getCidadeController() {
+		return cidadeController;
+	}
+
+	public void setCidadeController(CidadeController cidadeController) {
+		this.cidadeController = cidadeController;
 	}
 	
 }

@@ -85,6 +85,10 @@ public class ContextBean implements Serializable {
 		return entidade;
 	}
 	
+	/**
+	 * Retorna se o usuario logado possui os acesso passados como paramentro, este metodo destina-se ao uso onde não é possivel usar
+	 * as tags do spring security
+	 */
 	public boolean possuiAcesso(String... acessos) {
 		
 		for (String acesso : acessos) {

@@ -24,6 +24,7 @@ import net.sf.jasperreports.engine.export.JRCsvExporter;
 import net.sf.jasperreports.engine.export.JRHtmlExporter;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.export.JRXlsExporter;
+import net.sf.jasperreports.engine.export.oasis.JROdsExporter;
 import net.sf.jasperreports.engine.export.oasis.JROdtExporter;
 import net.sf.jasperreports.engine.util.JRLoader;
 
@@ -64,8 +65,7 @@ public class ReportUtil implements Serializable {
 		 * Cria a lista de collectionDataSource de beans que carregam os dados do
 		 * relatório
 		 */
-		JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(
-				listDateBeanCollectionReport);
+		JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(listDateBeanCollectionReport);
 
 		/*
 		 * Fornece o caminho físico até a pasta que contém os relatórios compilados
@@ -100,32 +100,31 @@ public class ReportUtil implements Serializable {
 		parametrosRelatorio.put(SUBREPORT_DIR, caminhoSubReport_dir);
 
 		/* Carregando o arquivo compilado para a memória */
-		JasperPrint impressoraJasper = JasperFillManager.fillReport(relatorioJasper, parametrosRelatorio,
-				jrBeanCollectionDataSource);
+		JasperPrint impressoraJasper = JasperFillManager.fillReport(relatorioJasper, parametrosRelatorio, jrBeanCollectionDataSource);
 
 		switch (tipoRelatorio) {
 		
-		case RELATORIO_PDF:
+		case ReportUtil.RELATORIO_PDF:
 			tipoArquivoExportado = new JRPdfExporter();
 			extensaoArquivoExportado = EXTENSION_PDF;
 			break;
 
-		case RELATORIO_EXCEL:
+		case ReportUtil.RELATORIO_EXCEL:
 			tipoArquivoExportado = new JRXlsExporter();
 			extensaoArquivoExportado = EXTENSION_XLS;
 			break;
 			
-		case RELATORIO_CSV:
+		case ReportUtil.RELATORIO_CSV:
 			tipoArquivoExportado = new JRCsvExporter();
 			extensaoArquivoExportado = EXTENSION_CSV;
 			break;
 
-		case RELATORIO_PLANILHA_OPEN_OFFICE:
-			tipoArquivoExportado = new JROdtExporter();
+		case ReportUtil.RELATORIO_PLANILHA_OPEN_OFFICE:
+			tipoArquivoExportado = new JROdsExporter();
 			extensaoArquivoExportado = EXTENSION_ODS;
 			break;
 
-		case RELATORIO_HTML:
+		case ReportUtil.RELATORIO_HTML:
 			tipoArquivoExportado = new JRHtmlExporter();
 			extensaoArquivoExportado = EXTENSION_HTML;
 			break;
@@ -133,6 +132,7 @@ public class ReportUtil implements Serializable {
 		default:
 			tipoArquivoExportado = new JRPdfExporter();
 			extensaoArquivoExportado = EXTENSION_PDF;
+			break;
 		}
 
 		nomeRelatorioSaida += UNDERLINE + DateUtils.getDateAtualReportName();

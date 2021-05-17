@@ -1,7 +1,7 @@
 package br.com.project.geral.controller;
 
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,7 @@ import br.com.project.model.classes.Entidade;
 import br.com.srv.interfaces.ServiceEntidade;
 
 @Controller
-public class EntidadeController extends ImplementacaoCrud<Entidade> implements InterfaceCrud<Entidade> {
+public class EntidadeController extends ImplementacaoCrud<Entidade> implements InterfaceCrud<Entidade>, Serializable {
 
 	private static final long serialVersionUID = 1L;
 	

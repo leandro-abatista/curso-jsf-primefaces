@@ -24,6 +24,8 @@ import br.com.framework.util.UtilFramework;
 import br.com.project.listener.ContextLoaderListenerCaixakiUtils;
 import br.com.project.model.classes.Entidade;
 
+
+
 @WebFilter(filterName = "conexaoFilter")
 public class FilterOpenSessionInView extends DelegatingFilterProxy implements Serializable {
 
