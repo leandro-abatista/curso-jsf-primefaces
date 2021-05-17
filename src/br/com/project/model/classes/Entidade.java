@@ -27,6 +27,7 @@ import org.hibernate.annotations.CollectionOfElements;
 import org.hibernate.envers.Audited;
 import org.primefaces.json.JSONObject;
 
+import br.com.project.acessos.Permissao;
 import br.com.project.annotation.IdentificaCampoPesquisa;
 
 @Audited
@@ -193,6 +194,19 @@ public class Entidade implements Serializable {
 		map.put("ent_nomeFantasia", ent_nomeFantasia);
 		
 		return new JSONObject(map);
+	}
+	
+	public Set<Permissao> getAcessosPermissao(){
+		Set<Permissao> permissoes = new HashSet<Permissao>();
+		
+		for (String acesso : acessos) {
+			for (Permissao permissao : Permissao.values()) {
+				if (acesso.equalsIgnoreCase(permissao.name())) {
+					permissoes.add(permissao);
+				}
+			}
+		}
+		return permissoes;
 	}
 	
 }
