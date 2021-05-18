@@ -52,6 +52,8 @@ public class Titulo implements Serializable {
 	@Column(updatable = false)//não atualiza essa coluna de data e hora do registro
 	private Date tit_dataHora = new Date();
 	
+	private Boolean tit_baixado = Boolean.FALSE;
+	
 	@IdentificaCampoPesquisa(descricaoCampo = "Tipo", campoConsulta = "tit_tipo")
 	@Column(length = 50)
 	private String tit_tipo;//Receber ou pagar
@@ -114,6 +116,14 @@ public class Titulo implements Serializable {
 
 	public void setTit_dataHora(Date tit_dataHora) {
 		this.tit_dataHora = tit_dataHora;
+	}
+	
+	public Boolean getTit_baixado() {
+		return tit_baixado;
+	}
+
+	public void setTit_baixado(Boolean tit_baixado) {
+		this.tit_baixado = tit_baixado;
 	}
 
 	public String getTit_tipo() {
