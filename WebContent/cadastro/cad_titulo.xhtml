@@ -195,7 +195,24 @@
 						
 						<!-- ========================================================================================== -->
 						
+						<p:column>
+							<p:row>
+								<h:outputLabel id="labelResponsavel" for="campoResponsavelTitulo" value="Responsável: " />
+							</p:row>
+						</p:column>
 						
+						<p:column>
+							<p:row>
+								<p:inputText id="campoResponsavelTitulo" 
+								value="#{tituloBeanView.objetoSelecionado.ent_codigoAbertura.ent_nomeFantasia}" size="50"/>
+							</p:row>
+						</p:column>
+						
+						<p:column>
+							<p:row>
+								<p:message for="campoTituloBaixado"/>
+							</p:row>
+						</p:column>
 						
 						<!-- ========================================================================================== -->
 						

@@ -1,5 +1,6 @@
 package br.com.project.bean.view;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 import org.primefaces.model.StreamedContent;
@@ -14,7 +15,7 @@ import br.com.project.model.classes.Titulo;
 import br.com.project.util.all.Messagens;
 
 @Controller
-@Scope("session")
+@Scope("view")
 @ManagedBean(name = "tituloBeanView")
 public class TituloBeanView extends BeanManagedViewAbstract {
 
@@ -33,6 +34,11 @@ public class TituloBeanView extends BeanManagedViewAbstract {
 	private String urlFind = "/cadastro/find_titulo.jsf?faces-redirect=true";
 	
 	private String url = "/cadastro/cad_titulo.jsf?faces-redirect=true";
+	
+	@PostConstruct
+	public void init() throws Exception {
+		objetoSelecionado.setEnt_codigoAbertura(contextBean.getEntidadeLogada());
+	}
 
 	@Override
 	public StreamedContent getArquivoReport() throws Exception {
