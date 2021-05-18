@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:util="http://java.sun.com/jsf/composite/comonents">
+
+
+	<p:column styleClass="colunaTabela colunaCodigotabela">
+		<f:facet name="header">Código</f:facet>
+		<h:outputText value="#{objeto.tit_codigo}" />
+	</p:column>
+	
+	<p:column styleClass="colunaTabela colunaCodigotabela">
+		<f:facet name="header">Nome</f:facet>
+		<h:outputText value="#{objeto.ent_codigo.ent_nomeFantasia}" />
+	</p:column>
+	
+	
+	<p:column styleClass="colunaExcluirEditar">
+	
+		<center><!-- html puro para centralizar os dados da coluna -->
+		
+			<f:facet name="header">Atualizar</f:facet>
+			
+			<p:commandLink id="editarFuncionario"
+			ajax="true"
+			immediate="true"
+			action="#{tituloBeanView.editar}">
+				
+				<!-- colocando uma imagem com jsf -->
+				<h:graphicImage library="images" name="editar.png" height="25" width="25" />
+			
+				<!-- value -> objeto que estar na tela -->
+				<f:setPropertyActionListener value="#{objeto}" target="#{tituloBeanView.objetoSelecionado}" />
+				
+			</p:commandLink>
+		
+		</center>
+		
+	</p:column>
+
+<sec:ifAnyGranted roles="FUNCIONARIO_EXCLUIR, ADMIN">
+
+	<p:column styleClass="colunaExcluirEditar">
+		<!-- html puro para centralizar os dados da coluna -->
+		<center>
+
+			<f:facet name="header">Excluir</f:facet>
+
+			<p:commandLink id="excluirFuncionario" 
+			partialSubmit="true"
+			action="#{tituloBeanView.excluir}" 
+			ajax="false" 
+			immediate="true"
+			process="@this" 
+			update="tableResult">
+
+				<!-- colocando uma imagem com jsf -->
+				<h:graphicImage library="images" name="excluir.png" height="25" width="25" />
+
+				<!-- value -> objeto que estar na tela -->
+				<f:setPropertyActionListener value="#{objeto}" target="#{tituloBeanView.objetoSelecionado}" />
+				
+			</p:commandLink>
+			<p:tooltip for="excluirFuncionario" value="Excluir Registro" position="top" />
+
+		</center>
+
+	</p:column>
+
+</sec:ifAnyGranted>
+
+</html>

@@ -184,7 +184,18 @@
 								</sec:ifAnyGranted>
 								
 								<!-- =============================================================================================================== -->
+								
+								<sec:ifAnyGranted roles="FINANCEIRO_ACESSAR, ADMIN">
 
+									<p:menuitem value="Título" id="menuTitulo"
+										action="#{tituloBeanView.redirecionarFindEntidade}"
+										immediate="true" style="background: #5F9EA0;">
+
+									</p:menuitem>
+									<!-- /cadastro/pesquisar_cidade.jsf?faces-redirect=true -->
+								</sec:ifAnyGranted>
+								
+								<!-- =============================================================================================================== -->
 							</p:submenu>
 							
 						</sec:ifAnyGranted>
