@@ -73,6 +73,9 @@ public class Entidade implements Serializable {
 	@Column(length = 150)
 	private String ent_email;
 	
+	@Column(length = 15 , unique = true)//essa coluna não pode se repetir no banco de dados
+	private String ent_cpf;
+	
 	@Version // verificar se o objeto utilizado na transição foi atualizado desde a ultima vez em que ele foi requisitado
 	@Column(name = "versionNumero")
 	private Integer versionNumero;
@@ -156,6 +159,14 @@ public class Entidade implements Serializable {
 
 	public void setEnt_email(String ent_email) {
 		this.ent_email = ent_email;
+	}
+	
+	public String getEnt_cpf() {
+		return ent_cpf;
+	}
+
+	public void setEnt_cpf(String ent_cpf) {
+		this.ent_cpf = ent_cpf;
 	}
 
 	@Override

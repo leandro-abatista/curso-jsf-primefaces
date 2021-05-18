@@ -43,4 +43,8 @@ public class EntidadeController extends ImplementacaoCrud<Entidade> implements I
 		serviceEntidade.updateUltimoAcessoUser(name);
 	}
 
+	public boolean existeCpf(String ent_cpf) throws Exception {
+		return super.findListByQueryDinamica(" from Entidade where ent_cpf = '" + ent_cpf + "'").size() > 0;
+	}
+
 }
