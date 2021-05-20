@@ -4,10 +4,11 @@
 * {
 	margin: 0px;
 	padding: 0px;
-	font-size: 12px;
+	font-size: 13px;
 	/*font-family: arial, helvetic, sans-serif;*/
 	/*font-family: 'Poppins', sans-serif;*/
 	font-family: 'Ubuntu', sans-serif;
+	font-weight: bold;
 }
 
 body{

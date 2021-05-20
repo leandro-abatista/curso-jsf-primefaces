@@ -26,7 +26,7 @@
 		
 			<f:facet name="header">Atualizar</f:facet>
 			
-			<p:commandLink id="editarFuncionario"
+			<p:commandLink id="editarTitulo"
 			ajax="true"
 			immediate="true"
 			action="#{tituloBeanView.editar}">
@@ -43,7 +43,7 @@
 		
 	</p:column>
 
-<sec:ifAnyGranted roles="FUNCIONARIO_EXCLUIR, ADMIN">
+<sec:ifAnyGranted roles="TITULO_EXCLUIR, ADMIN">
 
 	<p:column styleClass="colunaExcluirEditar">
 		<!-- html puro para centralizar os dados da coluna -->
@@ -51,7 +51,7 @@
 
 			<f:facet name="header">Excluir</f:facet>
 
-			<p:commandLink id="excluirFuncionario" 
+			<p:commandLink id="excluirTitutlo" 
 			partialSubmit="true"
 			action="#{tituloBeanView.excluir}" 
 			ajax="false" 
@@ -66,7 +66,7 @@
 				<f:setPropertyActionListener value="#{objeto}" target="#{tituloBeanView.objetoSelecionado}" />
 				
 			</p:commandLink>
-			<p:tooltip for="excluirFuncionario" value="Excluir Registro" position="top" />
+			<p:tooltip for="excluirTitutlo" value="Excluir Registro" position="top" />
 
 		</center>
 

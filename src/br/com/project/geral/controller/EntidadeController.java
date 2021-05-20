@@ -2,7 +2,9 @@ package br.com.project.geral.controller;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -45,6 +47,12 @@ public class EntidadeController extends ImplementacaoCrud<Entidade> implements I
 
 	public boolean existeCpf(String ent_cpf) throws Exception {
 		return super.findListByQueryDinamica(" from Entidade where ent_cpf = '" + ent_cpf + "'").size() > 0;
+	}
+
+	public List<Entidade> pesquisarPorNome(String nome) throws HibernateException, Exception {
+		
+		return (List<Entidade>) getSession().
+				createQuery("select e from Entidade e where e.ent_nomeFantasia like '%" + nome + "%'").list();
 	}
 
 }

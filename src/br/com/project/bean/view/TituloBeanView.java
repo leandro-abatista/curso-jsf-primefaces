@@ -1,5 +1,7 @@
 package br.com.project.bean.view;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
@@ -10,7 +12,9 @@ import org.springframework.stereotype.Controller;
 
 import br.com.framework.interfaces.crud.InterfaceCrud;
 import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
+import br.com.project.geral.controller.EntidadeController;
 import br.com.project.geral.controller.TituloController;
+import br.com.project.model.classes.Entidade;
 import br.com.project.model.classes.Titulo;
 import br.com.project.util.all.Messagens;
 
@@ -27,7 +31,10 @@ public class TituloBeanView extends BeanManagedViewAbstract {
 	@Autowired
 	private TituloController tituloController;
 	
-	private Titulo objetoSelecionado = new Titulo();
+	@Autowired
+	private EntidadeController entidadeController;
+	
+	private Titulo objetoSelecionado = new Titulo();//inicia uma instância de título
 
 	private CarregamentoLazyListForObject<Titulo> list = new CarregamentoLazyListForObject<Titulo>();
 	
@@ -38,6 +45,10 @@ public class TituloBeanView extends BeanManagedViewAbstract {
 	@PostConstruct
 	public void init() throws Exception {
 		objetoSelecionado.setEnt_codigoAbertura(contextBean.getEntidadeLogada());
+	}
+	
+	public List<Entidade> pesquisarPagador(String nome) throws Exception{
+		return entidadeController.pesquisarPorNome(nome);
 	}
 
 	@Override
@@ -85,7 +96,7 @@ public class TituloBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void excluir() throws Exception {
-		if (objetoSelecionado.getEnt_codigo() != null && objetoSelecionado.getTit_codigo() > 0) {
+		if (objetoSelecionado.getTit_codigo() != null && objetoSelecionado.getTit_codigo() > 0) {
 			tituloController.delete(objetoSelecionado);
 			list.remove(objetoSelecionado);
 			objetoSelecionado = new Titulo();

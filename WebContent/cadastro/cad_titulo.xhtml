@@ -76,7 +76,7 @@
 						
 						<p:column>
 							<p:row>
-								<h:outputLabel id="labelValor" for="campoValor" value="Valor R$ * :" />
+								<h:outputLabel id="labelValor" for="campoValor" value="Valor título R$ * :" />
 							</p:row>
 						</p:column>
 						
@@ -100,7 +100,7 @@
 						
 						<p:column>
 							<p:row>
-								<h:outputLabel id="labelValorPago" for="campoValorPago" value="Valor R$ * :" />
+								<h:outputLabel id="labelValorPago" for="campoValorPago" value="Valor pago R$ * :" />
 							</p:row>
 						</p:column>
 						
@@ -197,7 +197,7 @@
 						
 						<p:column>
 							<p:row>
-								<h:outputLabel id="labelResponsavel" for="campoResponsavelTitulo" value="Responsável: " />
+								<h:outputLabel id="labelResponsavel" for="campoResponsavelTitulo" value="Responsável pelo título: " />
 							</p:row>
 						</p:column>
 						
@@ -216,6 +216,37 @@
 						
 						<!-- ========================================================================================== -->
 						
+						<p:column>
+							<p:row>
+								<h:outputLabel id="labelResponsavelPagamento" for="campoResponsavelPagamentoTitulo" value="Pagador do título: " />
+							</p:row>
+						</p:column>
+						
+						<p:column>
+							<p:row>
+								<p:autoComplete id="campoResponsavelPagamentoTitulo" 
+								completeMethod="#{tituloBeanView.pesquisarPagador}"
+								minQueryLength="4"
+								queryDelay="3000"
+								placeholder="Digite no mínimo 4 letras."
+								value="#{tituloBeanView.objetoSelecionado.ent_codigo}"
+								var="ent"
+								itemValue="#{ent}"
+								itemLabel="#{ent.ent_nomeFantasia}"
+								converter="entidadeConverter">
+								
+								</p:autoComplete>
+							</p:row>
+						</p:column>
+						
+						<p:column>
+							<p:row>
+								<p:message for="campoResponsavelPagamentoTitulo"/>
+							</p:row>
+						</p:column>
+						
+						<!-- ========================================================================================== -->
+						
 					
 					</h:panelGrid>
 				
@@ -227,11 +258,9 @@
 				<util:botoesCrud managedBeanView="#{tituloBeanView}"
 				camposReload=":formTemplate:msg, tableResult"
 				botaoNovo="#{contextBean.possuiAcesso('TITULO_NOVO', 'ADMIN')}"
-				botaoSalvar="#{contextBean.possuiAcesso('TITULO_NOVO', 'ADMIN') 
-				and tituloBeanView.objetoSelecionado.ent_codigo == null}"
-				botaoAtualizar="#{contextBean.possuiAcesso('TITULO_EDITAR', 'ADMIN') 
-				and tituloBeanView.objetoSelecionado.ent_codigo != null}"
-				botaoExcluir="#{contextBean.possuiAcesso('ACESSO_EXCLUIR', 'ADMIN')}">
+				botaoSalvar="#{contextBean.possuiAcesso('TITULO_NOVO', 'ADMIN') and tituloBeanView.objetoSelecionado.tit_codigo == null}"
+				botaoAtualizar="#{contextBean.possuiAcesso('TITULO_EDITAR', 'ADMIN') and tituloBeanView.objetoSelecionado.tit_codigo != null}"
+				botaoExcluir="#{contextBean.possuiAcesso('TITULO_EXCLUIR', 'ADMIN')}">
 				
 				</util:botoesCrud>
 			

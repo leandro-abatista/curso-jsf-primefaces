@@ -11,6 +11,4 @@ public class TituloController extends ImplementacaoCrud<Titulo> implements Inter
 
 	private static final long serialVersionUID = 1L;
 	
-	
-
 }
