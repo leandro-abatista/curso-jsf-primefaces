@@ -49,7 +49,8 @@ public class EntidadeController extends ImplementacaoCrud<Entidade> implements I
 		return super.findListByQueryDinamica(" from Entidade where ent_cpf = '" + ent_cpf + "'").size() > 0;
 	}
 
-	public List<Entidade> pesquisarPorNome(String nome) throws HibernateException, Exception {
+	@SuppressWarnings("unchecked")
+	public List<Entidade> pesquisarPorNome(String nome) throws Exception {
 		
 		return (List<Entidade>) getSession().
 				createQuery("select e from Entidade e where e.ent_nomeFantasia like '%" + nome + "%'").list();

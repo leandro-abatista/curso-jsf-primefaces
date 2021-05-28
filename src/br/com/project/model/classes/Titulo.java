@@ -41,25 +41,25 @@ public class Titulo implements Serializable {
 	private String tit_origem;/*Comissão para o funcionário -> origem*/
 	
 	@IdentificaCampoPesquisa(descricaoCampo = "Valor R$", campoConsulta = "tit_valor")
-	@Column(scale = 4, precision = 15)
+	@Column(scale = 2, precision = 15)
 	private BigDecimal tit_valor = BigDecimal.ZERO;//inicia como  zero valor
 	
 	@IdentificaCampoPesquisa(descricaoCampo = "Valor Pago R$", campoConsulta = "tit_valorPago")
-	@Column(scale = 4, precision = 15)
+	@Column(scale = 2, precision = 15)
 	private BigDecimal tit_valorPago = BigDecimal.ZERO;//inicia como  zero valor
 	
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(updatable = false)//não atualiza essa coluna de data e hora do registro
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date tit_dataHora = new Date();
 	
 	private Boolean tit_baixado = Boolean.FALSE;
 	
 	@IdentificaCampoPesquisa(descricaoCampo = "Tipo", campoConsulta = "tit_tipo")
-	@Column(length = 50)
-	private String tit_tipo;//Receber ou pagar
+	@Column(length = 100)
+	private String tit_tipo;//Receber ou pagar títulos
 	
 	/*Um usuário abre muitos titulos*/
-	@IdentificaCampoPesquisa(descricaoCampo = "Usuário Abertura", campoConsulta = "ent_codigoAbertura.ent_nomeFantasia", principal = 2)
+	@IdentificaCampoPesquisa(descricaoCampo = "Usuário Abertura", campoConsulta = "ent_codigoAbertura.ent_nomeFantasia")
 	@Basic
 	@ManyToOne//Muitos titulos para um usuário
 	@ForeignKey(name = "ent_codigoabertura_fk")
@@ -67,7 +67,7 @@ public class Titulo implements Serializable {
 	private Entidade ent_codigoAbertura = new Entidade();
 	
 	/*Responsável por pagar a conta*/
-	@IdentificaCampoPesquisa(descricaoCampo = "Usuário Responsável", campoConsulta = "ent_codigo.ent_nomeFantasia", principal = 3)
+	@IdentificaCampoPesquisa(descricaoCampo = "Usuário Responsável", campoConsulta = "ent_codigo.ent_nomeFantasia")
 	@Basic
 	@ManyToOne
 	@ForeignKey(name = "ent_codigo_fk")
@@ -78,6 +78,7 @@ public class Titulo implements Serializable {
 	@Column(name = "versionNumero")
 	private Integer versionNumero;
 
+	/*====================================================GETTERS E SETTERS=====================================================================*/
 	public Long getTit_codigo() {
 		return tit_codigo;
 	}
@@ -181,13 +182,6 @@ public class Titulo implements Serializable {
 		} else if (!tit_codigo.equals(other.tit_codigo))
 			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Titulo [tit_codigo=" + tit_codigo + ", tit_origem=" + tit_origem + ", tit_valor=" + tit_valor
-				+ ", tit_valorPago=" + tit_valorPago + ", tit_dataHora=" + tit_dataHora + ", tit_tipo=" + tit_tipo
-				+ ", ent_codigoAbertura=" + ent_codigoAbertura + ", ent_codigo=" + ent_codigo + "]";
 	}
 
 }

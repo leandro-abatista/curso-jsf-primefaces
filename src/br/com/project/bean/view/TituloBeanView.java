@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import br.com.framework.interfaces.crud.InterfaceCrud;
+import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.carregamento.lazy.CarregamentoLazyListForObject;
 import br.com.project.geral.controller.EntidadeController;
 import br.com.project.geral.controller.TituloController;
@@ -19,7 +20,7 @@ import br.com.project.model.classes.Titulo;
 import br.com.project.util.all.Messagens;
 
 @Controller
-@Scope("view")
+@Scope("session")
 @ManagedBean(name = "tituloBeanView")
 public class TituloBeanView extends BeanManagedViewAbstract {
 
@@ -42,11 +43,19 @@ public class TituloBeanView extends BeanManagedViewAbstract {
 	
 	private String url = "/cadastro/cad_titulo.jsf?faces-redirect=true";
 	
+	
 	@PostConstruct
-	public void init() throws Exception {
+	public void init() throws Exception{
 		objetoSelecionado.setEnt_codigoAbertura(contextBean.getEntidadeLogada());
 	}
 	
+	
+	/**
+	 * Método para pesquisar o pagador do título
+	 * @param nome
+	 * @return o nome do pagador do título
+	 * @throws Exception
+	 */
 	public List<Entidade> pesquisarPagador(String nome) throws Exception{
 		return entidadeController.pesquisarPorNome(nome);
 	}
@@ -61,7 +70,8 @@ public class TituloBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public String novo() throws Exception {
-		setarVariaveisNulas();
+		this.setarVariaveisNulas();
+		this.init();
 		return url;
 	}
 	
@@ -90,8 +100,8 @@ public class TituloBeanView extends BeanManagedViewAbstract {
 	
 	@Override
 	public void setarVariaveisNulas() throws Exception {
-		list.clean();
 		objetoSelecionado = new Titulo();
+		list.clean();
 	}
 	
 	@Override

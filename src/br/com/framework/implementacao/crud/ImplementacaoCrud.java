@@ -61,40 +61,40 @@ public class ImplementacaoCrud<T> implements InterfaceCrud<T> {
 	}
 
 	@Override
-	public void persist(T obj) throws Exception {
+	public void persist(T entidade) throws Exception {
 		validarSessionfactory();
-		sessionFactory.getCurrentSession().persist(obj);
+		sessionFactory.getCurrentSession().persist(entidade);
 		executeFlushSession();
 	}
 
 	@Override
-	public void saveOrUpdate(T obj) throws Exception {
+	public void saveOrUpdate(T entidade) throws Exception {
 		validarSessionfactory();
-		sessionFactory.getCurrentSession().saveOrUpdate(obj);
+		sessionFactory.getCurrentSession().saveOrUpdate(entidade);
 		executeFlushSession();
 	}
 
 	@Override
-	public void update(T obj) throws Exception {
+	public void update(T entidade) throws Exception {
 		validarSessionfactory();
-		sessionFactory.getCurrentSession().update(obj);
+		sessionFactory.getCurrentSession().update(entidade);
 		executeFlushSession();
 	}
 
 	@Override
-	public void delete(T obj) throws Exception {
+	public void delete(T entidade) throws Exception {
 		validarSessionfactory();
-		sessionFactory.getCurrentSession().delete(obj);
+		sessionFactory.getCurrentSession().delete(entidade);
 		executeFlushSession();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public T merge(T obj) throws Exception {
+	public T merge(T entidade) throws Exception {
 		validarSessionfactory();
-		obj = (T) sessionFactory.getCurrentSession().merge(obj);
+		entidade = (T) sessionFactory.getCurrentSession().merge(entidade);
 		executeFlushSession();
-		return obj;
+		return entidade;
 	}
 
 	@SuppressWarnings("unchecked")

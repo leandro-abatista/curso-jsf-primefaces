@@ -1,4 +1,4 @@
-package br.com.project.bean.view;
+package br.com.project.bean.geral;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 import br.com.framework.interfaces.crud.InterfaceCrud;
 import br.com.project.annotation.IdentificaCampoPesquisa;
-import br.com.project.bean.geral.ObjetoCampoConsulta;
 import br.com.project.enums.CondicaoPesquisa;
 import br.com.project.report.util.BeanReportView;
 import br.com.project.util.all.UtilitarioRegex;
@@ -178,7 +177,7 @@ public abstract class BeanManagedViewAbstract extends BeanReportView {
 		StringBuilder sqlBuilder = new StringBuilder();
 		sqlBuilder.append(getClassImplement().getSimpleName());
 		sqlBuilder.append(" entity where ");
-		sqlBuilder.append("retira_acentos(upper(cast(entity.");
+		sqlBuilder.append(" retira_acentos(upper(cast(entity.");
 		sqlBuilder.append(objetoCampoConsultaSelecionado.getCampoBanco());
 		sqlBuilder.append(" as text))) ");
 		//sqlBuilder.append(" as text))) ");
